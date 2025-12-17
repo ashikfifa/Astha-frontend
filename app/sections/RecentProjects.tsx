@@ -41,14 +41,6 @@ const RecentProjects = () => {
             <br />
             recent project
           </h2>
-
-          {/* View All Link - Desktop */}
-          <Link
-            href="/projects"
-            className="hidden sm:inline-block px-5 py-2 bg-black text-white text-xs sm:text-sm font-bold rounded hover:bg-[#e01e26] transition-colors duration-300"
-          >
-            View All
-          </Link>
         </div>
 
         {/* Projects Grid */}

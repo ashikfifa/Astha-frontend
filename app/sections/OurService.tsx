@@ -26,21 +26,20 @@ const servicesData = [
 
 const OurServices = () => {
   return (
-    <section className="relative w-full min-h-125 md:min-h-150">
-      {/* Background Image */}
-      <div className="absolute inset-0 w-full h-full">
+    <section className="relative w-full bg-white">
+      {/* Background Image - only covers top portion */}
+      <div className="absolute top-0 left-0 right-0 h-[65%] sm:h-[60%] md:h-[72%]">
         <img
           src="https://www.figma.com/api/mcp/asset/90bd4647-c18c-4919-9a45-b8f66135365d"
           alt="Our Services Background"
           className="w-full h-full object-cover"
         />
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/40" />
       </div>
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 w-full h-full bg-black/40" />
-
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center px-4 py-10 md:py-16">
+      <div className="relative z-10 flex flex-col items-center px-4 py-10 md:py-16">
         {/* Section Header */}
         <div className="text-center mb-8 md:mb-12">
           <p className="font-bold text-white text-xs md:text-sm mb-1">
