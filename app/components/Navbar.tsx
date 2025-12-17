@@ -1,168 +1,123 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
+import { useState } from "react";
 import Link from "next/link";
 
-interface NavItem {
-  label: string;
-  href: string;
-}
-
-const navItems: NavItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Development", href: "/development" },
-  { label: "Construction", href: "/construction" },
-  { label: "Interior", href: "/interior" },
+const navLinks = [
+  { id: 1, label: "Home", href: "/" },
+  { id: 2, label: "Development", href: "/development" },
+  { id: 3, label: "Construction", href: "/construction" },
+  { id: 4, label: "Interior", href: "/interior" },
 ];
 
-const Navbar: React.FC = () => {
-  const [activeItem, setActiveItem] = useState<string>("Home");
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("Home");
 
-  const logoUrl =
-    "https://www.figma.com/api/mcp/asset/d26a771b-9638-4016-a59f-6c2129d7745e";
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
-    <nav className="absolute top-0 left-0 right-0 z-50 px-4 py-4 md:px-6 lg:px-8">
+    <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 sm:py-6">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="relative z-10">
-          <div className="relative w-[70px] h-[35px] md:w-[79px] md:h-[40px]">
-            <Image
-              src={logoUrl}
-              alt="Aastha Logo"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
+        <Link href="/" className="flex-shrink-0">
+          <img
+            src="https://www.figma.com/api/mcp/asset/cbc27f7a-5d46-4806-b521-3ab841c1e546"
+            alt="Aastha Logo"
+            className="h-8 sm:h-10 md:h-12 w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center">
-          <div className="relative flex items-center bg-white/10 backdrop-blur-md rounded-full px-2 py-1">
-            {/* Navigation Items */}
-            <ul className="flex items-center gap-1">
-              {navItems.map((item) => (
-                <li key={item.label}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setActiveItem(item.label)}
-                    className={`relative px-4 py-2 text-sm font-medium text-white transition-all duration-300 rounded-md
-                      ${
-                        activeItem === item.label
-                          ? "bg-cyan-400/30"
-                          : "hover:bg-white/10"
-                      }
-                    `}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            {/* Get In Touch Button */}
-            <Link
-              href="/contact"
-              className="ml-4 px-5 py-2 bg-[#e01e26] hover:bg-[#c41a21] text-white text-sm font-medium rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-red-500/30"
-            >
-              Get In Touch
-            </Link>
+        <nav className="hidden md:flex items-center">
+          <div className="flex items-center gap-1 px-2 py-1.5 rounded-full bg-[#1a3a3d]/90 backdrop-blur-sm">
+            {navLinks.map((link) => (
+              <Link
+                key={link.id}
+                href={link.href}
+                onClick={() => setActiveLink(link.label)}
+                className={`relative px-5 py-2 text-sm font-medium transition-all duration-300 rounded-full ${
+                  activeLink === link.label
+                    ? "bg-[#00b4b4] text-white"
+                    : "text-white/90 hover:text-white"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
-        </div>
+
+          {/* Get In Touch Button */}
+          <Link
+            href="/contact"
+            className="ml-4 px-5 py-2 bg-[#e01e26] text-white text-sm font-medium rounded-full hover:bg-[#c41a21] transition-colors duration-300"
+          >
+            Get In touch
+          </Link>
+        </nav>
 
         {/* Mobile Menu Button */}
         <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="md:hidden relative z-10 p-2 text-white"
+          onClick={toggleMenu}
+          className="md:hidden flex flex-col justify-center items-center w-10 h-10 rounded-lg bg-black/30 backdrop-blur-sm"
           aria-label="Toggle menu"
         >
-          <div className="w-6 h-5 flex flex-col justify-between">
-            <span
-              className={`block h-0.5 w-full bg-white transition-all duration-300 ${
-                isMobileMenuOpen ? "rotate-45 translate-y-2" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-full bg-white transition-all duration-300 ${
-                isMobileMenuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-full bg-white transition-all duration-300 ${
-                isMobileMenuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
-            />
-          </div>
+          <span
+            className={`block w-5 h-0.5 bg-white transition-all duration-300 ${
+              isMenuOpen ? "rotate-45 translate-y-1" : ""
+            }`}
+          />
+          <span
+            className={`block w-5 h-0.5 bg-white my-1 transition-all duration-300 ${
+              isMenuOpen ? "opacity-0" : ""
+            }`}
+          />
+          <span
+            className={`block w-5 h-0.5 bg-white transition-all duration-300 ${
+              isMenuOpen ? "-rotate-45 -translate-y-1" : ""
+            }`}
+          />
         </button>
-
-        {/* Mobile Navigation Menu */}
-        <div
-          className={`md:hidden fixed inset-0 bg-[#011719]/95 backdrop-blur-lg transition-all duration-500 ${
-            isMobileMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          }`}
-        >
-          <div className="flex flex-col items-center justify-center h-full">
-            <ul className="flex flex-col items-center gap-6">
-              {navItems.map((item, index) => (
-                <li
-                  key={item.label}
-                  style={{
-                    transitionDelay: isMobileMenuOpen
-                      ? `${index * 100}ms`
-                      : "0ms",
-                  }}
-                  className={`transform transition-all duration-500 ${
-                    isMobileMenuOpen
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-4 opacity-0"
-                  }`}
-                >
-                  <Link
-                    href={item.href}
-                    onClick={() => {
-                      setActiveItem(item.label);
-                      setIsMobileMenuOpen(false);
-                    }}
-                    className={`text-2xl font-medium transition-colors duration-300 ${
-                      activeItem === item.label
-                        ? "text-cyan-400"
-                        : "text-white hover:text-cyan-400"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-              <li
-                style={{
-                  transitionDelay: isMobileMenuOpen
-                    ? `${navItems.length * 100}ms`
-                    : "0ms",
-                }}
-                className={`transform transition-all duration-500 mt-4 ${
-                  isMobileMenuOpen
-                    ? "translate-y-0 opacity-100"
-                    : "translate-y-4 opacity-0"
-                }`}
-              >
-                <Link
-                  href="/contact"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="px-8 py-3 bg-[#e01e26] hover:bg-[#c41a21] text-white text-lg font-medium rounded-full transition-all duration-300"
-                >
-                  Get In Touch
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
       </div>
-    </nav>
+
+      {/* Mobile Navigation Menu */}
+      <div
+        className={`md:hidden absolute top-full left-0 w-full bg-[#011719]/95 backdrop-blur-md transition-all duration-300 overflow-hidden ${
+          isMenuOpen ? "max-h-[400px] opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <nav className="flex flex-col px-6 py-4">
+          {navLinks.map((link) => (
+            <Link
+              key={link.id}
+              href={link.href}
+              onClick={() => {
+                setActiveLink(link.label);
+                setIsMenuOpen(false);
+              }}
+              className={`py-3 text-base font-medium text-white border-b border-white/10 transition-all duration-300 ${
+                activeLink === link.label
+                  ? "text-[#06ecff]"
+                  : "hover:text-[#06ecff]"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          {/* Mobile Get In Touch Button */}
+          <Link
+            href="/contact"
+            onClick={() => setIsMenuOpen(false)}
+            className="mt-4 px-5 py-3 bg-[#e01e26] text-white text-base font-medium rounded-full text-center hover:bg-[#c41a21] transition-colors duration-300"
+          >
+            Get In touch
+          </Link>
+        </nav>
+      </div>
+    </header>
   );
 };
 

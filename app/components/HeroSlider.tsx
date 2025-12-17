@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
@@ -30,6 +30,12 @@ const slides: Slide[] = [
       "https://www.figma.com/api/mcp/asset/bfc33277-dc79-4c86-8196-a15c4ea23936",
     title: ["Your trusted", "partner in", "construction"],
   },
+  {
+    id: 4,
+    image:
+      "https://www.figma.com/api/mcp/asset/bfc33277-dc79-4c86-8196-a15c4ea23936",
+    title: ["Creating spaces", "that inspire", "generations"],
+  },
 ];
 
 const SLIDE_INTERVAL = 5000; // 5 seconds
@@ -58,7 +64,7 @@ const HeroSlider: React.FC = () => {
   }, [nextSlide]);
 
   return (
-    <section className="relative w-full h-[500px] sm:h-[550px] md:h-[600px] lg:h-[700px] overflow-hidden">
+    <section className="relative w-full h-125 sm:h-137.5 md:h-150 lg:h-175 overflow-hidden">
       {/* Background Slides */}
       {slides.map((slide, index) => (
         <div
@@ -79,7 +85,7 @@ const HeroSlider: React.FC = () => {
           </div>
 
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#011719]/80 via-[#011719]/50 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#011719]/80 via-[#011719]/50 to-transparent" />
 
           {/* Additional dark overlay for better text readability */}
           <div className="absolute inset-0 bg-black/30" />
@@ -88,16 +94,16 @@ const HeroSlider: React.FC = () => {
 
       {/* Content */}
       <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col justify-center h-full pt-20">
+        <div className="flex flex-col justify-center items-center md:items-end h-full pt-20 md:pr-8 lg:pr-16">
           {/* Title */}
           <div
-            className={`transform transition-all duration-500 ${
+            className={`transform transition-all duration-500 text-center md:text-right ${
               isTransitioning
                 ? "opacity-0 translate-y-4"
                 : "opacity-100 translate-y-0"
             }`}
           >
-            <h1 className="text-white font-bold leading-tight">
+            <h1 className="text-white font-bold leading-tight italic">
               {slides[currentSlide].title.map((line, index) => (
                 <span
                   key={index}
@@ -122,28 +128,14 @@ const HeroSlider: React.FC = () => {
           >
             <Link
               href="/projects"
-              className="group inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 
-                bg-cyan-400/25 hover:bg-cyan-400/40 
-                border border-cyan-400 
-                rounded-full 
-                text-white text-sm md:text-base font-bold
-                transition-all duration-300 
-                hover:scale-105 hover:shadow-lg hover:shadow-cyan-400/30"
+              className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-3.5
+                bg-transparent hover:bg-[#00b4b4]/20
+                border-2 border-[#00b4b4]
+                rounded-full
+                text-white text-sm md:text-base font-semibold
+                transition-all duration-300"
             >
               View All Projects
-              <svg
-                className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
             </Link>
           </div>
         </div>
@@ -156,50 +148,15 @@ const HeroSlider: React.FC = () => {
             key={index}
             onClick={() => goToSlide(index)}
             aria-label={`Go to slide ${index + 1}`}
-            className={`relative h-2 transition-all duration-300 rounded-full overflow-hidden ${
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
               index === currentSlide
-                ? "w-8 bg-cyan-400"
-                : "w-2 bg-white/50 hover:bg-white/80"
+                ? "bg-[#00b4b4]"
+                : "bg-[#00b4b4]/40 hover:bg-[#00b4b4]/60"
             }`}
-          >
-            {index === currentSlide && (
-              <span
-                className="absolute inset-0 bg-cyan-300 animate-progress"
-                style={{
-                  animation: `progress ${SLIDE_INTERVAL}ms linear`,
-                }}
-              />
-            )}
-          </button>
+          />
         ))}
       </div>
 
-      {/* Navigation Arrows (Desktop) */}
-      <div className="hidden lg:flex absolute inset-y-0 left-4 right-4 z-30 items-center justify-between pointer-events-none">
-        <button
-          onClick={() =>
-            goToSlide((currentSlide - 1 + slides.length) % slides.length)
-          }
-          className="pointer-events-auto p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white transition-all duration-300 hover:scale-110"
-          aria-label="Previous slide"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        <button
-          onClick={() => goToSlide((currentSlide + 1) % slides.length)}
-          className="pointer-events-auto p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white transition-all duration-300 hover:scale-110"
-          aria-label="Next slide"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
-      </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-20" />
     </section>
   );
 };
