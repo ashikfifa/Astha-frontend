@@ -36,14 +36,8 @@ const OurServices = () => {
         />
       </div>
 
-      {/* Overlay */}
-      <div className="absolute inset-0 w-full h-full">
-        <img
-          src="https://www.figma.com/api/mcp/asset/ed6c1f43-75d3-4894-bfcd-9aee3ab51a67"
-          alt="Overlay"
-          className="w-full h-full object-cover"
-        />
-      </div>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 w-full h-full bg-black/40" />
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center px-4 py-10 md:py-16">

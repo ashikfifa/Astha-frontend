@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 sm:py-6 bg-[#011719]/80 backdrop-blur-md">
+    <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 sm:py-6">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
@@ -32,22 +32,16 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center">
-          <div
-            className="flex items-center gap-1 px-4 py-2 rounded-full"
-            style={{
-              background: "linear-gradient(90deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 100%)",
-              backdropFilter: "blur(10px)",
-            }}
-          >
+          <div className="flex items-center gap-1 px-2 py-1.5 rounded-full bg-[#1a3a3d]/90 backdrop-blur-sm">
             {navLinks.map((link) => (
               <Link
                 key={link.id}
                 href={link.href}
                 onClick={() => setActiveLink(link.label)}
-                className={`relative px-4 py-1.5 text-sm font-medium text-white transition-all duration-300 rounded-md ${
+                className={`relative px-5 py-2 text-sm font-medium transition-all duration-300 rounded-full ${
                   activeLink === link.label
-                    ? "bg-[rgba(6,236,255,0.31)]"
-                    : "hover:bg-white/10"
+                    ? "bg-[#00b4b4] text-white"
+                    : "text-white/90 hover:text-white"
                 }`}
               >
                 {link.label}
