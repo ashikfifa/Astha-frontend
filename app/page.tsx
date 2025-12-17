@@ -1,6 +1,10 @@
+import Footer from "./components/Footer";
 import HeroSlider from "./components/HeroSlider";
 import Navbar from "./components/Navbar";
 import MottoSection from "./sections/MottoSection";
+import OurServices from "./sections/OurService";
+import RecentProjects from "./sections/RecentProjects";
+import VideoSection from "./sections/VideoSection";
 
 export default function Home() {
   return (
@@ -9,6 +13,14 @@ export default function Home() {
       <HeroSlider />
 
       <MottoSection/>
+
+      <OurServices/>
+
+      <RecentProjects/>
+
+      <VideoSection/>
+
+      <Footer/>
 
       {/* Rest of your page content */}
       {/* <section className="py-20 px-4">
