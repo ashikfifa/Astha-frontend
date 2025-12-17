@@ -1,5 +1,6 @@
 import HeroSlider from "./components/HeroSlider";
 import Navbar from "./components/Navbar";
+import MottoSection from "./sections/MottoSection";
 
 export default function Home() {
   return (
@@ -7,8 +8,10 @@ export default function Home() {
       <Navbar />
       <HeroSlider />
 
+      <MottoSection/>
+
       {/* Rest of your page content */}
-      <section className="py-20 px-4">
+      {/* <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             Building Spaces that Build Your Future
@@ -18,7 +21,7 @@ export default function Home() {
             growth
           </p>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
