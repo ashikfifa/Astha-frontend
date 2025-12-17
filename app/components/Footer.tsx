@@ -1,10 +1,14 @@
 import Link from "next/link";
 
 // Assets from Figma
-const logo = "https://www.figma.com/api/mcp/asset/cbc27f7a-5d46-4806-b521-3ab841c1e546";
-const phoneIcon = "https://www.figma.com/api/mcp/asset/6597caff-3b20-4850-9af5-9c91a0c55555";
-const emailIcon = "https://www.figma.com/api/mcp/asset/030b9df9-f9c9-4238-93ed-e9348956164d";
-const copyrightIcon = "https://www.figma.com/api/mcp/asset/204a95c4-cc28-44ea-8130-fa306d014c5b";
+const logo =
+  "https://www.figma.com/api/mcp/asset/cbc27f7a-5d46-4806-b521-3ab841c1e546";
+const phoneIcon =
+  "https://www.figma.com/api/mcp/asset/6597caff-3b20-4850-9af5-9c91a0c55555";
+const emailIcon =
+  "https://www.figma.com/api/mcp/asset/030b9df9-f9c9-4238-93ed-e9348956164d";
+const copyrightIcon =
+  "https://www.figma.com/api/mcp/asset/204a95c4-cc28-44ea-8130-fa306d014c5b";
 
 // Social Media Icons
 const socialIcons = [
@@ -97,7 +101,7 @@ const Footer = () => {
                     <img
                       src={phoneIcon}
                       alt="Phone"
-                      className="w-[10px] h-[10px] object-contain"
+                      className="w-2.5 h-2.5 object-contain"
                     />
                     <span className="text-white text-[10px] sm:text-xs">
                       {contactInfo.phone}
@@ -108,7 +112,7 @@ const Footer = () => {
                     <img
                       src={emailIcon}
                       alt="Email"
-                      className="w-[10px] h-[10px] object-contain"
+                      className="w-2.5 h-2.5 object-contain"
                     />
                     <span className="text-white text-[10px] sm:text-xs">
                       {contactInfo.email}
@@ -206,10 +210,11 @@ const Footer = () => {
           <img
             src={copyrightIcon}
             alt="Copyright"
-            className="w-[10px] h-[10px] object-contain"
+            className="w-2.5 h-2.5 object-contain"
           />
           <p className="text-white text-[8px] sm:text-[10px] text-center">
-            2025. All rights reserved. Developed by Aastha Design and Construction Co.
+            2025. All rights reserved. Developed by Aastha Design and
+            Construction Co.
           </p>
         </div>
       </div>

@@ -2,35 +2,41 @@
 
 import { useState } from "react";
 
-const mapIcon = "https://www.figma.com/api/mcp/asset/4d102edf-b465-4ed0-9eb3-eb54d72dd9d7";
-const playIcon = "https://www.figma.com/api/mcp/asset/35e37e1c-9ca1-41f4-ace2-b63b6bd67f46";
+const mapIcon =
+  "https://www.figma.com/api/mcp/asset/4d102edf-b465-4ed0-9eb3-eb54d72dd9d7";
+const playIcon =
+  "https://www.figma.com/api/mcp/asset/35e37e1c-9ca1-41f4-ace2-b63b6bd67f46";
 
 // Video data array - Add your YouTube video IDs here
 const videosData = [
   {
     id: 1,
-    thumbnail: "https://www.figma.com/api/mcp/asset/3fccb78b-e515-4375-b355-832deb7ef8f6",
+    thumbnail:
+      "https://www.figma.com/api/mcp/asset/3fccb78b-e515-4375-b355-832deb7ef8f6",
     title: "Mixed Use Development",
     location: "Dhaka",
     youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
   },
   {
     id: 2,
-    thumbnail: "https://www.figma.com/api/mcp/asset/de5c3f82-e391-48dd-bd33-dbb9d763cc72",
+    thumbnail:
+      "https://www.figma.com/api/mcp/asset/de5c3f82-e391-48dd-bd33-dbb9d763cc72",
     title: "Greenview Apartments",
     location: "Sylhet",
     youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
   },
   {
     id: 3,
-    thumbnail: "https://www.figma.com/api/mcp/asset/95ef01d7-064a-495c-8790-86eb5a00d4ea",
+    thumbnail:
+      "https://www.figma.com/api/mcp/asset/95ef01d7-064a-495c-8790-86eb5a00d4ea",
     title: "Premier Office Tower",
     location: "Khulna",
     youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
   },
   {
     id: 4,
-    thumbnail: "https://www.figma.com/api/mcp/asset/6754b421-731a-4e66-82c0-7fdc78c61598",
+    thumbnail:
+      "https://www.figma.com/api/mcp/asset/6754b421-731a-4e66-82c0-7fdc78c61598",
     title: "Urban Heights Residence",
     location: "Chittagong",
     youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
@@ -47,7 +53,9 @@ const VideoSection = () => {
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + videosData.length) % videosData.length);
+    setCurrentSlide(
+      (prev) => (prev - 1 + videosData.length) % videosData.length
+    );
   };
 
   const goToSlide = (index: number) => {
@@ -162,7 +170,7 @@ const VideoSection = () => {
                   <img
                     src={mapIcon}
                     alt="Location"
-                    className="w-[9px] h-[9px] object-contain"
+                    className="w-2.25 h-2.25 object-contain"
                   />
                   <span className="text-xs text-black/80">
                     {currentVideo.location}

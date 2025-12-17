@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
@@ -58,7 +58,7 @@ const HeroSlider: React.FC = () => {
   }, [nextSlide]);
 
   return (
-    <section className="relative w-full h-[500px] sm:h-[550px] md:h-[600px] lg:h-[700px] overflow-hidden">
+    <section className="relative w-full h-125 sm:h-137.5 md:h-150 lg:h-175 overflow-hidden">
       {/* Background Slides */}
       {slides.map((slide, index) => (
         <div
@@ -79,7 +79,7 @@ const HeroSlider: React.FC = () => {
           </div>
 
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#011719]/80 via-[#011719]/50 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-r from-[#011719]/80 via-[#011719]/50 to-transparent" />
 
           {/* Additional dark overlay for better text readability */}
           <div className="absolute inset-0 bg-black/30" />
@@ -183,8 +183,18 @@ const HeroSlider: React.FC = () => {
           className="pointer-events-auto p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white transition-all duration-300 hover:scale-110"
           aria-label="Previous slide"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </button>
         <button
@@ -192,14 +202,24 @@ const HeroSlider: React.FC = () => {
           className="pointer-events-auto p-3 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 text-white transition-all duration-300 hover:scale-110"
           aria-label="Next slide"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </button>
       </div>
 
       {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent z-20" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-linear-to-t from-white to-transparent z-20" />
     </section>
   );
 };

@@ -26,7 +26,7 @@ const servicesData = [
 
 const OurServices = () => {
   return (
-    <section className="relative w-full min-h-[500px] md:min-h-[600px]">
+    <section className="relative w-full min-h-125 md:min-h-150">
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <img

@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <header className="absolute top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 sm:py-6">
+    <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 sm:py-6 bg-[#011719]/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
