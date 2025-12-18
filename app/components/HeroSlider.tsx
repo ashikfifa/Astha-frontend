@@ -58,7 +58,7 @@ const HeroSlider: React.FC = () => {
   }, [nextSlide]);
 
   return (
-    <section className="relative w-full h-125 sm:h-137.5 md:h-150 lg:h-175 overflow-hidden">
+    <section className="relative w-full h-100 sm:h-112.5 md:h-125 lg:h-150 overflow-hidden">
       {/* Background Slides */}
       {slides.map((slide, index) => (
         <div
@@ -143,7 +143,7 @@ const HeroSlider: React.FC = () => {
       </div>
 
       {/* Slider Indicators */}
-      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 sm:gap-4">
+      <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-28 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 sm:gap-4">
         {slides.map((_, index) => (
           <button
             key={index}
