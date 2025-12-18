@@ -10,7 +10,7 @@ const ProjectCard = ({ image, location, title }: ProjectCardProps) => {
   return (
     <div className="group cursor-pointer w-full">
       {/* Project Image */}
-      <div className="relative w-full h-[180px] sm:h-[200px] md:h-[220px] overflow-hidden rounded-sm">
+      <div className="relative w-full h-[220px] sm:h-[240px] md:h-[320px] overflow-hidden rounded-sm">
         <img
           src={image}
           alt={title}
