@@ -27,7 +27,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden w-full md:block ">
+        <nav className="hidden w-full lg:block">
           <div className="relative bg-[rgba(6,236,255,0.27)] rounded-[10px] px-3 py-1.5">
             <div className="flex items-center justify-between">
               {/* Menu Items */}
@@ -62,8 +62,8 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Navigation */}
-        <nav className="md:hidden flex-1">
-          <div className="relative bg-[rgba(6,236,255,0.27)] rounded-[10px] px-4 py-3">
+        <nav className="lg:hidden flex-1">
+          <div className="relative bg-[rgba(6,236,255,0.27)] rounded-[10px] px-2 sm:px-4 py-2 sm:py-3">
             <div className="flex items-center justify-between">
               {/* Active Link */}
               <Link
@@ -71,16 +71,16 @@ const Navbar = () => {
                 onClick={() => setActiveLink("Home")}
                 className="text-white"
               >
-                <span className="bg-[rgba(6,236,255,0.31)] px-3 py-1.5 rounded-[5px]">
+                <span className="bg-[rgba(6,236,255,0.31)] px-2 sm:px-3 py-1 sm:py-1.5 rounded-[5px] text-xs sm:text-sm">
                   {activeLink}
                 </span>
               </Link>
 
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 sm:gap-3">
                 {/* Get In Touch Button - Mobile */}
                 <Link
                   href="/contact"
-                  className="bg-[#e01e26] hover:bg-[#c01820] text-white px-4 py-1.5 rounded-[20px] transition-colors duration-200 text-sm"
+                  className="bg-[#e01e26] hover:bg-[#c01820] text-white px-2 sm:px-4 py-1 sm:py-1.5 rounded-[20px] transition-colors duration-200 text-xs sm:text-sm whitespace-nowrap"
                 >
                   Get In touch
                 </Link>

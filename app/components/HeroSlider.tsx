@@ -88,7 +88,7 @@ const HeroSlider: React.FC = () => {
       {/* Content */}
       <div className="relative z-20 h-full px-4 sm:px-6">
         <div className="container mx-auto h-full">
-          <div className="grid grid-cols-1 md:grid-cols-2 h-full items-center pt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 h-full items-center">
             {/* First div - empty spacer */}
             <div></div>
 
@@ -106,7 +106,7 @@ const HeroSlider: React.FC = () => {
                   {slides[currentSlide].title.map((line, index) => (
                     <span
                       key={index}
-                      className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
+                      className="block text-4xl sm:text-4xl md:text-4xl lg:text-5xl xl:text-6xl"
                       style={{
                         animationDelay: `${index * 150}ms`,
                       }}
@@ -128,10 +128,10 @@ const HeroSlider: React.FC = () => {
                 <Link
                   href="/projects"
                   className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-3.5
-                    bg-transparent hover:bg-[#00b4b4]/20
+                     bg-[#00b4b4]/20 hoover:bg-transparent
                     border-2 border-[#00b4b4]
                     rounded-full
-                    text-white text-sm md:text-base font-semibold
+                    text-white text-sm md:text-sm font-semibold
                     transition-all duration-300"
                 >
                   View All Projects
