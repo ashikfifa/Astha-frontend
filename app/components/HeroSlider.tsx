@@ -86,52 +86,57 @@ const HeroSlider: React.FC = () => {
       ))}
 
       {/* Content */}
-      <div className="relative z-20 h-full px-4 sm:px-6 lg:px-12 xl:px-20">
-        <div className="flex justify-end items-center h-full pt-20 mr-4 sm:mr-8 md:mr-12 lg:mr-16 xl:mr-24">
-          {/* Content wrapper - aligns text and button on their left edge */}
-          <div className="flex flex-col items-start w-[320px] sm:w-[400px] md:w-[500px] lg:w-[600px] xl:w-[700px]">
-            {/* Title */}
-            <div
-              className={`transform transition-all duration-500 ${
-                isTransitioning
-                  ? "opacity-0 translate-y-4"
-                  : "opacity-100 translate-y-0"
-              }`}
-            >
-              <p className="text-white font-bold leading-tight">
-                {slides[currentSlide].title.map((line, index) => (
-                  <span
-                    key={index}
-                    className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
-                    style={{
-                      animationDelay: `${index * 150}ms`,
-                    }}
-                  >
-                    {line}
-                  </span>
-                ))}
-              </p>
-            </div>
+      <div className="relative z-20 h-full px-4 sm:px-6">
+        <div className="container mx-auto h-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 h-full items-center pt-16">
+            {/* First div - empty spacer */}
+            <div></div>
 
-            {/* CTA Button */}
-            <div
-              className={`mt-8 md:mt-10 transform transition-all duration-500 delay-300 ${
-                isTransitioning
-                  ? "opacity-0 translate-y-4"
-                  : "opacity-100 translate-y-0"
-              }`}
-            >
-              <Link
-                href="/projects"
-                className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-3.5
-                  bg-transparent hover:bg-[#00b4b4]/20
-                  border-2 border-[#00b4b4]
-                  rounded-full
-                  text-white text-sm md:text-base font-semibold
-                  transition-all duration-300"
+            {/* Second div - text with left alignment */}
+            <div className="flex flex-col items-start">
+              {/* Title */}
+              <div
+                className={`transform transition-all duration-500 ${
+                  isTransitioning
+                    ? "opacity-0 translate-y-4"
+                    : "opacity-100 translate-y-0"
+                }`}
               >
-                View All Projects
-              </Link>
+                <p className="text-white font-bold leading-tight text-left">
+                  {slides[currentSlide].title.map((line, index) => (
+                    <span
+                      key={index}
+                      className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
+                      style={{
+                        animationDelay: `${index * 150}ms`,
+                      }}
+                    >
+                      {line}
+                    </span>
+                  ))}
+                </p>
+              </div>
+
+              {/* CTA Button */}
+              <div
+                className={`mt-8 md:mt-10 transform transition-all duration-500 delay-300 ${
+                  isTransitioning
+                    ? "opacity-0 translate-y-4"
+                    : "opacity-100 translate-y-0"
+                }`}
+              >
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-3.5
+                    bg-transparent hover:bg-[#00b4b4]/20
+                    border-2 border-[#00b4b4]
+                    rounded-full
+                    text-white text-sm md:text-base font-semibold
+                    transition-all duration-300"
+                >
+                  View All Projects
+                </Link>
+              </div>
             </div>
           </div>
         </div>

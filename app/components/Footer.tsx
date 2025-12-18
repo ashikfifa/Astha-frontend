@@ -75,7 +75,7 @@ const Footer = () => {
     <footer className="w-full">
       {/* Main Footer */}
       <div className="bg-[#011719] px-6 sm:px-10 py-8 sm:py-10">
-        <div className="max-w-350 mx-auto">
+        <div className="container mx-auto">
           {/* Top Section - Logo & Social aligned with grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12 mb-8">
           {/* Logo - spans first column */}

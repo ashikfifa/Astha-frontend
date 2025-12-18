@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 sm:py-6">
-      <div className="max-w-350 mx-auto flex items-center justify-between gap-4">
+      <div className="container mx-auto flex items-center gap-30">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <img
@@ -27,7 +27,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:block">
+        <nav className="hidden w-full md:block ">
           <div className="relative bg-[rgba(6,236,255,0.27)] rounded-[10px] px-3 py-1.5">
             <div className="flex items-center justify-between">
               {/* Menu Items */}
