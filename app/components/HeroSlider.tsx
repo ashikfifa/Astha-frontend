@@ -30,12 +30,6 @@ const slides: Slide[] = [
       "https://www.figma.com/api/mcp/asset/bfc33277-dc79-4c86-8196-a15c4ea23936",
     title: ["Your trusted", "partner in", "construction"],
   },
-  {
-    id: 4,
-    image:
-      "https://www.figma.com/api/mcp/asset/bfc33277-dc79-4c86-8196-a15c4ea23936",
-    title: ["Creating spaces", "that inspire", "generations"],
-  },
 ];
 
 const SLIDE_INTERVAL = 5000; // 5 seconds

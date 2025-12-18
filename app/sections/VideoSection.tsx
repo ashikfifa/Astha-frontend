@@ -35,14 +35,6 @@ const videosData = [
     location: "Khulna",
     youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
   },
-  {
-    id: 4,
-    thumbnail:
-      "https://www.figma.com/api/mcp/asset/6754b421-731a-4e66-82c0-7fdc78c61598",
-    title: "Urban Heights Residence",
-    location: "Chittagong",
-    youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
-  },
 ];
 
 const VideoSection = () => {
@@ -82,7 +74,7 @@ const VideoSection = () => {
     <>
       <section className="relative w-full">
         {/* Slider Container */}
-        <div className="relative w-full h-[280px] sm:h-[350px] md:h-[420px] lg:h-[500px] overflow-hidden">
+        <div className="relative w-full h-[350px] sm:h-[480px] md:h-[580px] lg:h-[620px] overflow-hidden">
           {/* Slides */}
           <div
             className="flex transition-transform duration-500 ease-in-out h-full"
