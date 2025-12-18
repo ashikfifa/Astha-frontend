@@ -74,9 +74,10 @@ const Footer = () => {
   return (
     <footer className="w-full">
       {/* Main Footer */}
-      <div className="bg-[#011719] px-6 sm:px-10 lg:px-16 xl:px-20 py-8 sm:py-10">
-        {/* Top Section - Logo & Social aligned with grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12 mb-8">
+      <div className="bg-[#011719] px-6 sm:px-10 py-8 sm:py-10">
+        <div className="max-w-350 mx-auto">
+          {/* Top Section - Logo & Social aligned with grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12 mb-8">
           {/* Logo - spans first column */}
           <div>
             <Link href="/">
@@ -115,9 +116,9 @@ const Footer = () => {
           <div className="hidden sm:block"></div>
         </div>
 
-        {/* Bottom Section - Links Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12">
-          {/* Get In Touch */}
+          {/* Bottom Section - Links Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12">
+            {/* Get In Touch */}
           <div>
             <h4 className="text-white text-base font-medium mb-4">GET IN TOUCH</h4>
             <div className="flex flex-col gap-3">
@@ -199,11 +200,12 @@ const Footer = () => {
             </ul>
           </div>
         </div>
+        </div>
       </div>
 
       {/* Copyright Bar */}
       <div className="bg-[#011719] border-t border-white/10 px-6 sm:px-10 py-4">
-        <p className="text-white text-xs sm:text-sm text-center">
+        <p className="max-w-5xl mx-auto text-white text-xs sm:text-sm text-center">
           <span className="mr-1">C</span>
           2025. All rights reserved. Developed by Aastha Design and Construction
           Co.
