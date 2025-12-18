@@ -145,13 +145,13 @@ const HeroSlider: React.FC = () => {
       </div>
 
       {/* Slider Indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 sm:gap-4">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
             aria-label={`Go to slide ${index + 1}`}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full transition-all duration-300 ${
               index === currentSlide
                 ? "bg-[#00b4b4]"
                 : "bg-[#00b4b4]/40 hover:bg-[#00b4b4]/60"
