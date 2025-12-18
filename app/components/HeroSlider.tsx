@@ -143,7 +143,7 @@ const HeroSlider: React.FC = () => {
       </div>
 
       {/* Slider Indicators */}
-      <div className="absolute bottom-16 sm:bottom-20 md:bottom-24 lg:bottom-28 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 sm:gap-4">
+      <div className="absolute bottom-6 sm:bottom-8 md:bottom-24 lg:bottom-28 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 sm:gap-4">
         {slides.map((_, index) => (
           <button
             key={index}
