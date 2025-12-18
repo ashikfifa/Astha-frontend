@@ -4,3 +4,9 @@ export interface ProjectCardProps {
   title: string;
   href?: string;
 }
+
+export interface MoreServiceCardProps {
+  image: string;
+  title: string;
+  href?: string;
+}
