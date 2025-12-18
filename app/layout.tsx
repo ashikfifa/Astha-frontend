@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${roboto.variable} antialiased min-h-screen bg-[#011719]`}
+        className={`${roboto.variable} antialiased min-h-screen`}
       >
         <Navbar />
         <main>

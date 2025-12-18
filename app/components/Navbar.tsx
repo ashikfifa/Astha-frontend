@@ -28,7 +28,7 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:block">
-          <div className="relative bg-[rgba(6,236,255,0.27)] rounded-[10px] px-6 py-3">
+          <div className="relative bg-[rgba(6,236,255,0.27)] rounded-[10px] px-3 py-1.5">
             <div className="flex items-center justify-between">
               {/* Menu Items */}
               <div className="flex items-center gap-6 lg:gap-8">

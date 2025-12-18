@@ -81,8 +81,7 @@ const HeroSlider: React.FC = () => {
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-linear-to-r from-[#011719]/80 via-[#011719]/50 to-transparent" />
 
-          {/* Additional dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/30" />
+          
         </div>
       ))}
 
