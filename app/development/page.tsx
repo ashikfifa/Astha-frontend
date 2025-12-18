@@ -1,14 +1,16 @@
+import HeroBanner from "../sections/development-page/HeroBanner";
+import MotoSection from "../sections/development-page/MottoSection";
+
 export default function DevelopmentPage() {
   return (
-    <div className="px-4 sm:px-6 py-12">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-          Development
-        </h1>
-        <p className="text-white/70 text-lg">
-          Our development services and projects.
-        </p>
-      </div>
+    <div>
+      <HeroBanner
+        title="Development"
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Development" }]}
+        backgroundImage="https://www.figma.com/api/mcp/asset/4bd9bab9-9e3f-46e5-bb55-08c757248229"
+      />
+
+      <MotoSection title="Take a brief look at some of the development services" />
     </div>
   );
 }
