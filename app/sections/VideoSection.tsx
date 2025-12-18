@@ -101,7 +101,7 @@ const VideoSection = () => {
           {/* Play Button - Opens YouTube Video */}
           <button
             onClick={() => openVideoModal(currentVideo.youtubeId)}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] lg:w-[150px] lg:h-[150px] rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 z-10"
+            className="absolute cursor-pointer top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-25 h-25 sm:w-35 sm:h-35 md:w-45 md:h-45 lg:w-55 lg:h-55 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 z-10"
             aria-label="Play video"
           >
             <img
