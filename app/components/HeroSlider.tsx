@@ -30,12 +30,6 @@ const slides: Slide[] = [
       "https://www.figma.com/api/mcp/asset/bfc33277-dc79-4c86-8196-a15c4ea23936",
     title: ["Your trusted", "partner in", "construction"],
   },
-  {
-    id: 4,
-    image:
-      "https://www.figma.com/api/mcp/asset/bfc33277-dc79-4c86-8196-a15c4ea23936",
-    title: ["Creating spaces", "that inspire", "generations"],
-  },
 ];
 
 const SLIDE_INTERVAL = 5000; // 5 seconds
@@ -93,62 +87,65 @@ const HeroSlider: React.FC = () => {
       ))}
 
       {/* Content */}
-      <div className="relative z-20 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col justify-center items-center md:items-end h-full pt-20 md:pr-8 lg:pr-16">
-          {/* Title */}
-          <div
-            className={`transform transition-all duration-500 text-center md:text-right ${
-              isTransitioning
-                ? "opacity-0 translate-y-4"
-                : "opacity-100 translate-y-0"
-            }`}
-          >
-            <h1 className="text-white font-bold leading-tight italic">
-              {slides[currentSlide].title.map((line, index) => (
-                <span
-                  key={index}
-                  className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
-                  style={{
-                    animationDelay: `${index * 150}ms`,
-                  }}
-                >
-                  {line}
-                </span>
-              ))}
-            </h1>
-          </div>
-
-          {/* CTA Button */}
-          <div
-            className={`mt-8 md:mt-10 transform transition-all duration-500 delay-300 ${
-              isTransitioning
-                ? "opacity-0 translate-y-4"
-                : "opacity-100 translate-y-0"
-            }`}
-          >
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-3.5
-                bg-transparent hover:bg-[#00b4b4]/20
-                border-2 border-[#00b4b4]
-                rounded-full
-                text-white text-sm md:text-base font-semibold
-                transition-all duration-300"
+      <div className="relative z-20 h-full px-4 sm:px-6 lg:px-12 xl:px-20">
+        <div className="flex justify-end items-center h-full pt-20 mr-4 sm:mr-8 md:mr-12 lg:mr-16 xl:mr-24">
+          {/* Content wrapper - aligns text and button on their left edge */}
+          <div className="flex flex-col items-start w-[320px] sm:w-[400px] md:w-[500px] lg:w-[600px] xl:w-[700px]">
+            {/* Title */}
+            <div
+              className={`transform transition-all duration-500 ${
+                isTransitioning
+                  ? "opacity-0 translate-y-4"
+                  : "opacity-100 translate-y-0"
+              }`}
             >
-              View All Projects
-            </Link>
+              <p className="text-white font-bold leading-tight">
+                {slides[currentSlide].title.map((line, index) => (
+                  <span
+                    key={index}
+                    className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl"
+                    style={{
+                      animationDelay: `${index * 150}ms`,
+                    }}
+                  >
+                    {line}
+                  </span>
+                ))}
+              </p>
+            </div>
+
+            {/* CTA Button */}
+            <div
+              className={`mt-8 md:mt-10 transform transition-all duration-500 delay-300 ${
+                isTransitioning
+                  ? "opacity-0 translate-y-4"
+                  : "opacity-100 translate-y-0"
+              }`}
+            >
+              <Link
+                href="/projects"
+                className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-3.5
+                  bg-transparent hover:bg-[#00b4b4]/20
+                  border-2 border-[#00b4b4]
+                  rounded-full
+                  text-white text-sm md:text-base font-semibold
+                  transition-all duration-300"
+              >
+                View All Projects
+              </Link>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Slider Indicators */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 sm:gap-4">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
             aria-label={`Go to slide ${index + 1}`}
-            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+            className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full transition-all duration-300 ${
               index === currentSlide
                 ? "bg-[#00b4b4]"
                 : "bg-[#00b4b4]/40 hover:bg-[#00b4b4]/60"

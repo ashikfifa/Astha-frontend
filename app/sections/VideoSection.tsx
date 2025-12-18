@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
+
+const SLIDE_INTERVAL = 5000; // 5 seconds auto-change
 
 const mapIcon =
   "https://www.figma.com/api/mcp/asset/4d102edf-b465-4ed0-9eb3-eb54d72dd9d7";
@@ -33,14 +35,6 @@ const videosData = [
     location: "Khulna",
     youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
   },
-  {
-    id: 4,
-    thumbnail:
-      "https://www.figma.com/api/mcp/asset/6754b421-731a-4e66-82c0-7fdc78c61598",
-    title: "Urban Heights Residence",
-    location: "Chittagong",
-    youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
-  },
 ];
 
 const VideoSection = () => {
@@ -48,19 +42,19 @@ const VideoSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % videosData.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide(
-      (prev) => (prev - 1 + videosData.length) % videosData.length
-    );
-  };
-
-  const goToSlide = (index: number) => {
+  const goToSlide = useCallback((index: number) => {
     setCurrentSlide(index);
-  };
+  }, []);
+
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % videosData.length);
+  }, []);
+
+  // Auto-slide effect
+  useEffect(() => {
+    const interval = setInterval(nextSlide, SLIDE_INTERVAL);
+    return () => clearInterval(interval);
+  }, [nextSlide]);
 
   const openVideoModal = (youtubeId: string) => {
     setActiveVideo(youtubeId);
@@ -80,7 +74,7 @@ const VideoSection = () => {
     <>
       <section className="relative w-full">
         {/* Slider Container */}
-        <div className="relative w-full h-[280px] sm:h-[350px] md:h-[420px] lg:h-[500px] overflow-hidden">
+        <div className="relative w-full h-[350px] sm:h-[480px] md:h-[580px] lg:h-[620px] overflow-hidden">
           {/* Slides */}
           <div
             className="flex transition-transform duration-500 ease-in-out h-full"
@@ -107,7 +101,7 @@ const VideoSection = () => {
           {/* Play Button - Opens YouTube Video */}
           <button
             onClick={() => openVideoModal(currentVideo.youtubeId)}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80px] h-[80px] sm:w-[100px] sm:h-[100px] md:w-[120px] md:h-[120px] lg:w-[150px] lg:h-[150px] rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 z-10"
+            className="absolute cursor-pointer top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-25 h-25 sm:w-35 sm:h-35 md:w-45 md:h-45 lg:w-55 lg:h-55 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 z-10"
             aria-label="Play video"
           >
             <img
@@ -117,100 +111,40 @@ const VideoSection = () => {
             />
           </button>
 
-          {/* Navigation Arrows */}
-          <button
-            onClick={prevSlide}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-all duration-300 z-10"
-            aria-label="Previous slide"
-          >
-            <svg
-              className="w-5 h-5 sm:w-6 sm:h-6 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </button>
-
-          <button
-            onClick={nextSlide}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center transition-all duration-300 z-10"
-            aria-label="Next slide"
-          >
-            <svg
-              className="w-5 h-5 sm:w-6 sm:h-6 text-white"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
-
           {/* Info Bar */}
-          <div className="absolute bottom-0 left-0 w-full z-10">
-            <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
-              {/* Project Info */}
-              <div className="bg-white px-3 sm:px-4 py-2 sm:py-3 rounded-sm shadow-md">
-                <h3 className="font-bold text-black text-sm sm:text-base md:text-lg">
-                  {currentVideo.title}
-                </h3>
-                <div className="flex items-center gap-1.5 mt-1">
-                  <img
-                    src={mapIcon}
-                    alt="Location"
-                    className="w-2.25 h-2.25 object-contain"
-                  />
-                  <span className="text-xs text-black/80">
-                    {currentVideo.location}
-                  </span>
-                </div>
-              </div>
-
-              {/* Slider Dots - Desktop */}
-              <div className="hidden sm:flex items-center gap-2">
-                {videosData.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      currentSlide === index
-                        ? "bg-[#e01e26] scale-110"
-                        : "bg-white/60 hover:bg-white"
-                    }`}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
+          <div className="absolute bottom-12 sm:bottom-14 left-4 sm:left-6 z-10">
+            <div className="bg-white px-3 sm:px-4 py-2 sm:py-3 rounded-sm shadow-md">
+              <h3 className="font-bold text-black text-sm sm:text-base md:text-lg">
+                {currentVideo.title}
+              </h3>
+              <div className="flex items-center gap-1.5 mt-1">
+                <img
+                  src={mapIcon}
+                  alt="Location"
+                  className="w-2.25 h-2.25 object-contain"
+                />
+                <span className="text-xs text-black/80">
+                  {currentVideo.location}
+                </span>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Mobile Slider Dots - Centered */}
-        <div className="sm:hidden flex justify-center gap-2 py-4 bg-white">
-          {videosData.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                currentSlide === index
-                  ? "bg-[#e01e26] scale-110"
-                  : "bg-gray-300 hover:bg-gray-400"
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
+          {/* Slider Indicators - Bottom Center */}
+          <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 sm:gap-4">
+            {videosData.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full transition-all duration-300 ${
+                  currentSlide === index
+                    ? "bg-[#00b4b4]"
+                    : "bg-[#00b4b4]/40 hover:bg-[#00b4b4]/60"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </section>
 

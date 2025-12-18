@@ -32,9 +32,9 @@ const projectsData = [
 const RecentProjects = () => {
   return (
     <section className="w-full bg-white py-12 sm:py-16 md:py-20 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Section Header */}
-        <div className="flex items-end justify-between mb-8 md:mb-12">
+        <div className="flex items-end justify-between mb-5 md:mb-5">
           {/* Title */}
           <h2 className="font-bold text-black text-xl sm:text-2xl md:text-3xl leading-tight">
             Explore our
