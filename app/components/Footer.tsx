@@ -90,7 +90,7 @@ const Footer = () => {
 
           {/* Social Media - aligned with COMPANY column */}
           <div>
-            <h4 className="text-white text-sm font-medium mb-3">FOLLOW US</h4>
+            <h4 className="text-white text-base font-medium mb-3">FOLLOW US</h4>
             <div className="flex items-center gap-3">
               {socialIcons.map((social) => (
                 <Link
@@ -119,7 +119,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12">
           {/* Get In Touch */}
           <div>
-            <h4 className="text-white text-sm font-medium mb-4">GET IN TOUCH</h4>
+            <h4 className="text-white text-base font-medium mb-4">GET IN TOUCH</h4>
             <div className="flex flex-col gap-3">
               {/* Phone */}
               <div className="flex items-center gap-2">
@@ -144,7 +144,7 @@ const Footer = () => {
 
           {/* Company Links */}
           <div>
-            <h4 className="text-white text-sm font-medium mb-4">
+            <h4 className="text-white text-base font-medium mb-4">
               {footerLinks.company.title}
             </h4>
             <ul className="flex flex-col gap-2">
@@ -163,7 +163,7 @@ const Footer = () => {
 
           {/* Services Links */}
           <div>
-            <h4 className="text-white text-sm font-medium mb-4">
+            <h4 className="text-white text-base font-medium mb-4">
               {footerLinks.services.title}
             </h4>
             <ul className="flex flex-col gap-2">
@@ -182,7 +182,7 @@ const Footer = () => {
 
           {/* Help Links */}
           <div>
-            <h4 className="text-white text-sm font-medium mb-4">
+            <h4 className="text-white text-base font-medium mb-4">
               {footerLinks.help.title}
             </h4>
             <ul className="flex flex-col gap-2">
