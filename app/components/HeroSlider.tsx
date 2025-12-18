@@ -97,13 +97,13 @@ const HeroSlider: React.FC = () => {
         <div className="flex flex-col justify-center items-center md:items-end h-full pt-20 md:pr-8 lg:pr-16">
           {/* Title */}
           <div
-            className={`transform transition-all duration-500 text-center md:text-right ${
+            className={`transform transition-all duration-500 md:text-right ${
               isTransitioning
                 ? "opacity-0 translate-y-4"
                 : "opacity-100 translate-y-0"
             }`}
           >
-            <h1 className="text-white font-bold leading-tight italic">
+            <p className="text-white text-start font-bold leading-tight">
               {slides[currentSlide].title.map((line, index) => (
                 <span
                   key={index}
@@ -115,7 +115,7 @@ const HeroSlider: React.FC = () => {
                   {line}
                 </span>
               ))}
-            </h1>
+            </p>
           </div>
 
           {/* CTA Button */}
