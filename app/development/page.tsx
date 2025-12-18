@@ -1,5 +1,6 @@
 import HeroBanner from "../sections/development-page/HeroBanner";
 import MotoSection from "../sections/development-page/MottoSection";
+import ProjectGrid from "../sections/development-page/ProjectGrid";
 
 export default function DevelopmentPage() {
   return (
@@ -11,6 +12,7 @@ export default function DevelopmentPage() {
       />
 
       <MotoSection title="Take a brief look at some of the development services" />
+      <ProjectGrid />
     </div>
   );
 }

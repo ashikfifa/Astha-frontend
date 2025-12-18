@@ -15,18 +15,18 @@ const HeroBanner: React.FC<HeroSectionProps> = ({
   backgroundImage,
 }) => {
   return (
-    <section className="relative w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px]">
+    <section className="relative w-full h-95 sm:h-65 md:h-100 lg:h-137.5">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
           src={backgroundImage}
           alt={title}
           fill
-          className="object-cover object-center"
+          className="object-cover object-top"
           priority
         />
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/50" />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
       {/* Content */}
