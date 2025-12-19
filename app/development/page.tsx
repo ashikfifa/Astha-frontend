@@ -10,7 +10,7 @@ export default function DevelopmentPage() {
       <HeroBanner
         title="Development"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Development" }]}
-        backgroundImage="https://www.figma.com/api/mcp/asset/4bd9bab9-9e3f-46e5-bb55-08c757248229"
+        backgroundImage="/assets/development/development-image.jpeg"
       />
 
       <MotoSection title="Take a brief look at some of the development services" />

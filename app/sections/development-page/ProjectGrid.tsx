@@ -3,15 +3,15 @@ import { ProjectCardProps } from "@/app/utils/type";
 
 // Figma asset URLs (valid for 7 days - download for production)
 const PROJECT_IMAGES = {
-  dhaka: "https://www.figma.com/api/mcp/asset/70ec8061-b4cc-4e79-98de-e705e5bab2b0",
-  khulna: "https://www.figma.com/api/mcp/asset/645c4fbe-80ac-417c-9500-7ee3377d87c2",
-  uttara: "https://www.figma.com/api/mcp/asset/04e9fdfe-1ce7-4cd4-8255-a3e26f0b3fd2",
-  mirpurDohs: "https://www.figma.com/api/mcp/asset/f29ad8ec-443a-4c4d-b4e5-d01fdeffba07",
-  dhanmondi: "https://www.figma.com/api/mcp/asset/4bd9bab9-9e3f-46e5-bb55-08c757248229",
-  cumilla: "https://www.figma.com/api/mcp/asset/2a1db72d-0e1a-48eb-ba5d-d13df10eee4a",
-  sylhet: "https://www.figma.com/api/mcp/asset/f5dc5f86-0887-4b09-8973-e86a7778ddb2",
-  uttara2: "https://www.figma.com/api/mcp/asset/1fa1b73e-ee3c-40ea-8b76-3290030e2568",
-  mirpur1: "https://www.figma.com/api/mcp/asset/21992b1e-7ef6-4f56-b914-e74d75789240",
+  dhaka: "/assets/development/dhaka-project.jpeg",
+  khulna: "/assets/development/khulna-project.jpeg",
+  uttara: "/assets/development/uttara-project.jpeg",
+  mirpurDohs: "/assets/development/mirpur-dohs-project.jpeg",
+  dhanmondi: "/assets/development/dhanmondi-project.jpeg",
+  cumilla: "/assets/development/cumilla-project.jpeg",
+  sylhet: "/assets/development/sylhet-project.jpeg",
+  uttara2: "/assets/development/uttara-2-project.jpeg",
+  mirpur1: "/assets/development/mirpur-1-project.jpeg",
 };
 
 // Default project data
@@ -80,7 +80,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
   projects = DEFAULT_PROJECTS,
 }) => {
   return (
-    <section className="w-full bg-white py-8 sm:py-12 md:py-16">
+    <section className="w-full bg-white pb-8 sm:pb-12 md:pb-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 max-w-5xl mx-auto">
