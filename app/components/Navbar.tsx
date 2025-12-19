@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import webLogo from "@/public/assets/webLogo.svg";
 
 const navLinks = [
   { id: 1, label: "Home", href: "/" },
@@ -16,13 +17,13 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 sm:py-6">
-      <div className="container mx-auto flex items-center gap-30">
+      <div className="container mx-auto flex item-start md:items-center gap-30">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <img
-            src="https://www.figma.com/api/mcp/asset/cbc27f7a-5d46-4806-b521-3ab841c1e546"
+            src={webLogo}
             alt="Aastha Logo"
-            className="h-8 sm:h-10 md:h-12 w-auto object-contain"
+            className="h-8 sm:h-10 md:h-12 w-auto object-contain mt-3 md:mt-0"
           />
         </Link>
 
