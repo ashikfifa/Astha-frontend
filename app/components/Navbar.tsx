@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import webLogo from "@/public/assets/webLogo.svg";
-
 const navLinks = [
   { id: 1, label: "Home", href: "/" },
   { id: 2, label: "Development", href: "/development" },
@@ -21,7 +19,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <img
-            src={webLogo}
+            src="/assets/webLogo.svg"
             alt="Aastha Logo"
             className="h-8 sm:h-10 md:h-12 w-auto object-contain mt-3 md:mt-0"
           />

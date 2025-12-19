@@ -2,36 +2,36 @@ import Link from "next/link";
 
 // Assets from Figma
 const logo =
-  "https://www.figma.com/api/mcp/asset/cbc27f7a-5d46-4806-b521-3ab841c1e546";
+  "/assets/aastha-footer-logo.png";
 const phoneIcon =
-  "https://www.figma.com/api/mcp/asset/6597caff-3b20-4850-9af5-9c91a0c55555";
+  "/assets/phone-icon.svg";
 const emailIcon =
-  "https://www.figma.com/api/mcp/asset/030b9df9-f9c9-4238-93ed-e9348956164d";
+  "/assets/gmail-icon.svg";
 
 // Social Media Icons
 const socialIcons = [
   {
     id: 1,
     name: "Facebook",
-    icon: "https://www.figma.com/api/mcp/asset/5b5b8453-4664-49ee-877f-3f709a73c5cc",
+    icon: "/assets/facebook-icon.svg",
     href: "https://facebook.com",
   },
   {
     id: 2,
     name: "Instagram",
-    icon: "https://www.figma.com/api/mcp/asset/499cd909-1b18-4566-ab52-6aae8c48dd24",
+    icon: "/assets/instagram-icon.svg",
     href: "https://instagram.com",
   },
   {
     id: 3,
     name: "LinkedIn",
-    icon: "https://www.figma.com/api/mcp/asset/cfd57e4a-162b-416e-beed-6d6fdf536a83",
+    icon: "/assets/linkedin-icon.svg",
     href: "https://linkedin.com",
   },
   {
     id: 4,
     name: "YouTube",
-    icon: "https://www.figma.com/api/mcp/asset/b1930a9d-6dab-4513-be73-2582cf1cfdfe",
+    icon: "/assets/youtube-icon.svg",
     href: "https://youtube.com",
   },
 ];
@@ -204,12 +204,11 @@ const Footer = () => {
       </div>
 
       {/* Copyright Bar */}
-      <div className="bg-[#011719] border-t border-white/10 px-6 sm:px-10 py-4">
-        <p className="max-w-5xl mx-auto text-white text-xs sm:text-sm text-center">
-          <span className="mr-1">C</span>
-          2025. All rights reserved. Developed by Aastha Design and Construction
-          Co.
-        </p>
+      <div className="bg-[#121212] border-t border-white/10 px-6 sm:px-10 py-4">
+        <div className="container mx-auto flex items-center justify-center gap-2 text-white text-xs sm:text-sm">
+          <img src="/assets/copy-right-icon.svg" alt="Copyright" className="w-4 h-4" />
+          <span>2025. All rights reserved. Developed by Aastha Design and Construction Co.</span>
+        </div>
       </div>
     </footer>
   );

@@ -6,28 +6,28 @@ const projectsData = [
   {
     id: 1,
     image:
-      "https://www.figma.com/api/mcp/asset/de5c3f82-e391-48dd-bd33-dbb9d763cc72",
+      "/assets/mixed-use-development.jpeg",
     location: "Dhaka",
     title: "Mixed Use Development",
   },
   {
     id: 2,
     image:
-      "https://www.figma.com/api/mcp/asset/95ef01d7-064a-495c-8790-86eb5a00d4ea",
+      "/assets/greenview-apartments.jpeg",
     location: "Sylhet",
     title: "Greenview Apartments",
   },
   {
     id: 3,
     image:
-      "https://www.figma.com/api/mcp/asset/de86cbdf-748f-460d-9f1d-61dc8a889e2a",
+      "/assets/premier-office-tower.jpeg",
     location: "Khulna",
     title: "Premier Office Tower",
   },
   {
     id: 4,
     image:
-      "https://www.figma.com/api/mcp/asset/6754b421-731a-4e66-82c0-7fdc78c61598",
+      "/assets/urban-heights-residence.jpeg",
     location: "Chittagong",
     title: "Urban Heights Residence",
   },

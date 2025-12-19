@@ -3,21 +3,21 @@ import ServiceCard from "../../components/ServiceCard";
 const servicesData = [
   {
     id: 1,
-    image: "https://www.figma.com/api/mcp/asset/de5c3f82-e391-48dd-bd33-dbb9d763cc72",
+    image: "/assets/real-estate-development.jpeg",
     title: "Real Estate Development",
     description:
       "Building a real estate development is a complicated task requiring both deep understanding…",
   },
   {
     id: 2,
-    image: "https://www.figma.com/api/mcp/asset/a0104521-059a-44e4-9ee2-fbdcaf865de6",
+    image: "/assets/construction.jpeg",
     title: "Construction",
     description:
       "Building a real estate development is a complicated task requiring both deep understanding…",
   },
   {
     id: 3,
-    image: "https://www.figma.com/api/mcp/asset/6d6f4024-455c-4234-911c-ebf905f1b94d",
+    image: "/assets/interior-design.jpeg",
     title: "Interior Design",
     description:
       "Building a real estate development is a complicated task requiring both deep understanding…",
@@ -30,7 +30,7 @@ const OurServices = () => {
       {/* Background Image - only covers top portion */}
       <div className="absolute top-0 left-0 right-0 h-[65%] sm:h-[60%] md:h-[74%]">
         <img
-          src="https://www.figma.com/api/mcp/asset/90bd4647-c18c-4919-9a45-b8f66135365d"
+          src="/assets/whatOffer.jpeg"
           alt="Our Services Background"
           className="w-full h-full object-cover"
         />
