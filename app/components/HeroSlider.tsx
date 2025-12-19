@@ -15,19 +15,19 @@ const slides: Slide[] = [
   {
     id: 1,
     image:
-      "https://www.figma.com/api/mcp/asset/bfc33277-dc79-4c86-8196-a15c4ea23936",
+      "/assets/heroImg.jpeg",
     title: ["Defining the", "standards of real", "estate development"],
   },
   {
     id: 2,
     image:
-      "https://www.figma.com/api/mcp/asset/bfc33277-dc79-4c86-8196-a15c4ea23936",
+      "/assets/heroImg.jpeg",
     title: ["Building dreams", "into reality with", "excellence"],
   },
   {
     id: 3,
     image:
-      "https://www.figma.com/api/mcp/asset/bfc33277-dc79-4c86-8196-a15c4ea23936",
+      "/assets/heroImg.jpeg",
     title: ["Your trusted", "partner in", "construction"],
   },
 ];
@@ -58,7 +58,7 @@ const HeroSlider: React.FC = () => {
   }, [nextSlide]);
 
   return (
-    <section className="relative w-full h-100 sm:h-112.5 md:h-125 lg:h-150 overflow-hidden">
+    <section className="relative w-full h-100 sm:h-122.5 md:h-145 lg:h-180 overflow-hidden">
       {/* Background Slides */}
       {slides.map((slide, index) => (
         <div

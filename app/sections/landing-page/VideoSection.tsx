@@ -4,17 +4,15 @@ import { useState, useEffect, useCallback } from "react";
 
 const SLIDE_INTERVAL = 5000; // 5 seconds auto-change
 
-const mapIcon =
-  "https://www.figma.com/api/mcp/asset/4d102edf-b465-4ed0-9eb3-eb54d72dd9d7";
-const playIcon =
-  "https://www.figma.com/api/mcp/asset/35e37e1c-9ca1-41f4-ace2-b63b6bd67f46";
+const mapIcon = "/assets/map-icon.png";
+const playIcon = "/assets/play-button.png";
 
 // Video data array - Add your YouTube video IDs here
 const videosData = [
   {
     id: 1,
     thumbnail:
-      "https://www.figma.com/api/mcp/asset/3fccb78b-e515-4375-b355-832deb7ef8f6",
+      "/assets/mixed-use-development.jpeg",
     title: "Mixed Use Development",
     location: "Dhaka",
     youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
@@ -22,7 +20,7 @@ const videosData = [
   {
     id: 2,
     thumbnail:
-      "https://www.figma.com/api/mcp/asset/de5c3f82-e391-48dd-bd33-dbb9d763cc72",
+      "/assets/greenview-apartments.jpeg",
     title: "Greenview Apartments",
     location: "Sylhet",
     youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
@@ -30,7 +28,7 @@ const videosData = [
   {
     id: 3,
     thumbnail:
-      "https://www.figma.com/api/mcp/asset/95ef01d7-064a-495c-8790-86eb5a00d4ea",
+      "/assets/premier-office-tower.jpeg",
     title: "Premier Office Tower",
     location: "Khulna",
     youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
