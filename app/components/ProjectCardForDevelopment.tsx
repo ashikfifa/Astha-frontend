@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ProjectCardProps } from "../utils/type";
 
 // Map icon from Figma
-const MAP_ICON = "https://www.figma.com/api/mcp/asset/cc782445-d426-4dda-97ae-3a81defe7822";
+const MAP_ICON = "/assets/map-icon.png";
 
 
 const ProjectCardForDevelopment: React.FC<ProjectCardProps> = ({
