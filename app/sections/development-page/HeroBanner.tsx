@@ -7,12 +7,14 @@ interface HeroSectionProps {
     href?: string;
   }[];
   backgroundImage: string;
+  priority?: boolean;
 }
 
 const HeroBanner: React.FC<HeroSectionProps> = ({
   title,
   breadcrumbs,
   backgroundImage,
+  priority = true,
 }) => {
   return (
     <section className="relative w-full h-95 sm:h-65 md:h-100 lg:h-137.5">
@@ -23,7 +25,10 @@ const HeroBanner: React.FC<HeroSectionProps> = ({
           alt={title}
           fill
           className="object-cover object-top"
-          priority
+          priority={priority}
+          loading={priority ? "eager" : "lazy"}
+          sizes="100vw"
+          quality={85}
         />
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/30" />

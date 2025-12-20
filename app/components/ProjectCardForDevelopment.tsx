@@ -35,7 +35,9 @@ const ProjectCardForDevelopment: React.FC<ProjectCardProps> = ({
           alt={title}
           fill
           className="object-cover rounded-[10px] group-hover:scale-105 transition-transform duration-300"
-          unoptimized
+          loading="lazy"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          quality={80}
         />
       </div>
 
@@ -49,7 +51,7 @@ const ProjectCardForDevelopment: React.FC<ProjectCardProps> = ({
             width={12}
             height={12}
             className="opacity-70"
-            unoptimized
+            loading="lazy"
           />
           <span className="text-xs sm:text-sm text-gray-700">{location}</span>
         </div>

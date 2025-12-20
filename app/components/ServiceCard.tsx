@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface ServiceCardProps {
   image: string;
   title: string;
@@ -8,11 +10,14 @@ const ServiceCard = ({ image, title, description }: ServiceCardProps) => {
   return (
     <div className="relative bg-[rgba(70,61,52,0.55)] border-[3px] border-solid border-white rounded-[15px] max-w-[232px] w-full  overflow-hidden flex flex-col">
       {/* Card Image */}
-      <div className=" w-full h-[140px] sm:h-[160px] md:h-[180px] p-1">
-        <img
+      <div className="relative w-full h-[140px] sm:h-[160px] md:h-[180px] p-1">
+        <Image
           src={image}
           alt={title}
-          className="w-full h-full object-cover rounded-[12px]"
+          fill
+          className="object-cover rounded-[12px]"
+          loading="lazy"
+          sizes="232px"
         />
       </div>
 

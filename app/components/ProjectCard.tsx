@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface ProjectCardProps {
   image: string;
   location: string;
@@ -11,10 +13,13 @@ const ProjectCard = ({ image, location, title }: ProjectCardProps) => {
     <div className="group cursor-pointer w-full">
       {/* Project Image */}
       <div className="relative w-full h-[220px] sm:h-[240px] md:h-[280px] overflow-hidden rounded-sm">
-        <img
+        <Image
           src={image}
           alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          fill
+          className="object-cover transition-transform duration-500 group-hover:scale-110"
+          loading="lazy"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />
       </div>
 
@@ -22,10 +27,13 @@ const ProjectCard = ({ image, location, title }: ProjectCardProps) => {
       <div className="mt-3">
         {/* Location with Map Icon */}
         <div className="flex items-center gap-1.5 mb-1">
-          <img
+          <Image
             src={mapIcon}
             alt="Location"
-            className="w-[10px] h-[10px] object-contain"
+            width={10}
+            height={10}
+            className="object-contain"
+            loading="lazy"
           />
           <span className="text-xs text-black/80">{location}</span>
         </div>
