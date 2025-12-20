@@ -67,6 +67,10 @@ export const DEFAULT_PROJECTS: ProjectCardProps[] = [
     projectPhotos: [
       { id: "khulna-1", src: "/assets/development/khulna-project.jpeg", alt: "Khulna Project View 1", type: "photos" },
       { id: "khulna-2", src: "/assets/development/sylhet-project.jpeg", alt: "Khulna Project View 2", type: "photos" },
+      { id: "khulna-1", src: "/assets/development/khulna-project.jpeg", alt: "Khulna Project View 1", type: "photos" },
+      { id: "khulna-2", src: "/assets/development/sylhet-project.jpeg", alt: "Khulna Project View 2", type: "photos" },
+      { id: "khulna-1", src: "/assets/development/khulna-project.jpeg", alt: "Khulna Project View 1", type: "photos" },
+      { id: "khulna-2", src: "/assets/development/sylhet-project.jpeg", alt: "Khulna Project View 2", type: "photos" },
     ],
     projectVideos: [],
   },
