@@ -1,4 +1,6 @@
+import ProjectDescription from "@/app/components/ProjectDescription";
 import HeroBanner from "@/app/sections/development-page/HeroBanner";
+import MediaSection from "@/app/sections/single-page/MediaSection";
 import { DEFAULT_PROJECTS } from "@/app/utils/common";
 import { notFound } from "next/navigation";
 
@@ -42,6 +44,13 @@ const DevelopmentSlugPage = async ({ params }: PageProps) => {
           { label: project.title },
         ]}
       />
+
+      <ProjectDescription
+        description={project.projectDescription}
+        details={project.keyDetails}
+      />
+
+      <MediaSection photos={project.projectPhotos ?? []} videos={project.projectVideos ?? []} />
     </div>
   );
 };

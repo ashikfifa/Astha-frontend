@@ -23,7 +23,8 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
               image={project.image}
               location={project.location}
               title={project.title}
-             
+              projectDescription={project.projectDescription}
+              keyDetails={project.keyDetails}
             />
           ))}
         </div>
