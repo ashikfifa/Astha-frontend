@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
   { id: 1, label: "Home", href: "/" },
@@ -13,7 +14,18 @@ const navLinks = [
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState("Home");
+  const pathname = usePathname();
+
+  // Determine active link based on current pathname
+  const getActiveLink = () => {
+    if (pathname === "/") return "Home";
+    const activeNav = navLinks.find(
+      (link) => link.href !== "/" && pathname.startsWith(link.href)
+    );
+    return activeNav?.label || "Home";
+  };
+
+  const activeLink = getActiveLink();
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 sm:py-6">
@@ -40,7 +52,6 @@ const Navbar = () => {
                   <Link
                     key={link.id}
                     href={link.href}
-                    onClick={() => setActiveLink(link.label)}
                     className="text-white hover:text-white/80 transition-colors duration-200"
                   >
                     {activeLink === link.label ? (
@@ -71,8 +82,7 @@ const Navbar = () => {
             <div className="flex items-center justify-between">
               {/* Active Link */}
               <Link
-                href="/"
-                onClick={() => setActiveLink("Home")}
+                href={navLinks.find((l) => l.label === activeLink)?.href || "/"}
                 className="text-white"
               >
                 <span className="bg-[rgba(6,236,255,0.31)] px-2 sm:px-3 py-1 sm:py-1.5 rounded-[5px] text-xs sm:text-sm">
@@ -138,10 +148,7 @@ const Navbar = () => {
                       <Link
                         key={link.id}
                         href={link.href}
-                        onClick={() => {
-                          setActiveLink(link.label);
-                          setIsMenuOpen(false);
-                        }}
+                        onClick={() => setIsMenuOpen(false)}
                         className="text-white hover:bg-white/10 px-3 py-2 rounded transition-colors duration-200"
                       >
                         {link.label}

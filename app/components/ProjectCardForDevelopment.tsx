@@ -29,7 +29,7 @@ const ProjectCardForDevelopment: React.FC<ProjectCardProps> = ({
       className="group block bg-white border border-[#cbcbcb] rounded-[10px] overflow-hidden hover:shadow-lg hover:border-gray-400 transition-all duration-300"
     >
       {/* Image Container */}
-      <div className="relative w-full aspect-[4/3] overflow-hidden m-1.5">
+      <div className="relative w-full aspect-4/3 overflow-hidden m-1.5">
         <Image
           src={image}
           alt={title}

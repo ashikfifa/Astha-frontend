@@ -17,7 +17,7 @@ const MoreServices: React.FC<MoreServicesProps> = ({
 }) => {
   return (
     <section className="w-full bg-white py-10 sm:py-14 md:py-16 lg:py-20">
-      <div className="container mx-auto px-10 sm:px-12 lg:px-32">
+      <div className="container mx-auto px-24 sm:px-32 lg:px-48">
         {/* Header */}
         <div className="flex items-center justify-between mb-6 sm:mb-8">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black">
