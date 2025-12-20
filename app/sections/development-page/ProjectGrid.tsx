@@ -2,15 +2,14 @@ import ProjectCardForDevelopment from "@/app/components/ProjectCardForDevelopmen
 import { DEFAULT_PROJECTS } from "@/app/utils/common";
 import { ProjectCardProps } from "@/app/utils/type";
 
-// Figma asset URLs (valid for 7 days - download for production)
-
-
 interface ProjectGridProps {
   projects?: ProjectCardProps[];
+  basePath?: string;
 }
 
 const ProjectGrid: React.FC<ProjectGridProps> = ({
   projects = DEFAULT_PROJECTS,
+  basePath = "/development",
 }) => {
   return (
     <section className="w-full bg-white pb-8 sm:pb-12 md:pb-16">
@@ -25,6 +24,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
               title={project.title}
               projectDescription={project.projectDescription}
               keyDetails={project.keyDetails}
+              basePath={basePath}
             />
           ))}
         </div>

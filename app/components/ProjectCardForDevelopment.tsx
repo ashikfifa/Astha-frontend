@@ -6,7 +6,7 @@ import { ProjectCardProps } from "../utils/type";
 const MAP_ICON = "/assets/map-icon.png";
 
 // Helper function to convert text to slug
-const createSlug = (text: string): string => {
+export const createSlug = (text: string): string => {
   return text
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, "")
@@ -15,13 +15,18 @@ const createSlug = (text: string): string => {
     .trim();
 };
 
-const ProjectCardForDevelopment: React.FC<ProjectCardProps> = ({
+interface ProjectCardForDevelopmentProps extends ProjectCardProps {
+  basePath?: string;
+}
+
+const ProjectCardForDevelopment: React.FC<ProjectCardForDevelopmentProps> = ({
   image,
   location,
   title,
   href,
+  basePath = "/development",
 }) => {
-  const slug = href || `/development/${createSlug(location)}-${createSlug(title)}`;
+  const slug = href || `${basePath}/${createSlug(location)}-${createSlug(title)}`;
 
   return (
     <Link
