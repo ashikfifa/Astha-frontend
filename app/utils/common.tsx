@@ -51,7 +51,7 @@ export const DEFAULT_PROJECTS = [
   {
     image: PROJECT_IMAGES.khulna,
     location: "Khulna",
-    title: "Mixed Use Development",
+    title: "Lake View Project",
   },
   {
     image: PROJECT_IMAGES.uttara,

@@ -5,9 +5,9 @@ import { ProjectCardProps } from "../utils/type";
 // Map icon from Figma
 const MAP_ICON = "/assets/map-icon.png";
 
-// Helper function to convert title to slug
-const createSlug = (title: string): string => {
-  return title
+// Helper function to convert text to slug
+const createSlug = (text: string): string => {
+  return text
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, "")
     .replace(/\s+/g, "-")
@@ -21,7 +21,7 @@ const ProjectCardForDevelopment: React.FC<ProjectCardProps> = ({
   title,
   href,
 }) => {
-  const slug = href || `/development/${createSlug(title)}`;
+  const slug = href || `/development/${createSlug(location)}-${createSlug(title)}`;
 
   return (
     <Link
