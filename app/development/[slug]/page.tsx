@@ -1,5 +1,6 @@
 import ProjectDescription from "@/app/components/ProjectDescription";
 import HeroBanner from "@/app/sections/development-page/HeroBanner";
+import MoreServices from "@/app/sections/development-page/MoreServices";
 import MediaSection from "@/app/sections/single-page/MediaSection";
 import { DEFAULT_PROJECTS } from "@/app/utils/common";
 import { notFound } from "next/navigation";
@@ -51,6 +52,8 @@ const DevelopmentSlugPage = async ({ params }: PageProps) => {
       />
 
       <MediaSection photos={project.projectPhotos ?? []} videos={project.projectVideos ?? []} />
+
+      <MoreServices />
     </div>
   );
 };

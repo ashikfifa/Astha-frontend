@@ -12,7 +12,7 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
 }) => {
   return (
     <section className="relative w-full bg-white rounded-t-[30px] sm:rounded-t-[40px] md:rounded-t-[50px] -mt-8 sm:-mt-10 md:-mt-12 z-20">
-      <div className="container mx-auto px-4 py-12 sm:py-16 md:py-20 lg:py-24">
+      <div className="container mx-auto px-4 py-8 sm:py-10 md:py-16 lg:py-20">
         {/* Featured Image */}
         <div className="w-full max-w-4xl mx-auto mb-10 md:mb-14 lg:mb-16">
           <div className="relative aspect-531/308 w-full rounded-2xl md:rounded-[20px] overflow-hidden shadow-lg">

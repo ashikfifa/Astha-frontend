@@ -9,14 +9,13 @@ import MediaCarousel from "./MediaCarousel";
 export default function MediaSection({
   photos,
   videos = [],
-  className = "",
 }: MediaSectionProps) {
   const [activeTab, setActiveTab] = useState<MediaTab>("photos");
 
   const currentItems = activeTab === "photos" ? photos : videos;
 
   return (
-    <section className={`py-8 md:py-12 lg:py-14 ${className}`}>
+    <section className={`py-8 md:py-12 lg:py-14`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
