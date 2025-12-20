@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface HeroSectionProps {
   title: string;
@@ -47,12 +48,12 @@ const HeroBanner: React.FC<HeroSectionProps> = ({
             {breadcrumbs.map((crumb, index) => (
               <li key={index} className="flex items-center gap-2 sm:gap-3">
                 {crumb.href ? (
-                  <a
+                  <Link
                     href={crumb.href}
                     className="text-xs sm:text-sm font-bold text-gray-400 hover:text-white transition-colors"
                   >
                     {crumb.label}
-                  </a>
+                  </Link>
                 ) : (
                   <span className="text-xs sm:text-sm font-bold text-gray-400">
                     {crumb.label}
