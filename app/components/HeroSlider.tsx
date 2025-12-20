@@ -106,7 +106,7 @@ const HeroSlider: React.FC = () => {
                   {slides[currentSlide].title.map((line, index) => (
                     <span
                       key={index}
-                      className="block text-4xl sm:text-4xl md:text-4xl lg:text-7xl xl:text-7xl"
+                      className="block text-3xl sm:text-4xl md:text-4xl lg:text-7xl xl:text-7xl"
                       style={{
                         animationDelay: `${index * 150}ms`,
                       }}
@@ -119,7 +119,7 @@ const HeroSlider: React.FC = () => {
 
               {/* CTA Button */}
               <div
-                className={`mt-8 md:mt-10 transform transition-all duration-500 delay-300 ${
+                className={`mt-8 lg:mt-20 transform transition-all duration-500 delay-300 ${
                   isTransitioning
                     ? "opacity-0 translate-y-4"
                     : "opacity-100 translate-y-0"
