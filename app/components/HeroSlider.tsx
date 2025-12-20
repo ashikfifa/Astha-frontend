@@ -89,11 +89,11 @@ const HeroSlider: React.FC = () => {
       <div className="relative z-20 h-full px-4 sm:px-6">
         <div className="container mx-auto h-full">
           <div className="grid grid-cols-1 md:grid-cols-2 h-full items-center">
-            {/* First div - empty spacer */}
-            <div></div>
+            {/* First div - empty spacer (hidden on mobile) */}
+            <div className="hidden md:block"></div>
 
-            {/* Second div - text with left alignment */}
-            <div className="flex flex-col items-start">
+            {/* Second div - text centered on mobile, left on desktop */}
+            <div className="flex flex-col items-center md:items-start">
               {/* Title */}
               <div
                 className={`transform transition-all duration-500 ${
@@ -102,7 +102,7 @@ const HeroSlider: React.FC = () => {
                     : "opacity-100 translate-y-0"
                 }`}
               >
-                <p className="text-white font-bold leading-tight text-left">
+                <p className="text-white font-bold leading-tight text-center md:text-left">
                   {slides[currentSlide].title.map((line, index) => (
                     <span
                       key={index}
