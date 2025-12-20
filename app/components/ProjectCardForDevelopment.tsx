@@ -1,19 +1,31 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ProjectCardProps } from "../utils/type";
 
 // Map icon from Figma
 const MAP_ICON = "/assets/map-icon.png";
 
+// Helper function to convert text to slug
+const createSlug = (text: string): string => {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .trim();
+};
 
 const ProjectCardForDevelopment: React.FC<ProjectCardProps> = ({
   image,
   location,
   title,
-  href = "#",
+  href,
 }) => {
+  const slug = href || `/development/${createSlug(location)}-${createSlug(title)}`;
+
   return (
-    <a
-      href={href}
+    <Link
+      href={slug}
       className="group block bg-white border border-[#cbcbcb] rounded-[10px] overflow-hidden hover:shadow-lg hover:border-gray-400 transition-all duration-300"
     >
       {/* Image Container */}
@@ -47,7 +59,7 @@ const ProjectCardForDevelopment: React.FC<ProjectCardProps> = ({
           {title}
         </h3>
       </div>
-    </a>
+    </Link>
   );
 };
 
