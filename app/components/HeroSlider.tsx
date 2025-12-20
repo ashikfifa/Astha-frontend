@@ -58,7 +58,7 @@ const HeroSlider: React.FC = () => {
   }, [nextSlide]);
 
   return (
-    <section className="relative w-full h-100 sm:h-122.5 md:h-145 lg:h-screen overflow-hidden">
+    <section className="relative w-full h-screen sm:h-screen md:h-screen lg:h-screen overflow-hidden">
       {/* Background Slides */}
       {slides.map((slide, index) => (
         <div
@@ -106,7 +106,7 @@ const HeroSlider: React.FC = () => {
                   {slides[currentSlide].title.map((line, index) => (
                     <span
                       key={index}
-                      className="block text-3xl sm:text-4xl md:text-4xl lg:text-7xl xl:text-7xl"
+                      className="block text-5xl sm:text-5xl md:text-5xl lg:text-7xl xl:text-7xl"
                       style={{
                         animationDelay: `${index * 150}ms`,
                       }}
