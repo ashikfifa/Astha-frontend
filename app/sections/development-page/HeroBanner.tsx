@@ -2,7 +2,7 @@ import Image from "next/image";
 
 interface HeroSectionProps {
   title: string;
-  breadcrumbs: {
+  breadcrumbs?: {
     label: string;
     href?: string;
   }[];

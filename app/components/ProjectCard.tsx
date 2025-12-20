@@ -4,7 +4,7 @@ interface ProjectCardProps {
   title: string;
 }
 
-const mapIcon = "https://www.figma.com/api/mcp/asset/4d102edf-b465-4ed0-9eb3-eb54d72dd9d7";
+const mapIcon = "/assets/map-icon.png";
 
 const ProjectCard = ({ image, location, title }: ProjectCardProps) => {
   return (

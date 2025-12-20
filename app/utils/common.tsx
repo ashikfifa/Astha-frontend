@@ -47,55 +47,46 @@ export const DEFAULT_PROJECTS = [
     image: PROJECT_IMAGES.dhaka,
     location: "Dhaka",
     title: "Mixed Use Development",
-    href: "/projects/dhaka",
   },
   {
     image: PROJECT_IMAGES.khulna,
     location: "Khulna",
     title: "Mixed Use Development",
-    href: "/projects/khulna",
   },
   {
     image: PROJECT_IMAGES.uttara,
     location: "Uttara",
     title: "Mixed Use Development",
-    href: "/projects/uttara",
   },
   {
     image: PROJECT_IMAGES.mirpurDohs,
     location: "Mirpur DOHS",
     title: "Mixed Use Development",
-    href: "/projects/mirpur-dohs",
   },
   {
     image: PROJECT_IMAGES.dhanmondi,
     location: "Dhanmondi",
     title: "Mixed Use Development",
-    href: "/projects/dhanmondi",
   },
   {
     image: PROJECT_IMAGES.cumilla,
     location: "Cumilla",
     title: "Mixed Use Development",
-    href: "/projects/cumilla",
   },
   {
     image: PROJECT_IMAGES.sylhet,
     location: "Sylhet",
     title: "Mixed Use Development",
-    href: "/projects/sylhet",
   },
   {
     image: PROJECT_IMAGES.uttara2,
     location: "Uttara",
     title: "Mixed Use Development",
-    href: "/projects/uttara-2",
   },
   {
     image: PROJECT_IMAGES.mirpur1,
     location: "Mirpur 1",
     title: "Mixed Use Development",
-    href: "/projects/mirpur-1",
   },
 ];
 
