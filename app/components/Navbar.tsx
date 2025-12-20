@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+
 const navLinks = [
   { id: 1, label: "Home", href: "/" },
   { id: 2, label: "Development", href: "/development" },
@@ -18,10 +20,13 @@ const Navbar = () => {
       <div className="container mx-auto flex item-start md:items-center gap-30">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
-          <img
+          <Image
             src="/assets/webLogo.svg"
             alt="Aastha Logo"
+            width={48}
+            height={48}
             className="h-8 sm:h-10 md:h-12 w-auto object-contain mt-3 md:mt-0"
+            priority
           />
         </Link>
 

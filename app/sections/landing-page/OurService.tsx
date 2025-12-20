@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ServiceCard from "../../components/ServiceCard";
 
 const servicesData = [
@@ -29,10 +30,13 @@ const OurServices = () => {
     <section className="relative w-full bg-white">
       {/* Background Image - only covers top portion */}
       <div className="absolute top-0 left-0 right-0 h-[65%] sm:h-[60%] md:h-[74%]">
-        <img
+        <Image
           src="/assets/whatOffer.jpeg"
           alt="Our Services Background"
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
+          loading="lazy"
+          sizes="100vw"
         />
         {/* Dark Overlay */}
         <div className="absolute inset-0 bg-black/40" />

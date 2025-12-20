@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 // Assets from Figma
 const logo =
@@ -80,13 +81,11 @@ const Footer = () => {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12 mb-8">
           {/* Logo - spans first column */}
           <div>
-            <Link href="/">
-              <img
-                src={logo}
-                alt="Aastha Logo"
-                className="h-16 sm:h-20 lg:h-24 w-auto object-contain"
-              />
-            </Link>
+            <img
+              src={logo}
+              alt="Aastha Logo"
+              className="h-16 sm:h-20 lg:h-24 w-auto object-contain"
+            />
           </div>
 
           {/* Social Media - aligned with COMPANY column */}
@@ -101,10 +100,13 @@ const Footer = () => {
                   rel="noopener noreferrer"
                   className="w-8 h-8 hover:opacity-80 transition-opacity duration-300"
                 >
-                  <img
+                  <Image
                     src={social.icon}
                     alt={social.name}
+                    width={32}
+                    height={32}
                     className="w-full h-full object-contain"
+                    loading="lazy"
                   />
                 </Link>
               ))}
@@ -124,19 +126,25 @@ const Footer = () => {
             <div className="flex flex-col gap-3">
               {/* Phone */}
               <div className="flex items-center gap-2">
-                <img
+                <Image
                   src={phoneIcon}
                   alt="Phone"
-                  className="w-4 h-4 object-contain"
+                  width={16}
+                  height={16}
+                  className="object-contain"
+                  loading="lazy"
                 />
                 <span className="text-white text-sm">{contactInfo.phone}</span>
               </div>
               {/* Email */}
               <div className="flex items-center gap-2">
-                <img
+                <Image
                   src={emailIcon}
                   alt="Email"
-                  className="w-4 h-4 object-contain"
+                  width={16}
+                  height={16}
+                  className="object-contain"
+                  loading="lazy"
                 />
                 <span className="text-white text-sm">{contactInfo.email}</span>
               </div>
@@ -206,7 +214,7 @@ const Footer = () => {
       {/* Copyright Bar */}
       <div className="bg-[#121212] border-t border-white/10 px-6 sm:px-10 py-4">
         <div className="container mx-auto flex items-center justify-center gap-2 text-white text-xs sm:text-sm">
-          <img src="/assets/copy-right-icon.svg" alt="Copyright" className="w-4 h-4" />
+          <Image src="/assets/copy-right-icon.svg" alt="Copyright" width={16} height={16} loading="lazy" />
           <span>2025. All rights reserved. Developed by Aastha Design and Construction Co.</span>
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 
 const SLIDE_INTERVAL = 5000; // 5 seconds auto-change
 
@@ -78,16 +79,19 @@ const VideoSection = () => {
             className="flex transition-transform duration-500 ease-in-out h-full"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
-            {videosData.map((video) => (
+            {videosData.map((video, index) => (
               <div
                 key={video.id}
                 className="relative w-full h-full flex-shrink-0"
               >
                 {/* Background Image */}
-                <img
+                <Image
                   src={video.thumbnail}
                   alt={video.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  loading={index === 0 ? "eager" : "lazy"}
+                  sizes="100vw"
                 />
 
                 {/* Dark Overlay */}
@@ -102,10 +106,12 @@ const VideoSection = () => {
             className="absolute cursor-pointer top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-25 h-25 sm:w-35 sm:h-35 md:w-45 md:h-45 lg:w-55 lg:h-55 rounded-full flex items-center justify-center transition-transform duration-300 hover:scale-110 z-10"
             aria-label="Play video"
           >
-            <img
+            <Image
               src={playIcon}
               alt="Play"
-              className="w-full h-full object-contain"
+              fill
+              className="object-contain"
+              loading="lazy"
             />
           </button>
 
@@ -116,10 +122,13 @@ const VideoSection = () => {
                 {currentVideo.title}
               </h3>
               <div className="flex items-center gap-1.5 mt-1">
-                <img
+                <Image
                   src={mapIcon}
                   alt="Location"
-                  className="w-2.25 h-2.25 object-contain"
+                  width={9}
+                  height={9}
+                  className="object-contain"
+                  loading="lazy"
                 />
                 <span className="text-xs text-black/80">
                   {currentVideo.location}
