@@ -1,9 +1,21 @@
+import { Metadata } from "next";
 import HeroBanner from "../sections/development-page/HeroBanner";
 import MoreServices from "../sections/development-page/MoreServices";
 import MotoSection from "../sections/development-page/MottoSection";
 import ProjectGrid from "../sections/development-page/ProjectGrid";
 import VideoSection from "../sections/landing-page/VideoSection";
 import { CONSTRUCTION_PROJECTS } from "../utils/common";
+
+export const metadata: Metadata = {
+  title: "Construction Services",
+  description:
+    "Aastha provides professional construction services for residential and commercial projects. Quality craftsmanship, timely delivery, and exceptional building standards.",
+  openGraph: {
+    title: "Construction Services | Aastha",
+    description:
+      "Professional construction services for residential and commercial projects.",
+  },
+};
 
 export default function ConstructionPage() {
   return (
