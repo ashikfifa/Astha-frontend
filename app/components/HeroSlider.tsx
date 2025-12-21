@@ -78,13 +78,15 @@ const HeroSlider: React.FC = () => {
             />
           </div>
 
-           <div
+           <div className="absolute inset-0 bg-linear-to-r from-[#011719]/80 via-[#011719]/50 to-transparent" />
+
+           {/* <div
             className="absolute inset-0"
             style={{
               backgroundColor: 'rgba(70, 61, 52, 0.55)',
               filter: 'drop-shadow(0 4px 4px #8B8163)',
             }}
-          />
+          /> */}
         </div>
       ))}
 

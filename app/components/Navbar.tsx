@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 sm:py-6">
-      <div className="container mx-auto flex item-start md:items-center gap-30">
+      <div className="container mx-auto flex item-start sm:item-start lg:items-center gap-8 sm:gap-10 lg:gap-30">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
           <Image
@@ -37,7 +37,7 @@ const Navbar = () => {
             alt="Aastha Logo"
             width={48}
             height={48}
-            className="h-8 sm:h-10 md:h-12 w-auto object-contain mt-3 md:mt-0"
+            className="h-8 sm:h-10 md:h-12 w-auto object-contain mt-2 sm:mt-3 md:mt-3 lg:mt-0"
             priority
           />
         </Link>
@@ -77,20 +77,20 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Navigation */}
-        <nav className="lg:hidden flex-1">
+        <nav className="lg:hidden flex-1 min-w-0">
           <div className="relative bg-[rgba(6,236,255,0.27)] rounded-[10px] px-2 sm:px-4 py-2 sm:py-3">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between gap-2 sm:gap-3">
               {/* Active Link */}
               <Link
                 href={navLinks.find((l) => l.label === activeLink)?.href || "/"}
-                className="text-white"
+                className="text-white flex-shrink min-w-0"
               >
-                <span className="bg-[rgba(6,236,255,0.31)] px-2 sm:px-3 py-1 sm:py-1.5 rounded-[5px] text-xs sm:text-sm">
+                <span className="bg-[rgba(6,236,255,0.31)] px-2 sm:px-3 py-1 sm:py-1.5 rounded-[5px] text-xs sm:text-sm inline-block truncate">
                   {activeLink}
                 </span>
               </Link>
 
-              <div className="flex items-center gap-2 sm:gap-3">
+              <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
                 {/* Get In Touch Button - Mobile */}
                 <Link
                   href="/contact"
@@ -102,7 +102,7 @@ const Navbar = () => {
                 {/* Hamburger Menu */}
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="text-white p-1"
+                  className="text-white p-1 flex-shrink-0"
                   aria-label="Toggle menu"
                 >
                   {isMenuOpen ? (
