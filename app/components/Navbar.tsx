@@ -52,15 +52,13 @@ const Navbar = () => {
                   <Link
                     key={link.id}
                     href={link.href}
-                    className="text-white hover:text-white/80 transition-colors duration-200"
+                    className={`text-white hover:text-white/80 transition-all duration-200 px-3 py-1.5 rounded-[5px] ${
+                      activeLink === link.label
+                        ? "bg-[rgba(6,236,255,0.31)]"
+                        : ""
+                    }`}
                   >
-                    {activeLink === link.label ? (
-                      <span className="bg-[rgba(6,236,255,0.31)] px-3 py-1.5 rounded-[5px]">
-                        {link.label}
-                      </span>
-                    ) : (
-                      link.label
-                    )}
+                    {link.label}
                   </Link>
                 ))}
               </div>
