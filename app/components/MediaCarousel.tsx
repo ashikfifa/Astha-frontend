@@ -257,7 +257,7 @@ export default function MediaCarousel({ items }: MediaCarouselProps) {
           className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-[#06ecff] hover:text-[#05d4e6] transition-colors"
           aria-label="Next image"
         >
-          <ArrowRightIcon className="w-6 h-6 md:w-8 md:h-8 cursor-pointer" />
+          <ArrowRightIcon className="w-6 h-6 md:w-8 md:h-8" />
         </button>
       </div>
 
@@ -270,10 +270,10 @@ export default function MediaCarousel({ items }: MediaCarouselProps) {
           {/* Close Button */}
           <button
             onClick={closePopup}
-            className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center text-white hover:text-[#06ecff] transition-colors"
+            className="absolute  top-4 right-4 z-10 w-10 h-10 flex items-center justify-center text-white hover:text-[#06ecff] transition-colors"
             aria-label="Close popup"
           >
-            <CloseIcon className="w-8 h-8" />
+            <CloseIcon className="w-8 h-8 cursor-pointer" />
           </button>
 
           {/* Previous Arrow */}
@@ -285,7 +285,7 @@ export default function MediaCarousel({ items }: MediaCarouselProps) {
             className="absolute left-4 md:left-8 z-10 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center text-white hover:text-[#06ecff] bg-black/50 hover:bg-black/70 rounded-full transition-all"
             aria-label="Previous"
           >
-            <ArrowLeftIcon className="w-8 h-8 md:w-10 md:h-10" />
+            <ArrowLeftIcon className="w-8 h-8 cursor-pointer md:w-10 md:h-10" />
           </button>
 
           {/* Media Content */}
@@ -326,7 +326,7 @@ export default function MediaCarousel({ items }: MediaCarouselProps) {
             className="absolute right-4 md:right-8 z-10 w-12 h-12 md:w-14 md:h-14 flex items-center justify-center text-white hover:text-[#06ecff] bg-black/50 hover:bg-black/70 rounded-full transition-all"
             aria-label="Next"
           >
-            <ArrowRightIcon className="w-8 h-8 md:w-10 md:h-10" />
+            <ArrowRightIcon className="w-8 h-8 cursor-pointer md:w-10 md:h-10" />
           </button>
 
           {/* Indicator dots */}
