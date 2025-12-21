@@ -37,6 +37,7 @@ const SLIDE_INTERVAL = 5000; // 5 seconds
 const HeroSlider: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
+  const [isVisible, setIsVisible] = useState<boolean>(true);
 
   const goToSlide = useCallback((index: number) => {
     setIsTransitioning(true);
@@ -56,6 +57,17 @@ const HeroSlider: React.FC = () => {
     const interval = setInterval(nextSlide, SLIDE_INTERVAL);
     return () => clearInterval(interval);
   }, [nextSlide]);
+
+  // Hide dots on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsVisible(scrollY < 100);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <section className="relative w-full h-screen sm:h-screen md:h-screen lg:h-screen overflow-hidden">
@@ -148,7 +160,9 @@ const HeroSlider: React.FC = () => {
       </div>
 
       {/* Slider Indicators */}
-      <div className="absolute bottom-24 sm:bottom-24 md:bottom-28 lg:bottom-36 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 sm:gap-4">
+      <div className={`absolute bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-16 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 sm:gap-4 transition-opacity duration-300 ${
+        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+      }`}>
         {slides.map((_, index) => (
           <button
             key={index}
