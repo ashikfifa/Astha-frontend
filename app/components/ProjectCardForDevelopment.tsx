@@ -34,16 +34,18 @@ const ProjectCardForDevelopment: React.FC<ProjectCardForDevelopmentProps> = ({
       className="group block bg-white border border-[#cbcbcb] rounded-[10px] overflow-hidden hover:shadow-lg hover:border-gray-400 transition-all duration-300"
     >
       {/* Image Container */}
-      <div className="relative w-full aspect-4/3 overflow-hidden m-1.5">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-cover rounded-[10px] group-hover:scale-105 transition-transform duration-300"
-          loading="lazy"
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          quality={80}
-        />
+      <div className="p-1.5">
+        <div className="relative w-full aspect-4/3 overflow-hidden rounded-[10px]">
+          <Image
+            src={image}
+            alt={title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            quality={80}
+          />
+        </div>
       </div>
 
       {/* Content */}

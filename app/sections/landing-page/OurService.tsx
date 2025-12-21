@@ -8,6 +8,7 @@ const servicesData = [
     title: "Real Estate Development",
     description:
       "Building a real estate development is a complicated task requiring both deep understanding…",
+    href: "/development",
   },
   {
     id: 2,
@@ -15,6 +16,7 @@ const servicesData = [
     title: "Construction",
     description:
       "Building a real estate development is a complicated task requiring both deep understanding…",
+    href: "/construction",
   },
   {
     id: 3,
@@ -22,6 +24,7 @@ const servicesData = [
     title: "Interior Design",
     description:
       "Building a real estate development is a complicated task requiring both deep understanding…",
+    href: "/interior",
   },
 ];
 
@@ -63,6 +66,7 @@ const OurServices = () => {
               image={service.image}
               title={service.title}
               description={service.description}
+              href={service.href}
             />
           ))}
           </div>

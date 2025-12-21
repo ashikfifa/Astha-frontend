@@ -1,14 +1,16 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface ServiceCardProps {
   image: string;
   title: string;
   description: string;
+  href: string;
 }
 
-const ServiceCard = ({ image, title, description }: ServiceCardProps) => {
+const ServiceCard = ({ image, title, description, href }: ServiceCardProps) => {
   return (
-    <div className="group relative bg-[rgba(70,61,52,0.55)] border-[3px] border-solid border-white rounded-[15px] max-w-[232px] w-full overflow-hidden flex flex-col">
+    <Link href={href} className="group relative bg-[rgba(70,61,52,0.55)] border-[3px] border-solid border-white rounded-[15px] max-w-[232px] w-full overflow-hidden flex flex-col hover:border-opacity-80 transition-all duration-300">
       {/* Card Image */}
       <div className="relative w-full h-[140px] sm:h-[160px] md:h-[180px] p-1 overflow-hidden">
         <Image
@@ -36,7 +38,7 @@ const ServiceCard = ({ image, title, description }: ServiceCardProps) => {
           {description}
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 
