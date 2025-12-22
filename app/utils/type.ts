@@ -1,5 +1,6 @@
 export interface ProjectCardProps {
   image: string;
+  coverImage?: string;
   location: string;
   title: string;
   href?: string;
