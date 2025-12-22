@@ -1,14 +1,15 @@
 import Image from "next/image";
-import featuredImage from "@/public/assets/development/sample-project-featured.svg";
 
 interface ProjectDescriptionProps {
   description: string;
   details: string;
+  featuredImage: string;
 }
 
 const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
   description,
   details,
+  featuredImage,
 }) => {
   return (
     <section className="relative w-full bg-white rounded-t-[30px] sm:rounded-t-[40px] md:rounded-t-[50px] -mt-8 sm:-mt-10 md:-mt-12 z-20">
@@ -18,7 +19,7 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
           <div className="relative aspect-531/308 w-full rounded-2xl md:rounded-[20px] overflow-hidden shadow-lg">
             <Image
               src={featuredImage}
-              alt="sample-project-featured"
+              alt="Project Featured Image"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 800px"

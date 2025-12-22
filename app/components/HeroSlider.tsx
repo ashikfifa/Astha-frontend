@@ -25,7 +25,7 @@ const slides: Slide[] = [
   {
     id: 2,
     image:
-      "/assets/heroImg.jpeg",
+      "/assets/youtube-thumbnail-1.jpg",
     title: ["Building dreams", "into reality with", "excellence"],
     buttonText: "Explore Constructions",
     buttonLink: "/construction",
@@ -33,7 +33,7 @@ const slides: Slide[] = [
   {
     id: 3,
     image:
-      "/assets/heroImg.jpeg",
+      "/assets/youtube-thumbnail-2.jpg",
     title: ["Your trusted", "partner in", "construction"],
     buttonText: "View Interior Projects",
     buttonLink: "/interior",
