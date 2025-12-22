@@ -84,10 +84,17 @@ function PlayIcon({ className }: { className?: string }) {
 
 // Helper function to extract YouTube video ID from various URL formats
 function getYouTubeVideoId(url: string): string | null {
+  if (!url) return null;
+  
+  // Handle YouTube Shorts URLs
+  const shortsMatch = url.match(/youtube\.com\/shorts\/([^#&?]+)/);
+  if (shortsMatch) return shortsMatch[1];
+  
+  // Handle standard YouTube URLs
   const regExp =
-    /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+    /^.*((youtu.be\/)|(v\/)|(\/@[^/]+\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
   const match = url.match(regExp);
-  return match && match[7].length === 11 ? match[7] : null;
+  return match && match[8] && match[8].length === 11 ? match[8] : null;
 }
 
 // Helper function to get YouTube thumbnail
@@ -224,7 +231,7 @@ export default function MediaCarousel({ items }: MediaCarouselProps) {
                 {item.type === "video" ? (
                   <>
                     <Image
-                      src={getYouTubeThumbnail(item.src)}
+                      src={item.videoUrl ? getYouTubeThumbnail(item.videoUrl) : item.src}
                       alt={item.alt}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -257,7 +264,7 @@ export default function MediaCarousel({ items }: MediaCarouselProps) {
           className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-[#06ecff] hover:text-[#05d4e6] transition-colors"
           aria-label="Next image"
         >
-          <ArrowRightIcon className="w-6 h-6 md:w-8 md:h-8" />
+          <ArrowRightIcon className="w-6 h-6 md:w-8 md:h-8 cursor-pointer" />
         </button>
       </div>
 
@@ -296,7 +303,7 @@ export default function MediaCarousel({ items }: MediaCarouselProps) {
             {currentPopupItem.type === "video" ? (
               <div className="w-[90vw] md:w-[80vw] lg:w-[70vw] aspect-video">
                 <iframe
-                  src={`https://www.youtube.com/embed/${getYouTubeVideoId(currentPopupItem.src)}?autoplay=1&rel=0`}
+                  src={`https://www.youtube.com/embed/${getYouTubeVideoId(currentPopupItem.videoUrl || currentPopupItem.src)}?autoplay=1&rel=0`}
                   title={currentPopupItem.alt}
                   className="w-full h-full rounded-lg"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

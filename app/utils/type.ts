@@ -23,6 +23,7 @@ export interface MediaItem {
   src: string;
   alt: string;
   type: MediaTab;
+  videoUrl?: string;
 }
 
 export interface MediaSectionProps {
