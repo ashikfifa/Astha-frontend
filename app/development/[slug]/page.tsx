@@ -49,6 +49,7 @@ const DevelopmentSlugPage = async ({ params }: PageProps) => {
       <ProjectDescription
         description={project.projectDescription}
         details={project.keyDetails}
+        featuredImage={project.image}
       />
 
       <MediaSection photos={project.projectPhotos ?? []} videos={project.projectVideos ?? []} />
