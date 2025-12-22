@@ -9,6 +9,8 @@ interface Slide {
   image: string;
   title: string[];
   subtitle?: string;
+  buttonText: string;
+  buttonLink: string;
 }
 
 const slides: Slide[] = [
@@ -17,18 +19,24 @@ const slides: Slide[] = [
     image:
       "/assets/heroImg.jpeg",
     title: ["Defining the", "standards of real", "estate development"],
+    buttonText: "Development Projects",
+    buttonLink: "/development",
   },
   {
     id: 2,
     image:
       "/assets/heroImg.jpeg",
     title: ["Building dreams", "into reality with", "excellence"],
+    buttonText: "Explore Constructions",
+    buttonLink: "/construction",
   },
   {
     id: 3,
     image:
       "/assets/heroImg.jpeg",
     title: ["Your trusted", "partner in", "construction"],
+    buttonText: "View Interior Projects",
+    buttonLink: "/interior",
   },
 ];
 
@@ -136,22 +144,22 @@ const HeroSlider: React.FC = () => {
 
               {/* CTA Button */}
               <div
-                className={`mt-8 lg:mt-20 transform transition-all duration-500 delay-300 ${
+                className={`mt-7 lg:mt-20 transform transition-all duration-500 delay-300 ${
                   isTransitioning
                     ? "opacity-0 translate-y-4"
                     : "opacity-100 translate-y-0"
                 }`}
               >
                 <Link
-                  href="/projects"
+                  href={slides[currentSlide].buttonLink}
                   className="inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-3.5
-                     bg-[#00b4b4]/20 hoover:bg-transparent
+                     bg-[#00b4b4]/20 hover:bg-transparent
                     border-2 border-[#00b4b4]
                     rounded-full
                     text-white text-sm md:text-sm font-semibold
                     transition-all duration-300"
                 >
-                  View All Projects
+                  {slides[currentSlide].buttonText}
                 </Link>
               </div>
             </div>
