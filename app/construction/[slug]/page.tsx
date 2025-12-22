@@ -38,7 +38,7 @@ const ConstructionSlugPage = async ({ params }: PageProps) => {
     <div>
       <HeroBanner
         title={project.title}
-        backgroundImage={project.image}
+        backgroundImage={project.coverImage || project.image}
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Construction", href: "/construction" },

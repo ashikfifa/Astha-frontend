@@ -8,6 +8,8 @@ const phoneIcon =
   "/assets/phone-icon.svg";
 const emailIcon =
   "/assets/gmail-icon.svg";
+const whatsappIcon =
+  "/assets/whatsapp-icon.svg";
 
 // Social Media Icons
 const socialIcons = [
@@ -15,13 +17,13 @@ const socialIcons = [
     id: 1,
     name: "Facebook",
     icon: "/assets/facebook-icon.svg",
-    href: "https://facebook.com",
+    href: "https://www.facebook.com/AasthaDesignConstructionCo",
   },
   {
     id: 2,
     name: "Instagram",
     icon: "/assets/instagram-icon.svg",
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/aasthadesignconstructionco",
   },
   {
     id: 3,
@@ -33,7 +35,7 @@ const socialIcons = [
     id: 4,
     name: "YouTube",
     icon: "/assets/youtube-icon.svg",
-    href: "https://youtube.com",
+    href: "https://www.youtube.com/@AasthaDesignConstructionCo",
   },
 ];
 
@@ -77,137 +79,163 @@ const Footer = () => {
       {/* Main Footer */}
       <div className="bg-[#011719] px-6 sm:px-10 py-8 sm:py-10">
         <div className="container mx-auto">
-          {/* Top Section - Logo & Social aligned with grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12 mb-8">
-          {/* Logo - spans first column */}
-          <div>
-            <img
-              src={logo}
-              alt="Aastha Logo"
-              className="h-16 sm:h-20 lg:h-24 w-auto object-contain"
-            />
-          </div>
-
-          {/* Social Media - aligned with COMPANY column */}
-          <div>
-            <h4 className="text-white text-base font-medium mb-3">FOLLOW US</h4>
-            <div className="flex items-center gap-3">
-              {socialIcons.map((social) => (
-                <Link
-                  key={social.id}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-8 h-8 hover:opacity-80 transition-opacity duration-300"
-                >
-                  <Image
-                    src={social.icon}
-                    alt={social.name}
-                    width={32}
-                    height={32}
-                    className="w-full h-full object-contain"
-                    loading="lazy"
-                  />
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Empty columns to maintain grid alignment */}
-          <div className="hidden sm:block"></div>
-          <div className="hidden sm:block"></div>
-        </div>
-
-          {/* Bottom Section - Links Grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 lg:gap-12">
-            {/* Get In Touch */}
-          <div>
-            <h4 className="text-white text-base font-medium mb-4">GET IN TOUCH</h4>
-            <div className="flex flex-col gap-3">
-              {/* Phone */}
-              <div className="flex items-center gap-2">
-                <Image
-                  src={phoneIcon}
-                  alt="Phone"
-                  width={16}
-                  height={16}
-                  className="object-contain"
-                  loading="lazy"
-                />
-                <span className="text-white text-sm">{contactInfo.phone}</span>
-              </div>
-              {/* Email */}
-              <div className="flex items-center gap-2">
-                <Image
-                  src={emailIcon}
-                  alt="Email"
-                  width={16}
-                  height={16}
-                  className="object-contain"
-                  loading="lazy"
-                />
-                <span className="text-white text-sm">{contactInfo.email}</span>
+          {/* Footer Grid - Logo/Address + Links */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+            {/* Logo & Address Section - takes more space on larger screens */}
+            <div className="md:col-span-4 lg:col-span-3">
+              <img
+                src={logo}
+                alt="Aastha Logo"
+                className="h-16 sm:h-20 lg:h-24 w-auto object-contain"
+              />
+              <p className="text-white/70 text-sm mt-4 leading-relaxed">
+                Sector: 13, Road: 402, Plot: 002,<br />
+                Jolshiri Abashon<br />
+                (Near Jolshiri Central Park)
+              </p>
+              
+              {/* Social Media Icons */}
+              <div className="mt-6">
+                <h4 className="text-white text-sm font-medium mb-3">FOLLOW US</h4>
+                <div className="flex items-center gap-3">
+                  {socialIcons.map((social) => (
+                    <Link
+                      key={social.id}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-7 h-7 hover:opacity-80 transition-opacity duration-300"
+                    >
+                      <Image
+                        src={social.icon}
+                        alt={social.name}
+                        width={28}
+                        height={28}
+                        className="w-full h-full object-contain"
+                        loading="lazy"
+                      />
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Company Links */}
-          <div>
-            <h4 className="text-white text-base font-medium mb-4">
-              {footerLinks.company.title}
-            </h4>
-            <ul className="flex flex-col gap-2">
-              {footerLinks.company.links.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.href}
-                    className="text-white text-sm hover:text-[#00b4b4] transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            {/* Links Grid - Company, Services, Help, Get In Touch */}
+            <div className="md:col-span-8 lg:col-span-9">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8">
+                {/* Company Links */}
+                <div>
+                  <h4 className="text-white text-base font-medium mb-4">
+                    {footerLinks.company.title}
+                  </h4>
+                  <ul className="flex flex-col gap-2">
+                    {footerLinks.company.links.map((link, index) => (
+                      <li key={index}>
+                        <Link
+                          href={link.href}
+                          className="text-white/80 text-sm hover:text-[#00b4b4] transition-colors duration-300"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-          {/* Services Links */}
-          <div>
-            <h4 className="text-white text-base font-medium mb-4">
-              {footerLinks.services.title}
-            </h4>
-            <ul className="flex flex-col gap-2">
-              {footerLinks.services.links.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.href}
-                    className="text-white text-sm hover:text-[#00b4b4] transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+                {/* Services Links */}
+                <div>
+                  <h4 className="text-white text-base font-medium mb-4">
+                    {footerLinks.services.title}
+                  </h4>
+                  <ul className="flex flex-col gap-2">
+                    {footerLinks.services.links.map((link, index) => (
+                      <li key={index}>
+                        <Link
+                          href={link.href}
+                          className="text-white/80 text-sm hover:text-[#00b4b4] transition-colors duration-300"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-          {/* Help Links */}
-          <div>
-            <h4 className="text-white text-base font-medium mb-4">
-              {footerLinks.help.title}
-            </h4>
-            <ul className="flex flex-col gap-2">
-              {footerLinks.help.links.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    href={link.href}
-                    className="text-white text-sm hover:text-[#00b4b4] transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                {/* Help Links */}
+                <div>
+                  <h4 className="text-white text-base font-medium mb-4">
+                    {footerLinks.help.title}
+                  </h4>
+                  <ul className="flex flex-col gap-2">
+                    {footerLinks.help.links.map((link, index) => (
+                      <li key={index}>
+                        <Link
+                          href={link.href}
+                          className="text-white/80 text-sm hover:text-[#00b4b4] transition-colors duration-300"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Get In Touch */}
+                <div>
+                  <h4 className="text-white text-base font-medium mb-4">GET IN TOUCH</h4>
+                  <div className="flex flex-col gap-3">
+                    {/* Phone */}
+                    <a 
+                      href={`tel:${contactInfo.phone}`}
+                      className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
+                    >
+                      <Image
+                        src={phoneIcon}
+                        alt="Phone"
+                        width={16}
+                        height={16}
+                        className="object-contain flex-shrink-0"
+                        loading="lazy"
+                      />
+                      <span className="text-white/80 text-sm">{contactInfo.phone}</span>
+                    </a>
+                    {/* Email */}
+                    <a 
+                      href={`mailto:${contactInfo.email}`}
+                      className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
+                    >
+                      <Image
+                        src={emailIcon}
+                        alt="Email"
+                        width={16}
+                        height={16}
+                        className="object-contain flex-shrink-0"
+                        loading="lazy"
+                      />
+                      <span className="text-white/80 text-sm">{contactInfo.email}</span>
+                    </a>
+                    {/* WhatsApp */}
+                    <Link
+                      href="https://wa.me/8801719680047"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
+                    >
+                      <Image
+                        src={whatsappIcon}
+                        alt="WhatsApp"
+                        width={16}
+                        height={16}
+                        className="object-contain flex-shrink-0"
+                        loading="lazy"
+                      />
+                      <span className="text-white/80 text-sm">+8801719680047</span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
         </div>
       </div>
 
