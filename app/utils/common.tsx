@@ -46,12 +46,19 @@ export const DEFAULT_PROJECTS: ProjectCardProps[] = [
 
     keyDetails: "Number of floors: 20, including two underground levels for parking.",
     projectPhotos: [
-      { id: "dhaka-1", src: "/assets/development/cover-image-of-dreams-mansion.jpg", alt: "Dhaka Project View 1", type: "photos" },
-      { id: "dhaka-2", src: "/assets/development/dhanmondi-project.jpeg", alt: "Dhaka Project View 2", type: "photos" },
-      { id: "dhaka-3", src: "/assets/development/mirpur-dohs-project.jpeg", alt: "Dhaka Project View 3", type: "photos" },
+      { id: "dhaka-1", src: "/assets/development/dreams-mansion-gallery-1.jpeg", alt: "Dreams Mansion Gallery 1", type: "photos" },
+      { id: "dhaka-2", src: "/assets/development/dreams-mansion-gallery-2.jpeg", alt: "Dreams Mansion Gallery 2", type: "photos" },
+      { id: "dhaka-3", src: "/assets/development/dreams-mansion-gallery-3.jpeg", alt: "Dreams Mansion Gallery 3", type: "photos" },
+      { id: "dhaka-4", src: "/assets/development/dreams-mansion-gallery-4.jpeg", alt: "Dreams Mansion Gallery 4", type: "photos" },
+      { id: "dhaka-5", src: "/assets/development/dreams-mansion-gallery-5.jpeg", alt: "Dreams Mansion Gallery 5", type: "photos" },
+      { id: "dhaka-6", src: "/assets/development/dreams-mansion-gallery-6.jpeg", alt: "Dreams Mansion Gallery 6", type: "photos" },
+      { id: "dhaka-7", src: "/assets/development/dreams-mansion-gallery-7.jpeg", alt: "Dreams Mansion Gallery 7", type: "photos" },
+      { id: "dhaka-8", src: "/assets/development/dreams-mansion-gallery-8.jpeg", alt: "Dreams Mansion Gallery 8", type: "photos" },
+      { id: "dhaka-9", src: "/assets/development/dreams-mansion-gallery-9.jpeg", alt: "Dreams Mansion Gallery 9", type: "photos" },
     ],
     projectVideos: [
-      { id: "dhaka-v1", src: "/assets/development/dhaka-project.jpeg", alt: "Dhaka Project Video 1", type: "video" },
+      { id: "dhaka-v1", src: "/assets/youtube-thumbnail-1.jpg", alt: "Dreams Mansion Video 1", type: "video", videoUrl: "https://www.youtube.com/shorts/WmfUjElgom4" },
+      { id: "dhaka-v2", src: "/assets/youtube-thumbnail-2.jpg", alt: "Dreams Mansion Video 2", type: "video", videoUrl: "https://www.youtube.com/shorts/bQpIh1M3V1I" }
     ],
   }
 ];

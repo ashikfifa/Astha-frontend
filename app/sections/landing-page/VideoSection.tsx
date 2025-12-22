@@ -8,7 +8,28 @@ const SLIDE_INTERVAL = 5000; // 5 seconds auto-change
 const mapIcon = "/assets/map-icon.png";
 const playIcon = "/assets/play-button.png";
 
-// Video data array - Add your YouTube video IDs here
+// Helper function to extract YouTube video ID from various URL formats
+function getYouTubeVideoId(url: string): string {
+  if (!url) return "";
+  
+  // If it's already just an ID (11 characters, no slashes)
+  if (url.length === 11 && !url.includes("/")) return url;
+  
+  // Handle YouTube Shorts URLs
+  const shortsMatch = url.match(/youtube\.com\/shorts\/([^#&?]+)/);
+  if (shortsMatch) return shortsMatch[1];
+  
+  // Handle standard YouTube URLs
+  const regExp =
+    /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;
+  const match = url.match(regExp);
+  if (match && match[7] && match[7].length === 11) return match[7];
+  
+  // Return as-is if no match (might already be an ID)
+  return url;
+}
+
+// Video data array - Add your YouTube video IDs or URLs here
 const videosData = [
   {
     id: 1,
@@ -16,7 +37,7 @@ const videosData = [
       "/assets/mixed-use-development.jpeg",
     title: "Mixed Use Development",
     location: "Dhaka",
-    youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
+    youtubeId: "youtube.com/shorts/WmfUjElgom4?feature=share",
   },
   {
     id: 2,
@@ -24,7 +45,7 @@ const videosData = [
       "/assets/greenview-apartments.jpeg",
     title: "Greenview Apartments",
     location: "Sylhet",
-    youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
+    youtubeId: "https://www.youtube.com/shorts/bQpIh1M3V1I",
   },
   {
     id: 3,
@@ -32,7 +53,7 @@ const videosData = [
       "/assets/premier-office-tower.jpeg",
     title: "Premier Office Tower",
     location: "Khulna",
-    youtubeId: "dQw4w9WgXcQ", // Replace with actual YouTube video ID
+    youtubeId: "youtube.com/shorts/WmfUjElgom4?feature=share",
   },
 ];
 
@@ -188,7 +209,7 @@ const VideoSection = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <iframe
-              src={`https://www.youtube.com/embed/${activeVideo}?autoplay=1&rel=0`}
+              src={`https://www.youtube.com/embed/${getYouTubeVideoId(activeVideo || "")}?autoplay=1&rel=0`}
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
