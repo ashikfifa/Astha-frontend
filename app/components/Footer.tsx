@@ -4,8 +4,6 @@ import Image from "next/image";
 // Assets from Figma
 const logo =
   "/assets/aastha-footer-logo.png";
-const phoneIcon =
-  "/assets/phone-icon.svg";
 const emailIcon =
   "/assets/gmail-icon.svg";
 const whatsappIcon =
@@ -27,12 +25,6 @@ const socialIcons = [
   },
   {
     id: 3,
-    name: "LinkedIn",
-    icon: "/assets/linkedin-icon.svg",
-    href: "https://linkedin.com",
-  },
-  {
-    id: 4,
     name: "YouTube",
     icon: "/assets/youtube-icon.svg",
     href: "https://www.youtube.com/@AasthaDesignConstructionCo",
@@ -69,7 +61,6 @@ const footerLinks = {
 
 // Contact Info
 const contactInfo = {
-  phone: "(+880) 01717227733",
   email: "aastha@gmail.com",
 };
 
@@ -77,10 +68,10 @@ const Footer = () => {
   return (
     <footer className="w-full">
       {/* Main Footer */}
-      <div className="bg-[#011719] px-6 sm:px-10 py-8 sm:py-10">
+      <div className="bg-[#011719] px-6 sm:px-10 py-5 sm:py-6">
         <div className="container mx-auto">
           {/* Footer Grid - Logo/Address + Links */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-8">
             {/* Logo & Address Section - takes more space on larger screens */}
             <div className="md:col-span-4 lg:col-span-3">
               <img
@@ -93,31 +84,6 @@ const Footer = () => {
                 Jolshiri Abashon<br />
                 (Near Jolshiri Central Park)
               </p>
-              
-              {/* Social Media Icons */}
-              <div className="mt-6">
-                <h4 className="text-white text-sm font-medium mb-3">FOLLOW US</h4>
-                <div className="flex items-center gap-3">
-                  {socialIcons.map((social) => (
-                    <Link
-                      key={social.id}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-7 h-7 hover:opacity-80 transition-opacity duration-300"
-                    >
-                      <Image
-                        src={social.icon}
-                        alt={social.name}
-                        width={28}
-                        height={28}
-                        className="w-full h-full object-contain"
-                        loading="lazy"
-                      />
-                    </Link>
-                  ))}
-                </div>
-              </div>
             </div>
 
             {/* Links Grid - Company, Services, Help, Get In Touch */}
@@ -184,23 +150,8 @@ const Footer = () => {
                 <div>
                   <h4 className="text-white text-base font-medium mb-4">GET IN TOUCH</h4>
                   <div className="flex flex-col gap-3">
-                    {/* Phone */}
-                    <a 
-                      href={`tel:${contactInfo.phone}`}
-                      className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
-                    >
-                      <Image
-                        src={phoneIcon}
-                        alt="Phone"
-                        width={16}
-                        height={16}
-                        className="object-contain flex-shrink-0"
-                        loading="lazy"
-                      />
-                      <span className="text-white/80 text-sm">{contactInfo.phone}</span>
-                    </a>
                     {/* Email */}
-                    <a 
+                    <a
                       href={`mailto:${contactInfo.email}`}
                       className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
                     >
@@ -209,7 +160,7 @@ const Footer = () => {
                         alt="Email"
                         width={16}
                         height={16}
-                        className="object-contain flex-shrink-0"
+                        className="object-contain shrink-0"
                         loading="lazy"
                       />
                       <span className="text-white/80 text-sm">{contactInfo.email}</span>
@@ -226,11 +177,36 @@ const Footer = () => {
                         alt="WhatsApp"
                         width={16}
                         height={16}
-                        className="object-contain flex-shrink-0"
+                        className="object-contain shrink-0"
                         loading="lazy"
                       />
                       <span className="text-white/80 text-sm">+8801719680047</span>
                     </Link>
+                  </div>
+
+                  {/* Follow Us - Social Media Icons */}
+                  <div className="mt-4">
+                    <h4 className="text-white text-sm font-medium mb-2">FOLLOW US</h4>
+                    <div className="flex items-center gap-3">
+                      {socialIcons.map((social) => (
+                        <Link
+                          key={social.id}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-6 h-6 hover:opacity-80 transition-opacity duration-300"
+                        >
+                          <Image
+                            src={social.icon}
+                            alt={social.name}
+                            width={24}
+                            height={24}
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

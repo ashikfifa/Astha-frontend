@@ -103,7 +103,7 @@ const HeroSlider: React.FC = () => {
             <div
             className="absolute inset-0"
             style={{
-              backgroundColor: 'rgba(70, 61, 52, 0.55)',
+              backgroundColor: 'rgba(70, 61, 52, 0.25)',
               filter: 'drop-shadow(0 4px 4px #8B8163)',
             }}
           />
@@ -144,7 +144,7 @@ const HeroSlider: React.FC = () => {
 
               {/* CTA Button */}
               <div
-                className={`mt-7 lg:mt-20 transform transition-all duration-500 delay-300 ${
+                className={`mt-5 md:mt-7 lg:mt-12 transform transition-all duration-500 delay-300 ${
                   isTransitioning
                     ? "opacity-0 translate-y-4"
                     : "opacity-100 translate-y-0"
@@ -167,8 +167,21 @@ const HeroSlider: React.FC = () => {
         </div>
       </div>
 
+      {/* Scroll Down Indicator */}
+      <div
+        className={`absolute bottom-24 sm:bottom-24 md:bottom-24 lg:bottom-28 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 transition-opacity duration-300 cursor-pointer ${
+          isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+      >
+        <div className="w-6 h-10 sm:w-7 sm:h-11 border-2 border-white/70 rounded-full flex justify-center pt-2">
+          <div className="w-1.5 h-2.5 sm:w-2 sm:h-3 bg-white/70 rounded-full animate-bounce" />
+        </div>
+        <span className="text-white/70 text-xs sm:text-sm font-light tracking-wider">Scroll</span>
+      </div>
+
       {/* Slider Indicators */}
-      <div className={`absolute bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-16 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 sm:gap-4 transition-opacity duration-300 ${
+      <div className={`absolute bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-12 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 sm:gap-4 transition-opacity duration-300 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}>
         {slides.map((_, index) => (
