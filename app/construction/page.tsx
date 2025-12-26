@@ -23,7 +23,7 @@ export default function ConstructionPage() {
       <HeroBanner
         title="Construction"
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Construction" }]}
-        backgroundImage="/assets/construction/IMG-20251215-WA0160.jpg"
+        backgroundImage="/assets/construction/project1/IMG-20251215-WA0160.jpg"
       />
 
       <MotoSection title="Take a brief look at some of the construction services" />
