@@ -84,31 +84,6 @@ const Footer = () => {
                 Jolshiri Abashon<br />
                 (Near Jolshiri Central Park)
               </p>
-              
-              {/* Social Media Icons */}
-              <div className="mt-4">
-                <h4 className="text-white text-sm font-medium mb-2">FOLLOW US</h4>
-                <div className="flex items-center gap-3">
-                  {socialIcons.map((social) => (
-                    <Link
-                      key={social.id}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-7 h-7 hover:opacity-80 transition-opacity duration-300"
-                    >
-                      <Image
-                        src={social.icon}
-                        alt={social.name}
-                        width={28}
-                        height={28}
-                        className="w-full h-full object-contain"
-                        loading="lazy"
-                      />
-                    </Link>
-                  ))}
-                </div>
-              </div>
             </div>
 
             {/* Links Grid - Company, Services, Help, Get In Touch */}
@@ -176,7 +151,7 @@ const Footer = () => {
                   <h4 className="text-white text-base font-medium mb-4">GET IN TOUCH</h4>
                   <div className="flex flex-col gap-3">
                     {/* Email */}
-                    <a 
+                    <a
                       href={`mailto:${contactInfo.email}`}
                       className="flex items-center gap-2 hover:opacity-80 transition-opacity duration-300"
                     >
@@ -185,7 +160,7 @@ const Footer = () => {
                         alt="Email"
                         width={16}
                         height={16}
-                        className="object-contain flex-shrink-0"
+                        className="object-contain shrink-0"
                         loading="lazy"
                       />
                       <span className="text-white/80 text-sm">{contactInfo.email}</span>
@@ -202,11 +177,36 @@ const Footer = () => {
                         alt="WhatsApp"
                         width={16}
                         height={16}
-                        className="object-contain flex-shrink-0"
+                        className="object-contain shrink-0"
                         loading="lazy"
                       />
                       <span className="text-white/80 text-sm">+8801719680047</span>
                     </Link>
+                  </div>
+
+                  {/* Follow Us - Social Media Icons */}
+                  <div className="mt-4">
+                    <h4 className="text-white text-sm font-medium mb-2">FOLLOW US</h4>
+                    <div className="flex items-center gap-3">
+                      {socialIcons.map((social) => (
+                        <Link
+                          key={social.id}
+                          href={social.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-6 h-6 hover:opacity-80 transition-opacity duration-300"
+                        >
+                          <Image
+                            src={social.icon}
+                            alt={social.name}
+                            width={24}
+                            height={24}
+                            className="w-full h-full object-contain"
+                            loading="lazy"
+                          />
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
