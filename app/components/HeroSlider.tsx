@@ -103,7 +103,7 @@ const HeroSlider: React.FC = () => {
             <div
             className="absolute inset-0"
             style={{
-              backgroundColor: 'rgba(70, 61, 52, 0.55)',
+              backgroundColor: 'rgba(70, 61, 52, 0.25)',
               filter: 'drop-shadow(0 4px 4px #8B8163)',
             }}
           />
