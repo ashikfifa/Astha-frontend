@@ -10,6 +10,9 @@ const LOCATION = {
   address: "Sector: 13, Road: 402, Plot: 002, Jolshiri Abashon (Near Jolshiri Central Park)"
 };
 
+// Formspree endpoint - Replace YOUR_FORM_ID with your actual Formspree form ID
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mlgedgdl";
+
 interface FormData {
   name: string;
   email: string;
@@ -38,10 +41,21 @@ export default function ContactPage() {
     setSubmitStatus('idle');
 
     try {
-      // Simulate form submission - replace with actual API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', mobile: '', message: '' });
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', mobile: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
     } catch {
       setSubmitStatus('error');
     } finally {
@@ -144,7 +158,7 @@ export default function ContactPage() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full py-3 px-6 bg-[#00b4b4] hover:bg-[#009999] text-white font-semibold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full py-3 cursor-pointer px-6 bg-[#00b4b4] hover:bg-[#009999] text-white font-semibold rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
@@ -175,7 +189,7 @@ export default function ContactPage() {
               </div>
 
               {/* Google Maps Embed */}
-              <div className="h-[400px] lg:h-[calc(100%-120px)]">
+              <div className="h-100 lg:h-[calc(100%-120px)]">
                 <iframe
                   src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3648.5!2d${LOCATION.longitude}!3d${LOCATION.latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDUyJzMzLjIiTiA5MMKwMjYnMzMuMCJF!5e0!3m2!1sen!2sbd!4v1234567890`}
                   width="100%"
