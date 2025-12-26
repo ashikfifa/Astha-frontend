@@ -4,18 +4,18 @@ import ServiceCard from "../../components/ServiceCard";
 const servicesData = [
   {
     id: 1,
-    image: "/assets/real-estate-development.jpeg",
-    title: "Real Estate Development",
+    image: "/assets/construction.jpeg",
+    title: "Development",
     description:
-      "Building a real estate development is a complicated task requiring both deep understanding…",
+      "We plan, design, and develop modern real estate projects that balance quality, functionality, and long-term value.",
     href: "/development",
   },
   {
     id: 2,
-    image: "/assets/construction.jpeg",
+    image: "/assets/real-estate-development.jpeg",
     title: "Construction",
     description:
-      "Building a real estate development is a complicated task requiring both deep understanding…",
+      "From foundation to finish, we deliver reliable construction with a strong focus on safety, quality, and timely completion.",
     href: "/construction",
   },
   {
@@ -23,7 +23,7 @@ const servicesData = [
     image: "/assets/interior-design.jpeg",
     title: "Interior Design",
     description:
-      "Building a real estate development is a complicated task requiring both deep understanding…",
+      "We create elegant and functional interior spaces that reflect lifestyle, comfort, and modern aesthetics.",
     href: "/interior",
   },
 ];
