@@ -50,6 +50,9 @@ const InteriorSlugPage = async ({ params }: PageProps) => {
         description={project.projectDescription}
         details={project.keyDetails}
         featuredImage={project.image}
+        photos={project.projectPhotos ?? []}
+        title={project.title}
+        location={project.location}
       />
 
       <MediaSection photos={project.projectPhotos ?? []} videos={project.projectVideos ?? []} />
