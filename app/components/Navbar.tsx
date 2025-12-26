@@ -19,6 +19,7 @@ const Navbar = () => {
   // Determine active link based on current pathname
   const getActiveLink = () => {
     if (pathname === "/") return "Home";
+    if (pathname === "/contact") return "Contact";
     const activeNav = navLinks.find(
       (link) => link.href !== "/" && pathname.startsWith(link.href)
     );
@@ -26,6 +27,7 @@ const Navbar = () => {
   };
 
   const activeLink = getActiveLink();
+  const isContactPage = pathname === "/contact";
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 sm:py-6">
@@ -53,7 +55,7 @@ const Navbar = () => {
                     key={link.id}
                     href={link.href}
                     className={`text-white hover:text-white/80 transition-all duration-200 px-3 py-1.5 rounded-[5px] ${
-                      activeLink === link.label
+                      activeLink === link.label && !isContactPage
                         ? "bg-[rgba(6,236,255,0.31)]"
                         : ""
                     }`}
@@ -66,7 +68,11 @@ const Navbar = () => {
               {/* Get In Touch Button */}
               <Link
                 href="/contact"
-                className="ml-6 bg-[#e01e26] hover:bg-[#c01820] text-white px-5 py-2 rounded-[20px] transition-colors duration-200 whitespace-nowrap"
+                className={`ml-6 text-white px-5 py-2 rounded-[20px] transition-colors duration-200 whitespace-nowrap ${
+                  isContactPage
+                    ? "bg-[#00b4b4] hover:bg-[#009999]"
+                    : "bg-[#e01e26] hover:bg-[#c01820]"
+                }`}
               >
                 Get In touch
               </Link>
@@ -80,11 +86,11 @@ const Navbar = () => {
             <div className="flex items-center justify-between gap-2 sm:gap-3">
               {/* Active Link */}
               <Link
-                href={navLinks.find((l) => l.label === activeLink)?.href || "/"}
+                href={isContactPage ? "/contact" : (navLinks.find((l) => l.label === activeLink)?.href || "/")}
                 className="text-white flex-shrink min-w-0"
               >
                 <span className="bg-[rgba(6,236,255,0.31)] px-2 sm:px-3 py-1 sm:py-1.5 rounded-[5px] text-xs sm:text-sm inline-block truncate">
-                  {activeLink}
+                  {isContactPage ? "Contact" : activeLink}
                 </span>
               </Link>
 
@@ -92,7 +98,11 @@ const Navbar = () => {
                 {/* Get In Touch Button - Mobile */}
                 <Link
                   href="/contact"
-                  className="bg-[#e01e26] hover:bg-[#c01820] text-white px-2 sm:px-4 py-1 sm:py-1.5 rounded-[20px] transition-colors duration-200 text-xs sm:text-sm whitespace-nowrap"
+                  className={`text-white px-2 sm:px-4 py-1 sm:py-1.5 rounded-[20px] transition-colors duration-200 text-xs sm:text-sm whitespace-nowrap ${
+                    isContactPage
+                      ? "bg-[#00b4b4] hover:bg-[#009999]"
+                      : "bg-[#e01e26] hover:bg-[#c01820]"
+                  }`}
                 >
                   Get In touch
                 </Link>
@@ -100,7 +110,7 @@ const Navbar = () => {
                 {/* Hamburger Menu */}
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="text-white p-1 flex-shrink-0"
+                  className="text-white p-1 shrink-0"
                   aria-label="Toggle menu"
                 >
                   {isMenuOpen ? (
