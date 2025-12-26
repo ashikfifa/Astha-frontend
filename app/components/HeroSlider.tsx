@@ -169,7 +169,7 @@ const HeroSlider: React.FC = () => {
 
       {/* Scroll Down Indicator */}
       <div
-        className={`absolute bottom-24 sm:bottom-28 md:bottom-32 lg:bottom-36 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 transition-opacity duration-300 cursor-pointer ${
+        className={`absolute bottom-24 sm:bottom-24 md:bottom-24 lg:bottom-28 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 transition-opacity duration-300 cursor-pointer ${
           isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
@@ -181,7 +181,7 @@ const HeroSlider: React.FC = () => {
       </div>
 
       {/* Slider Indicators */}
-      <div className={`absolute bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-16 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 sm:gap-4 transition-opacity duration-300 ${
+      <div className={`absolute bottom-8 sm:bottom-10 md:bottom-12 lg:bottom-12 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3 sm:gap-4 transition-opacity duration-300 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}>
         {slides.map((_, index) => (
