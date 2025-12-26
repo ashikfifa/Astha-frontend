@@ -25,7 +25,7 @@ const MoreServiceCard: React.FC<MoreServiceCardProps> = ({
       </div>
 
       {/* Title */}
-      <h3 className="mt-3 text-base sm:text-lg font-bold text-black group-hover:text-gray-700 transition-colors">
+      <h3 className="mt-2 sm:mt-3 text-sm sm:text-lg font-bold text-black group-hover:text-gray-700 transition-colors">
         {title}
       </h3>
     </a>
