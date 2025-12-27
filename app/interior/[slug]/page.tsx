@@ -44,6 +44,7 @@ const InteriorSlugPage = async ({ params }: PageProps) => {
           { label: "Interior", href: "/interior" },
           { label: project.title },
         ]}
+        isSlugPage
       />
 
       <ProjectDescription

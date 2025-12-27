@@ -9,6 +9,7 @@ interface HeroSectionProps {
   }[];
   backgroundImage: string;
   priority?: boolean;
+  isSlugPage?: boolean;
 }
 
 const HeroBanner: React.FC<HeroSectionProps> = ({
@@ -16,9 +17,10 @@ const HeroBanner: React.FC<HeroSectionProps> = ({
   breadcrumbs,
   backgroundImage,
   priority = true,
+  isSlugPage = false,
 }) => {
   return (
-    <section className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96">
+    <section className={`relative w-full ${isSlugPage ? "h-64 sm:h-72 md:h-80 lg:h-96" : "h-95 sm:h-65 md:h-100 lg:h-137.5"}`}>
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
