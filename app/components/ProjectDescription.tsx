@@ -289,36 +289,7 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
               </div>
             </div>
 
-            {/* Description below preview */}
-            <div className="preview-text mt-8 md:mt-10 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-              <div>
-                <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">
-                  Project Description
-                </h2>
-                <p className="text-sm md:text-base leading-relaxed text-gray-600">{description}</p>
-              </div>
-              <div>
-                <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4">Key Details</h2>
-                <div className="space-y-3">
-                  {location && (
-                    <div>
-                      <span className="text-xs uppercase tracking-wider text-gray-400 block">
-                        Location
-                      </span>
-                      <span className="text-sm text-gray-700">{location}</span>
-                    </div>
-                  )}
-                  {keyDetailsList.map((detail, index) => (
-                    <div key={index}>
-                      <span className="text-xs uppercase tracking-wider text-gray-400 block">
-                        {detail.label}
-                      </span>
-                      <span className="text-sm text-gray-700">{detail.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+           
           </div>
         )}
 
