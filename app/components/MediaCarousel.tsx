@@ -111,6 +111,9 @@ export default function MediaCarousel({ items }: MediaCarouselProps) {
   const [popupIndex, setPopupIndex] = useState<number | null>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
+  // Hide slider arrows when there are 3 or fewer items
+  const showSliderArrows = items.length > 3;
+
   const isPopupOpen = popupIndex !== null;
 
   const scrollToIndex = (index: number) => {
@@ -206,14 +209,16 @@ export default function MediaCarousel({ items }: MediaCarouselProps) {
   return (
     <>
       <div className="relative flex items-center gap-2 md:gap-4">
-        {/* Left Arrow */}
-        <button
-          onClick={handlePrev}
-          className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-[#06ecff] hover:text-[#05d4e6] transition-colors"
-          aria-label="Previous image"
-        >
-          <ArrowLeftIcon className="w-6 h-6 md:w-8 md:h-8 cursor-pointer" />
-        </button>
+        {/* Left Arrow - only show when more than 3 items */}
+        {showSliderArrows && (
+          <button
+            onClick={handlePrev}
+            className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-[#06ecff] hover:text-[#05d4e6] transition-colors"
+            aria-label="Previous image"
+          >
+            <ArrowLeftIcon className="w-6 h-6 md:w-8 md:h-8 cursor-pointer" />
+          </button>
+        )}
 
         {/* Carousel Container */}
         <div
@@ -258,14 +263,16 @@ export default function MediaCarousel({ items }: MediaCarouselProps) {
           ))}
         </div>
 
-        {/* Right Arrow */}
-        <button
-          onClick={handleNext}
-          className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-[#06ecff] hover:text-[#05d4e6] transition-colors"
-          aria-label="Next image"
-        >
-          <ArrowRightIcon className="w-6 h-6 md:w-8 md:h-8 cursor-pointer" />
-        </button>
+        {/* Right Arrow - only show when more than 3 items */}
+        {showSliderArrows && (
+          <button
+            onClick={handleNext}
+            className="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 flex items-center justify-center text-[#06ecff] hover:text-[#05d4e6] transition-colors"
+            aria-label="Next image"
+          >
+            <ArrowRightIcon className="w-6 h-6 md:w-8 md:h-8 cursor-pointer" />
+          </button>
+        )}
       </div>
 
       {/* Popup Modal */}
