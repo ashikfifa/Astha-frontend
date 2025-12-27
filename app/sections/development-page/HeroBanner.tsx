@@ -18,7 +18,7 @@ const HeroBanner: React.FC<HeroSectionProps> = ({
   priority = true,
 }) => {
   return (
-    <section className="relative w-full h-95 sm:h-65 md:h-100 lg:h-137.5">
+    <section className="relative w-full h-64 sm:h-72 md:h-80 lg:h-96">
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
