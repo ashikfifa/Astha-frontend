@@ -307,7 +307,7 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
               </div>
               <button
                 onClick={handleCollapse}
-                className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full"
+                className="flex cursor-pointer items-center gap-2 text-sm text-gray-500 hover:text-gray-900 transition-colors bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
