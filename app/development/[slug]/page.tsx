@@ -44,6 +44,7 @@ const DevelopmentSlugPage = async ({ params }: PageProps) => {
           { label: "Development", href: "/development" },
           { label: project.title },
         ]}
+        isSlugPage
       />
 
       <ProjectDescription
