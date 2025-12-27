@@ -34,25 +34,25 @@ const videosData = [
   {
     id: 1,
     thumbnail:
-      "/assets/mixed-use-development.jpeg",
-    title: "Mixed Use Development",
+      "/assets/development/cover-image-of-dreams-mansion.jpg",
+    title: "Dreams Mansion",
     location: "Dhaka",
     youtubeId: "youtube.com/shorts/WmfUjElgom4?feature=share",
   },
   {
     id: 2,
     thumbnail:
-      "/assets/greenview-apartments.jpeg",
-    title: "Greenview Apartments",
-    location: "Sylhet",
+      "/assets/development/cumilla-project.jpeg",
+    title: "Dreams Mansion",
+    location: "Dhaka",
     youtubeId: "https://www.youtube.com/shorts/bQpIh1M3V1I",
   },
   {
     id: 3,
     thumbnail:
-      "/assets/premier-office-tower.jpeg",
-    title: "Premier Office Tower",
-    location: "Khulna",
+      "/assets/development/uttara2-project.jpeg",
+    title: "Dreams Mansion",
+    location: "Dhaka",
     youtubeId: "youtube.com/shorts/WmfUjElgom4?feature=share",
   },
 ];

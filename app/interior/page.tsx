@@ -28,7 +28,7 @@ export default function InteriorPage() {
 
       <MotoSection title="Take a brief look at some of the interior design services" />
       <ProjectGrid projects={INTERIOR_PROJECTS} basePath="/interior" />
-      <VideoSection />
+      {/*<VideoSection />*/}
       <MoreServices />
     </div>
   );
