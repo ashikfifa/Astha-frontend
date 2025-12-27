@@ -55,7 +55,7 @@ const DevelopmentSlugPage = async ({ params }: PageProps) => {
         location={project.location}
       />
 
-      <MediaSection photos={project.projectPhotos ?? []} videos={project.projectVideos ?? []} />
+      <MediaSection videos={project.projectVideos ?? []} />
 
       <MoreServices />
     </div>
