@@ -37,13 +37,9 @@ const DevelopmentSlugPage = async ({ params }: PageProps) => {
   return (
     <div>
       <HeroBanner
-        title={project.title}
+        
         backgroundImage={project.coverImage || project.image}
-        breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Development", href: "/development" },
-          { label: project.title },
-        ]}
+        
         isSlugPage
       />
 

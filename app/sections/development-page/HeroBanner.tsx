@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface HeroSectionProps {
-  title: string;
-  breadcrumbs: {
+  title?: string;
+  breadcrumbs?: {
     label: string;
     href?: string;
   }[];
@@ -20,12 +20,12 @@ const HeroBanner: React.FC<HeroSectionProps> = ({
   isSlugPage = false,
 }) => {
   return (
-    <section className={`relative w-full ${isSlugPage ? "h-64 sm:h-72 md:h-80 lg:h-96" : "h-95 sm:h-65 md:h-100 lg:h-137.5"}`}>
+    <section className={`relative w-full ${isSlugPage ? "h-28 sm:h-28 md:h-38 lg:h-36" : "h-95 sm:h-65 md:h-100 lg:h-137.5"}`}>
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
           src={backgroundImage}
-          alt={title}
+          alt={title || "Hero Banner"}
           fill
           className="object-cover object-top"
           priority={priority}
@@ -40,34 +40,38 @@ const HeroBanner: React.FC<HeroSectionProps> = ({
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center justify-center h-full px-4">
         {/* Title */}
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white text-center">
-          {title}
-        </h1>
+        {title && (
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white text-center">
+            {title}
+          </h1>
+        )}
 
         {/* Breadcrumb */}
-        <nav className="mt-4 sm:mt-6">
-          <ul className="flex items-center gap-2 sm:gap-3">
-            {breadcrumbs.map((crumb, index) => (
-              <li key={index} className="flex items-center gap-2 sm:gap-3">
-                {crumb.href ? (
-                  <Link
-                    href={crumb.href}
-                    className="text-xs sm:text-sm font-bold text-gray-400 hover:text-white transition-colors"
-                  >
-                    {crumb.label}
-                  </Link>
-                ) : (
-                  <span className="text-xs sm:text-sm font-bold text-gray-400">
-                    {crumb.label}
-                  </span>
-                )}
-                {index < breadcrumbs.length - 1 && (
-                  <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gray-400" />
-                )}
-              </li>
-            ))}
-          </ul>
-        </nav>
+        {breadcrumbs && breadcrumbs.length > 0 && (
+          <nav className="mt-4 sm:mt-6">
+            <ul className="flex items-center gap-2 sm:gap-3">
+              {breadcrumbs.map((crumb, index) => (
+                <li key={index} className="flex items-center gap-2 sm:gap-3">
+                  {crumb.href ? (
+                    <Link
+                      href={crumb.href}
+                      className="text-xs sm:text-sm font-bold text-gray-400 hover:text-white transition-colors"
+                    >
+                      {crumb.label}
+                    </Link>
+                  ) : (
+                    <span className="text-xs sm:text-sm font-bold text-gray-400">
+                      {crumb.label}
+                    </span>
+                  )}
+                  {index < breadcrumbs.length - 1 && (
+                    <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gray-400" />
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
       </div>
     </section>
   );
