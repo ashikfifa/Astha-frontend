@@ -214,8 +214,8 @@ export default function ContactPage() {
                 </svg>
               </div>
               <h3 className="font-semibold text-gray-800 mb-1">Email</h3>
-              <a href="mailto:aastha@gmail.com" className="text-[#00b4b4] hover:underline">
-                aastha@gmail.com
+              <a href="mailto:info@aasthabd.com" className="text-[#00b4b4] hover:underline">
+                  info@aasthabd.com
               </a>
             </div>
 

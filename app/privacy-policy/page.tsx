@@ -30,7 +30,7 @@ export default function PrivacyPolicyPage() {
 
                   {/* Intro */}
                   <p className="text-gray-700 mb-6 leading-relaxed">
-                      Welcome to <strong>Astha</strong> (“we”, “us”, “our”). Your privacy is important to us.
+                      Welcome to <strong>Aastha</strong> (“we”, “us”, “our”). Your privacy is important to us.
                       This Privacy Policy explains how we collect, use, disclose, and protect your information
                       when you visit our website or use our real estate development, construction, and interior services.
                   </p>
