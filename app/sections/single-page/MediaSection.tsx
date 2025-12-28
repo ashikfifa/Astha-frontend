@@ -14,7 +14,7 @@ export default function MediaSection({ videos }: MediaSectionProps) {
   }
 
   return (
-    <div className="mt-12 md:mt-16 lg:mt-20">
+    
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           {/* Header */}
@@ -31,6 +31,6 @@ export default function MediaSection({ videos }: MediaSectionProps) {
           <MediaCarousel items={videos} />
         </div>
       </div>
-    </div>
+  
   );
 }

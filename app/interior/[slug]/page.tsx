@@ -44,7 +44,6 @@ const InteriorSlugPage = async ({ params }: PageProps) => {
       <ProjectDescription
         description={project.projectDescription}
         details={project.keyDetails}
-        featuredImage={project.image}
         photos={project.projectPhotos ?? []}
         title={project.title}
         location={project.location}
