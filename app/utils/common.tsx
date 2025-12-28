@@ -3,28 +3,22 @@ import { ProjectCardProps } from "./type";
 export const projectsData = [
   {
     id: 1,
-    image: "/assets/mixed-use-development.jpeg",
+    image: "/assets/development/uttara2-project.jpeg",
     location: "Dhaka",
-    title: "Mixed Use Development",
+    title: "Dreams Mention",
   },
   {
     id: 2,
-    image: "/assets/greenview-apartments.jpeg",
-    location: "Sylhet",
-    title: "Greenview Apartments",
+    image: "/assets/construction/project1/IMG-20251215-WA0160.jpg",
+    location: "Dhaka",
+    title: "Anowarul Islam Sarder",
   },
   {
     id: 3,
-    image: "/assets/premier-office-tower.jpeg",
-    location: "Khulna",
-    title: "Premier Office Tower",
-  },
-  {
-    id: 4,
-    image: "/assets/urban-heights-residence.jpeg",
-    location: "Chittagong",
-    title: "Urban Heights Residence",
-  },
+    image: "/assets/construction/project2/IMG-20251211-WA0075.jpg",
+    location: "Dhaka",
+    title: "Brig. Gen Md. Mahbub Noor",
+  }
 ];
 
 const PROJECT_IMAGES = {

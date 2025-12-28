@@ -34,11 +34,11 @@ const socialIcons = [
 // Footer Links Data
 const footerLinks = {
   company: {
-    title: "COMPANY",
+    title: "Recent Projects",
     links: [
-      { label: "About Us", href: "/about" },
-      { label: "Why choose us", href: "/why-us" },
-      { label: "Meet our team", href: "/team" },
+      { label: "Dreams Mansion", href: "/development/dhaka-dreams-mansion" },
+      { label: "Anowarul Islam Sarder", href: "/construction/dhaka-anowarul-islam-sarder" },
+      { label: "Brig Gen Md Mahbub Noor", href: "/construction/dhaka-brig-gen-md-mahbub-noor" },
     ],
   },
   services: {
@@ -53,15 +53,14 @@ const footerLinks = {
     title: "Help",
     links: [
       { label: "Contact Us", href: "/contact" },
-      { label: "Privacy Policy", href: "/privacy" },
-      { label: "Terms and Condition", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
     ],
   },
 };
 
 // Contact Info
 const contactInfo = {
-  email: "aastha@gmail.com",
+  email: "info@aasthabd.com",
 };
 
 const Footer = () => {
