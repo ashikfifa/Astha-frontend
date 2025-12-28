@@ -18,7 +18,8 @@ const createSlug = (text: string): string => {
 // Find project by slug (using location-title format)
 const getProjectBySlug = (slug: string) => {
   return DEFAULT_PROJECTS.find(
-    (project) => `${createSlug(project.location)}-${createSlug(project.title)}` === slug
+    (project) =>
+      `${createSlug(project.location)}-${createSlug(project.title)}` === slug
   );
 };
 
@@ -37,9 +38,7 @@ const DevelopmentSlugPage = async ({ params }: PageProps) => {
   return (
     <div>
       <HeroBanner
-        
         backgroundImage={project.coverImage || project.image}
-        
         isSlugPage
       />
 
