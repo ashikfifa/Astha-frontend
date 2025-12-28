@@ -1,10 +1,9 @@
 import { Metadata } from "next";
 import HeroBanner from "../sections/development-page/HeroBanner";
-import MoreServices from "../sections/development-page/MoreServices";
 import MotoSection from "../sections/development-page/MottoSection";
 import ProjectGrid from "../sections/development-page/ProjectGrid";
-import VideoSection from "../sections/landing-page/VideoSection";
 import { CONSTRUCTION_PROJECTS } from "../utils/common";
+import ConstructionMoreServices from "@/app/sections/construction-page/MoreServices";
 
 export const metadata: Metadata = {
   title: "Construction Services",
@@ -29,7 +28,7 @@ export default function ConstructionPage() {
       <MotoSection title="Take a brief look at some of the construction services" />
       <ProjectGrid projects={CONSTRUCTION_PROJECTS} basePath="/construction" />
       {/*<VideoSection />*/}
-      <MoreServices />
+      <ConstructionMoreServices />
     </div>
   );
 }

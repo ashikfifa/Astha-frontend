@@ -5,6 +5,7 @@ import MotoSection from "../sections/development-page/MottoSection";
 import ProjectGrid from "../sections/development-page/ProjectGrid";
 import VideoSection from "../sections/landing-page/VideoSection";
 import { INTERIOR_PROJECTS } from "../utils/common";
+import InteriorMoreServices from "@/app/sections/interior-page/MoreServices";
 
 export const metadata: Metadata = {
   title: "Interior Design",
@@ -29,7 +30,7 @@ export default function InteriorPage() {
       <MotoSection title="Take a brief look at some of the interior design services" />
       <ProjectGrid projects={INTERIOR_PROJECTS} basePath="/interior" />
       {/*<VideoSection />*/}
-      <MoreServices />
+      <InteriorMoreServices />
     </div>
   );
 }

@@ -304,7 +304,8 @@ export const INTERIOR_PROJECTS: ProjectCardProps[] = [
 ];
 
 const SERVICE_IMAGES = {
-  construction: "/assets/construction.jpeg",
+  development: "/assets/development/uttara2-project.jpeg",
+  construction: "/assets/construction/project1/IMG-20251215-WA0174.jpg",
   interior: "/assets/interior-design.jpeg",
 };
 
@@ -319,4 +320,30 @@ export const DEFAULT_SERVICES = [
     title: "Interior",
     href: "/interior",
   },
+];
+
+export const CONSTRUCTION_SERVICES = [
+    {
+        image: SERVICE_IMAGES.development,
+        title: "Development",
+        href: "/development",
+    },
+    {
+        image: SERVICE_IMAGES.interior,
+        title: "Interior",
+        href: "/interior",
+    },
+];
+
+export const INTERIOR_SERVICES = [
+    {
+        image: SERVICE_IMAGES.development,
+        title: "Development",
+        href: "/development",
+    },
+    {
+        image: SERVICE_IMAGES.construction,
+        title: "Construction",
+        href: "/construction",
+    }
 ];
