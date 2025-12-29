@@ -128,30 +128,6 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
     [isDragging, startX, scrollLeft]
   );
 
-  // Touch handlers
-  const handleTouchStart = useCallback((e: React.TouchEvent) => {
-    if (!trackRef.current) return;
-    setIsDragging(true);
-    setIsPaused(true);
-    setStartX(e.touches[0].pageX - trackRef.current.offsetLeft);
-    setScrollLeft(trackRef.current.scrollLeft);
-  }, []);
-
-  const handleTouchMove = useCallback(
-    (e: React.TouchEvent) => {
-      if (!isDragging || !trackRef.current) return;
-      const x = e.touches[0].pageX - trackRef.current.offsetLeft;
-      const walk = (x - startX) * 2;
-      trackRef.current.scrollLeft = scrollLeft - walk;
-    },
-    [isDragging, startX, scrollLeft]
-  );
-
-  const handleTouchEnd = useCallback(() => {
-    setIsDragging(false);
-    setIsPaused(false);
-  }, []);
-
   // Handle expand on click
   const handleExpandGallery = useCallback(() => {
     if (isExpanded || isAnimating) return;
@@ -208,6 +184,37 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
 
   }, [isExpanded, isAnimating]);
 
+  // Touch handlers
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    if (!trackRef.current) return;
+    
+    // If not expanded, trigger expansion instead of dragging
+    if (!isExpanded && !isAnimating) {
+      handleExpandGallery();
+      return;
+    }
+    
+    setIsDragging(true);
+    setIsPaused(true);
+    setStartX(e.touches[0].pageX - trackRef.current.offsetLeft);
+    setScrollLeft(trackRef.current.scrollLeft);
+  }, [isExpanded, isAnimating, handleExpandGallery]);
+
+  const handleTouchMove = useCallback(
+    (e: React.TouchEvent) => {
+      if (!isExpanded || !isDragging || !trackRef.current) return;
+      const x = e.touches[0].pageX - trackRef.current.offsetLeft;
+      const walk = (x - startX) * 2;
+      trackRef.current.scrollLeft = scrollLeft - walk;
+    },
+    [isExpanded, isDragging, startX, scrollLeft]
+  );
+
+  const handleTouchEnd = useCallback(() => {
+    setIsDragging(false);
+    setIsPaused(false);
+  }, []);
+
   // Initial setup for collapsed state
   useEffect(() => {
     if (!isExpanded && slidePanelsRef.current.length > 0) {
@@ -250,10 +257,10 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
             onMouseMove={isExpanded ? handleMouseMove : undefined}
             onMouseEnter={isExpanded ? handleMouseEnter : undefined}
             onMouseLeave={isExpanded ? handleMouseLeaveTrack : undefined}
-            onTouchStart={isExpanded ? handleTouchStart : undefined}
-            onTouchMove={isExpanded ? handleTouchMove : undefined}
-            onTouchEnd={isExpanded ? handleTouchEnd : undefined}
-            className={`overflow-x-auto overflow-y-visible py-4 select-none scrollbar-hide -mx-4 transition-all duration-300 ${isExpanded ? 'cursor-grab' : ''}`}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            className={`overflow-y-visible py-4 select-none scrollbar-hide -mx-4 transition-all duration-300 ${isExpanded ? 'overflow-x-auto cursor-grab' : 'overflow-x-hidden'}`}
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
