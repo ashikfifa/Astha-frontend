@@ -242,7 +242,9 @@ export default function ContactPage() {
               </div>
               <h3 className="font-semibold text-gray-800 mb-1">Address</h3>
               <p className="text-gray-600 text-sm">
-                Jolshiri Abashon, Dhaka
+                  Sector: 13, Road: 402, Plot: 002, <br/>
+                  Jolshiri Abashon <br/>
+                  (Near Jolshiri Central Park)
               </p>
             </div>
           </div>
