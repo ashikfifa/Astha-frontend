@@ -9,6 +9,9 @@ const emailIcon =
 const whatsappIcon =
   "/assets/whatsapp-icon.svg";
 
+const qrCodeImage =
+  "/aastha_qr.png";
+
 // Social Media Icons
 const socialIcons = [
   {
@@ -34,9 +37,9 @@ const socialIcons = [
 // Footer Links Data
 const footerLinks = {
   company: {
-    title: "Recent Projects",
+    title: "",
     links: [
-      { label: "Dreams Mansion", href: "/development/dhaka-dreams-mansion" },
+      { label: "Dreams Mansion", href: "/development/dhaka-dreams-mansion", image: "aastha_qr.png" },
       { label: "Anowarul Islam Sarder", href: "/construction/dhaka-anowarul-islam-sarder" },
       { label: "Brig Gen Md Mahbub Noor", href: "/construction/dhaka-brig-gen-md-mahbub-noor" },
     ],
@@ -90,21 +93,17 @@ const Footer = () => {
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 lg:gap-8">
                 {/* Company Links */}
                 <div>
-                  <h4 className="text-white text-base font-medium mb-4">
-                    {footerLinks.company.title}
-                  </h4>
-                  <ul className="flex flex-col gap-2">
-                    {footerLinks.company.links.map((link, index) => (
-                      <li key={index}>
-                        <Link
-                          href={link.href}
-                          className="text-white/80 text-sm hover:text-[#00b4b4] transition-colors duration-300"
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  {/*<h4 className="text-white text-base font-medium mb-4">*/}
+                  {/*  {footerLinks.company.title}*/}
+                  {/*</h4>*/}
+                    <Image
+                        src={qrCodeImage}
+                        alt="QR"
+                        width={150}
+                        height={150}
+                        className="object-contain shrink-0"
+                        loading="lazy"
+                    />
                 </div>
 
                 {/* Services Links */}
