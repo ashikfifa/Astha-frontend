@@ -36,7 +36,7 @@ export const DEFAULT_PROJECTS: ProjectCardProps[] = [
     location: "Dhaka",
     title: "Dreams Mansion",
     projectDescription:
-      "If everyone used the identical lorem ipsum copy, search engines would flag it for plagiarism and downgrade the site for its lack of helpful content for the reader. However, when you send sample layouts filled with fun lorem ipsum to your customers, they will focus on the look and feel of the page instead of digging into and arguing about the content. Nevertheless, lorem ipsum generators do not spew a random bank of words and paragraphs. focus on the look and feel of the page instead of digging into and arguing about the content. Nevertheless, lorem ipsum generators do not spew a random bank of words and paragraphs.",
+      "If everyone used sample layouts filled with fun lorem ipsum to your customers, they will focus on the look and feel of the page instead of digging into and arguing about the content. Nevertheless, lorem ipsum\. Nevertheless, words and paragraphs.",
 
     keyDetails: "Number of floors: 20, including two underground levels for parking.",
     projectPhotos: [

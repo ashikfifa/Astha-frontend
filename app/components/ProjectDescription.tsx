@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { MediaItem } from "@/app/utils/type";
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, useEffect } from "react";
+import gsap from "gsap";
 
 interface ProjectDescriptionProps {
   description: string;
@@ -22,11 +23,15 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const galleryRef = useRef<HTMLDivElement>(null);
+  const marqueeTrackRef = useRef<HTMLDivElement>(null);
+  const slidePanelsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   // Parse key details
   const parseKeyDetails = (detailsString: string) => {
@@ -147,6 +152,76 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
     setIsPaused(false);
   }, []);
 
+  // Handle expand on click
+  const handleExpandGallery = useCallback(() => {
+    if (isExpanded || isAnimating) return;
+    
+    setIsAnimating(true);
+    
+    const tl = gsap.timeline({
+      onComplete: () => {
+        setIsExpanded(true);
+        setIsAnimating(false);
+      }
+    });
+
+    // Animate the container height
+    tl.to(trackRef.current, {
+      height: "75vh",
+      duration: 0.8,
+      ease: "power3.out"
+    });
+
+    // Animate each slide panel
+    slidePanelsRef.current.forEach((panel, index) => {
+      if (panel) {
+        tl.to(panel, {
+          height: "70vh",
+          duration: 0.6,
+          ease: "power3.out"
+        }, "-=0.7");
+
+        // Animate the image container within each panel
+        const imageContainer = panel.querySelector('.image-container');
+        if (imageContainer) {
+          // Use full width for mobile/tablet, 50vw for desktop
+          const isMobile = window.innerWidth < 1024;
+          tl.to(imageContainer, {
+            width: isMobile ? "calc(100vw - 2rem)" : "50vw",
+            duration: 0.6,
+            ease: "power3.out"
+          }, "-=0.6");
+        }
+
+        // Animate text opacity
+        const textContainer = panel.querySelector('.text-container');
+        if (textContainer) {
+          tl.to(textContainer, {
+            opacity: 1,
+            x: 0,
+            duration: 0.5,
+            ease: "power2.out"
+          }, "-=0.4");
+        }
+      }
+    });
+
+  }, [isExpanded, isAnimating]);
+
+  // Initial setup for collapsed state
+  useEffect(() => {
+    if (!isExpanded && slidePanelsRef.current.length > 0) {
+      slidePanelsRef.current.forEach((panel) => {
+        if (panel) {
+          const textContainer = panel.querySelector('.text-container');
+          if (textContainer) {
+            gsap.set(textContainer, { opacity: 0.7, x: 20 });
+          }
+        }
+      });
+    }
+  }, [isExpanded, photos]);
+
   return (
     <section
       ref={sectionRef}
@@ -154,118 +229,155 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
     >
       <div className="container mx-auto px-4 py-4 md:py-8 lg:py-8">
         {/* Gallery */}
-        <div ref={galleryRef}>
+        <div ref={galleryRef} onClick={handleExpandGallery} className={!isExpanded ? "cursor-pointer" : ""}>
+          {/* Click hint for collapsed state */}
+          {!isExpanded && (
+            <div className="text-center mb-4">
+              <span className="text-sm text-gray-400 inline-flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                Click to expand gallery
+              </span>
+            </div>
+          )}
           {/* Marquee Container */}
           <div
             ref={trackRef}
-            onMouseDown={handleMouseDown}
-            onMouseUp={handleMouseUp}
-            onMouseMove={handleMouseMove}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeaveTrack}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            className="overflow-x-auto overflow-y-visible py-4 cursor-grab select-none scrollbar-hide -mx-4"
+            onMouseDown={isExpanded ? handleMouseDown : undefined}
+            onMouseUp={isExpanded ? handleMouseUp : undefined}
+            onMouseMove={isExpanded ? handleMouseMove : undefined}
+            onMouseEnter={isExpanded ? handleMouseEnter : undefined}
+            onMouseLeave={isExpanded ? handleMouseLeaveTrack : undefined}
+            onTouchStart={isExpanded ? handleTouchStart : undefined}
+            onTouchMove={isExpanded ? handleTouchMove : undefined}
+            onTouchEnd={isExpanded ? handleTouchEnd : undefined}
+            className={`overflow-x-auto overflow-y-visible py-4 select-none scrollbar-hide -mx-4 transition-all duration-300 ${isExpanded ? 'cursor-grab' : ''}`}
             style={{
               scrollbarWidth: "none",
               msOverflowStyle: "none",
               WebkitOverflowScrolling: "touch",
+              height: isExpanded ? "auto" : "45vh",
             }}
           >
             {/* Marquee Track */}
             <div
+              ref={marqueeTrackRef}
               className="flex"
               style={{
-                animation: isPaused ? "none" : "marquee 180s linear infinite",
+                animation: isExpanded && !isPaused ? "marquee 180s linear infinite" : "none",
                 width: "fit-content",
               }}
             >
-              {/* First set of slides */}
+              {/* First set of slides - Image and Text as separate slides on mobile/tablet */}
               {allImages.map((image, index) => {
                 const textContent = getTextForImage(index);
                 return (
-                  <div
-                    key={`first-${image.id}`}
-                    className="slide-panel shrink-0 flex items-stretch gap-8 md:gap-16 lg:gap-24 pr-16 md:pr-24 lg:pr-32 pl-4"
-                    style={{ height: "70vh" }}
-                  >
-                    {/* Image */}
-                    <div className="relative shrink-0 shadow-xl rounded-xl overflow-hidden h-full" style={{ width: "50vw" }}>
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        className="object-cover"
-                        sizes="50vw"
-                        priority={index === 0}
-                        draggable={false}
-                      />
+                  <>
+                    {/* Image Slide */}
+                    <div
+                      key={`first-img-${image.id}`}
+                      ref={(el) => { slidePanelsRef.current[index] = el; }}
+                      className="slide-panel shrink-0 flex items-center pr-4 md:pr-6 lg:pr-12 pl-4"
+                      style={{ height: isExpanded ? "70vh" : "40vh" }}
+                    >
+                      <div 
+                        className={`image-container relative shrink-0 rounded-xl overflow-hidden transition-all duration-500 h-full ${isExpanded ? 'w-[calc(100vw-2rem)] md:w-[calc(100vw-3rem)] lg:w-[50vw]' : 'w-[85vw] md:w-[75vw] lg:w-[30vw]'}`}
+                      >
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 50vw"
+                          priority={index === 0}
+                          draggable={false}
+                        />
+                        {/* Overlay for collapsed state */}
+                        {!isExpanded && (
+                          <div className="absolute inset-0 bg-black/10 transition-opacity duration-300 hover:bg-black/5" />
+                        )}
+                      </div>
                     </div>
 
-                    {/* Text */}
-                    <div className="w-[40vw] md:w-[35vw] shrink-0 flex flex-col justify-center">
-                      <p className="text-base md:text-lg lg:text-xl leading-relaxed text-gray-600 font-light mb-6">
-                        &ldquo;{textContent.quote}&rdquo;
-                      </p>
-                      {(textContent.author || textContent.subtitle) && (
-                        <div className="text-sm text-gray-500">
-                          {textContent.author && (
-                            <span className="uppercase tracking-wider font-semibold block text-gray-800">
-                              {textContent.author}
-                            </span>
-                          )}
-                          {textContent.subtitle && (
-                            <span className="text-gray-400 block mt-1">{textContent.subtitle}</span>
-                          )}
-                        </div>
-                      )}
+                    {/* Text Slide */}
+                    <div
+                      key={`first-txt-${image.id}`}
+                      className="slide-panel shrink-0 flex items-center pr-4 md:pr-6 lg:pr-12 pl-4"
+                      style={{ height: isExpanded ? "70vh" : "40vh" }}
+                    >
+                      <div className={`text-container shrink-0 flex flex-col justify-center h-full ${isExpanded ? 'w-[calc(100vw-2rem)] md:w-[calc(100vw-3rem)] lg:w-[400px]' : 'w-[92vw] md:w-[85vw] lg:w-[400px]'}`}>
+                        <p className={`leading-relaxed text-gray-600 font-light mb-4 transition-all duration-500 ${isExpanded ? 'text-lg md:text-xl lg:text-2xl' : 'text-base md:text-lg'}`}>
+                          &ldquo;{textContent.quote}&rdquo;
+                        </p>
+                        {(textContent.author || textContent.subtitle) && (
+                          <div className="text-sm text-gray-500">
+                            {textContent.author && (
+                              <span className="uppercase tracking-wider font-semibold block text-gray-800 text-sm md:text-base">
+                                {textContent.author}
+                              </span>
+                            )}
+                            {textContent.subtitle && (
+                              <span className="text-gray-400 block mt-1 text-sm md:text-base">{textContent.subtitle}</span>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  </>
                 );
               })}
 
-              {/* Duplicate set for seamless loop */}
-              {allImages.map((image, index) => {
+              {/* Duplicate set for seamless loop - only render when expanded */}
+              {isExpanded && allImages.map((image, index) => {
                 const textContent = getTextForImage(index);
                 return (
-                  <div
-                    key={`second-${image.id}`}
-                    className="slide-panel shrink-0 flex items-stretch gap-8 md:gap-16 lg:gap-24 pr-16 md:pr-24 lg:pr-32 pl-4"
-                    style={{ height: "75vh" }}
-                  >
-                    {/* Image */}
-                    <div className="relative shrink-0 shadow-xl rounded-xl overflow-hidden h-full" style={{ width: "50vw" }}>
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        className="object-cover"
-                        sizes="50vw"
-                        priority={false}
-                        draggable={false}
-                      />
+                  <>
+                    {/* Image Slide */}
+                    <div
+                      key={`second-img-${image.id}`}
+                      className="slide-panel shrink-0 flex items-center pr-4 md:pr-6 lg:pr-12 pl-4"
+                      style={{ height: "70vh" }}
+                    >
+                      <div className="image-container relative shrink-0 rounded-xl overflow-hidden h-full w-[calc(100vw-2rem)] md:w-[calc(100vw-3rem)] lg:w-[50vw]">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 50vw"
+                          priority={false}
+                          draggable={false}
+                        />
+                      </div>
                     </div>
 
-                    {/* Text */}
-                    <div className="w-[40vw] md:w-[35vw] shrink-0 flex flex-col justify-center">
-                      <p className="text-base md:text-lg lg:text-xl leading-relaxed text-gray-600 font-light mb-6">
-                        &ldquo;{textContent.quote}&rdquo;
-                      </p>
-                      {(textContent.author || textContent.subtitle) && (
-                        <div className="text-sm text-gray-500">
-                          {textContent.author && (
-                            <span className="uppercase tracking-wider font-semibold block text-gray-800">
-                              {textContent.author}
-                            </span>
-                          )}
-                          {textContent.subtitle && (
-                            <span className="text-gray-400 block mt-1">{textContent.subtitle}</span>
-                          )}
-                        </div>
-                      )}
+                    {/* Text Slide */}
+                    <div
+                      key={`second-txt-${image.id}`}
+                      className="slide-panel shrink-0 flex items-center pr-4 md:pr-6 lg:pr-12 pl-4"
+                      style={{ height: "70vh" }}
+                    >
+                      <div className="text-container w-[calc(100vw-2rem)] md:w-[calc(100vw-3rem)] lg:w-[400px] shrink-0 flex flex-col justify-center h-full">
+                        <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-600 font-light mb-6">
+                          &ldquo;{textContent.quote}&rdquo;
+                        </p>
+                        {(textContent.author || textContent.subtitle) && (
+                          <div className="text-sm text-gray-500">
+                            {textContent.author && (
+                              <span className="uppercase tracking-wider font-semibold block text-gray-800 text-sm md:text-base">
+                                {textContent.author}
+                              </span>
+                            )}
+                            {textContent.subtitle && (
+                              <span className="text-gray-400 block mt-1 text-sm md:text-base">{textContent.subtitle}</span>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     </div>
-                  </div>
+                  </>
                 );
               })}
             </div>
