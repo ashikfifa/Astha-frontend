@@ -8,6 +8,7 @@ export interface ProjectCardProps {
   keyDetails: string;
   projectPhotos?: MediaItem[];
   projectVideos?: MediaItem[];
+  brochurePath?: string;
 }
 
 export interface MoreServiceCardProps {

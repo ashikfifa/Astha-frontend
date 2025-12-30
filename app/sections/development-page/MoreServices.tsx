@@ -17,13 +17,14 @@ const MoreServices: React.FC<MoreServicesProps> = ({
 }) => {
   return (
     <section className="w-full bg-white py-10 sm:py-14 md:py-16 lg:py-20">
-      <div className="container mx-auto px-4 sm:px-48 lg:px-80">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-6 sm:mb-8">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-black">
-            {title}
-          </h2>
-        </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto">
+          {/* Header */}
+          <div className="flex items-center justify-between mb-6 sm:mb-8">
+            <h2 className="text-2xl md:text-3xl lg:text-[32px] font-bold text-black">
+              {title}
+            </h2>
+          </div>
 
         {/* Services Grid */}
         <div className="grid grid-cols-2 gap-4 sm:gap-8 lg:gap-10">
@@ -35,6 +36,7 @@ const MoreServices: React.FC<MoreServicesProps> = ({
               href={service.href}
             />
           ))}
+        </div>
         </div>
       </div>
     </section>

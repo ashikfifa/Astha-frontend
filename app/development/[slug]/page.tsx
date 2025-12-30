@@ -1,3 +1,4 @@
+import BrochureSection from "@/app/components/BrochureSection";
 import ProjectDescription from "@/app/components/ProjectDescription";
 import HeroBanner from "@/app/sections/development-page/HeroBanner";
 import MoreServices from "@/app/sections/development-page/MoreServices";
@@ -50,7 +51,13 @@ const DevelopmentSlugPage = async ({ params }: PageProps) => {
         location={project.location}
       />
 
+      
+
       <MediaSection videos={project.projectVideos ?? []} />
+
+      {project.title === "Dreams Mansion" && (
+        <BrochureSection pdfPath="/assets/file/DREAMS MANSION BROCHURE_AASTHA 06.03.2024.pdf" />
+      )}
 
       <MoreServices />
     </div>
