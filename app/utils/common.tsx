@@ -95,6 +95,7 @@ export const CONSTRUCTION_PROJECTS: ProjectCardProps[] = [
     projectDescription:
       "A state-of-the-art commercial building construction project in the heart of Dhaka. Our team delivers exceptional quality with attention to structural integrity and modern design standards. This project showcases our expertise in large-scale commercial construction with sustainable building practices.",
     keyDetails: "Number of floors: 20, including two underground levels for parking.",
+    brochurePath: "/assets/file/DREAMS MANSION BROCHURE_AASTHA 06.03.2024.pdf",
     projectPhotos: [
       { id: "const-dhaka-1", src: "/assets/construction/project1/IMG-20251215-WA0160.jpg", alt: "Dhaka Construction View 1", type: "photos" },
       { id: "const-dhaka-2", src: "/assets/construction/project1/IMG-20251215-WA0161.jpg", alt: "Dhaka Construction View 2", type: "photos" },

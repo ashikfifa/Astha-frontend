@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { MoreServiceCardProps } from "../utils/type";
 
 
@@ -8,7 +9,7 @@ const MoreServiceCard: React.FC<MoreServiceCardProps> = ({
   href = "#",
 }) => {
   return (
-    <a
+    <Link
       href={href}
       className="group block"
     >
@@ -28,7 +29,7 @@ const MoreServiceCard: React.FC<MoreServiceCardProps> = ({
       <h3 className="mt-2 sm:mt-3 text-sm sm:text-lg font-bold text-black group-hover:text-gray-700 transition-colors">
         {title}
       </h3>
-    </a>
+    </Link>
   );
 };
 
