@@ -26,6 +26,14 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return INTERIOR_PROJECTS.map((project) => ({
+    slug: `${createSlug(project.location)}-${createSlug(project.title)}`,
+  }));
+}
+
 const InteriorSlugPage = async ({ params }: PageProps) => {
   const { slug } = await params;
   const project = getProjectBySlug(slug);

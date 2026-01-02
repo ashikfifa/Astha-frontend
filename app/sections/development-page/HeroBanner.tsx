@@ -20,7 +20,7 @@ const HeroBanner: React.FC<HeroSectionProps> = ({
   isSlugPage = false,
 }) => {
   return (
-    <section className={`relative w-full ${isSlugPage ? "h-28 sm:h-28 md:h-38 lg:h-36" : "h-95 sm:h-65 md:h-100 lg:h-137.5"}`}>
+    <section className={`relative w-full ${isSlugPage ? "h-28 sm:h-28 md:h-36 lg:h-36" : "h-95 sm:h-65 md:h-100 lg:h-137.5"}`}>
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image

@@ -26,10 +26,18 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return CONSTRUCTION_PROJECTS.map((project) => ({
+    slug: `${createSlug(project.location)}-${createSlug(project.title)}`,
+  }));
+}
+
 const ConstructionSlugPage = async ({ params }: PageProps) => {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
-
+    console.log(project, "project", slug);
   if (!project) {
     notFound();
   }

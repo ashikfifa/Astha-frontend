@@ -177,135 +177,20 @@ const INTERIOR_COVER_IMAGES = {
 };
 
 export const INTERIOR_PROJECTS: ProjectCardProps[] = [
-  // {
-  //   image: INTERIOR_IMAGES.dhaka,
-  //   coverImage: INTERIOR_COVER_IMAGES.dhaka,
-  //   location: "Dhaka",
-  //   title: "Modern Living Room Design",
-  //   projectDescription:
-  //     "A stunning modern living room interior design featuring contemporary furniture, elegant lighting, and sophisticated color palettes. Our designers create spaces that reflect your personality while maximizing comfort and functionality. Every detail is carefully curated to achieve harmony and style.",
-  //   keyDetails: "Area: 500 sq ft with custom furniture and automated lighting systems.",
-  //   projectPhotos: [
-  //     { id: "int-dhaka-1", src: "/assets/development/dhaka-project.jpeg", alt: "Dhaka Interior View 1", type: "photos" },
-  //     { id: "int-dhaka-2", src: "/assets/development/dhanmondi-project.jpeg", alt: "Dhaka Interior View 2", type: "photos" },
-  //     { id: "int-dhaka-3", src: "/assets/development/mirpur-dohs-project.jpeg", alt: "Dhaka Interior View 3", type: "photos" },
-  //   ],
-  //   projectVideos: [
-  //     { id: "int-dhaka-v1", src: "/assets/development/dhaka-project.jpeg", alt: "Dhaka Interior Video 1", type: "video" },
-  //   ],
-  // },
-  // {
-  //   image: INTERIOR_IMAGES.khulna,
-  //   coverImage: INTERIOR_COVER_IMAGES.khulna,
-  //   location: "Khulna",
-  //   title: "Luxury Bedroom Suite",
-  //   projectDescription:
-  //     "An exquisite luxury bedroom suite design featuring premium materials and serene aesthetics. The design focuses on creating a peaceful retreat with elegant furnishings and ambient lighting. Perfect for those who appreciate refined comfort and style.",
-  //   keyDetails: "Master suite with walk-in closet and ensuite bathroom design.",
-  //   projectPhotos: [
-  //     { id: "int-khulna-1", src: "/assets/development/khulna-project.jpeg", alt: "Khulna Bedroom View 1", type: "photos" },
-  //     { id: "int-khulna-2", src: "/assets/development/sylhet-project.jpeg", alt: "Khulna Bedroom View 2", type: "photos" },
-  //   ],
-  //   projectVideos: [],
-  // },
-  // {
-  //   image: INTERIOR_IMAGES.uttara,
-  //   coverImage: INTERIOR_COVER_IMAGES.uttara,
-  //   location: "Uttara",
-  //   title: "Contemporary Kitchen Design",
-  //   projectDescription:
-  //     "A contemporary kitchen interior design featuring modern appliances, efficient storage solutions, and stylish finishes. The kitchen is designed for both functionality and aesthetics, making cooking a delightful experience. Premium materials ensure durability and easy maintenance.",
-  //   keyDetails: "Modular kitchen with island counter and smart appliance integration.",
-  //   projectPhotos: [
-  //     { id: "int-uttara-1", src: "/assets/development/uttara-project.jpeg", alt: "Uttara Kitchen View 1", type: "photos" },
-  //     { id: "int-uttara-2", src: "/assets/development/uttara2-project.jpeg", alt: "Uttara Kitchen View 2", type: "photos" },
-  //   ],
-  //   projectVideos: [],
-  // },
-  // {
-  //   image: INTERIOR_IMAGES.mirpurDohs,
-  //   coverImage: INTERIOR_COVER_IMAGES.mirpurDohs,
-  //   location: "Mirpur DOHS",
-  //   title: "Executive Office Interior",
-  //   projectDescription:
-  //     "A sophisticated executive office interior design featuring premium furniture and professional aesthetics. The design creates an environment that promotes productivity while reflecting corporate excellence. Custom solutions for meeting rooms and private offices included.",
-  //   keyDetails: "Executive suite with conference room and reception area design.",
-  //   projectPhotos: [
-  //     { id: "int-mirpur-dohs-1", src: "/assets/development/mirpur-dohs-project.jpeg", alt: "Mirpur DOHS Office View 1", type: "photos" },
-  //     { id: "int-mirpur-dohs-2", src: "/assets/development/mirpur1-project.jpeg", alt: "Mirpur DOHS Office View 2", type: "photos" },
-  //   ],
-  //   projectVideos: [],
-  // },
-  // {
-  //   image: INTERIOR_IMAGES.dhanmondi,
-  //   coverImage: INTERIOR_COVER_IMAGES.dhanmondi,
-  //   location: "Dhanmondi",
-  //   title: "Restaurant Interior Design",
-  //   projectDescription:
-  //     "An inviting restaurant interior design featuring unique ambiance and comfortable seating. The design creates a memorable dining experience through thoughtful lighting, textures, and spatial arrangements. Perfect for establishments seeking distinctive identity.",
-  //   keyDetails: "150 seating capacity with bar area and private dining rooms.",
-  //   projectPhotos: [
-  //     { id: "int-dhanmondi-1", src: "/assets/development/dhanmondi-project.jpeg", alt: "Dhanmondi Restaurant View 1", type: "photos" },
-  //     { id: "int-dhanmondi-2", src: "/assets/development/dhaka-project.jpeg", alt: "Dhanmondi Restaurant View 2", type: "photos" },
-  //   ],
-  //   projectVideos: [],
-  // },
-  // {
-  //   image: INTERIOR_IMAGES.cumilla,
-  //   coverImage: INTERIOR_COVER_IMAGES.cumilla,
-  //   location: "Cumilla",
-  //   title: "Retail Store Design",
-  //   projectDescription:
-  //     "A captivating retail store interior design featuring attractive displays and customer-friendly layouts. The design maximizes product visibility while creating an enjoyable shopping experience. Custom fixtures and lighting solutions included.",
-  //   keyDetails: "2,000 sq ft retail space with display systems and storage areas.",
-  //   projectPhotos: [
-  //     { id: "int-cumilla-1", src: "/assets/development/cumilla-project.jpeg", alt: "Cumilla Store View 1", type: "photos" },
-  //     { id: "int-cumilla-2", src: "/assets/development/khulna-project.jpeg", alt: "Cumilla Store View 2", type: "photos" },
-  //   ],
-  //   projectVideos: [],
-  // },
-  // {
-  //   image: INTERIOR_IMAGES.sylhet,
-  //   coverImage: INTERIOR_COVER_IMAGES.sylhet,
-  //   location: "Sylhet",
-  //   title: "Spa & Wellness Center",
-  //   projectDescription:
-  //     "A tranquil spa and wellness center interior design featuring calming aesthetics and functional treatment spaces. The design creates a sanctuary for relaxation with natural elements and soothing colors. Every space is designed to promote wellness and peace.",
-  //   keyDetails: "Full spa facility with treatment rooms, sauna, and relaxation lounge.",
-  //   projectPhotos: [
-  //     { id: "int-sylhet-1", src: "/assets/development/sylhet-project.jpeg", alt: "Sylhet Spa View 1", type: "photos" },
-  //     { id: "int-sylhet-2", src: "/assets/development/cumilla-project.jpeg", alt: "Sylhet Spa View 2", type: "photos" },
-  //   ],
-  //   projectVideos: [],
-  // },
-  // {
-  //   image: INTERIOR_IMAGES.uttara2,
-  //   coverImage: INTERIOR_COVER_IMAGES.uttara2,
-  //   location: "Uttara",
-  //   title: "Penthouse Interior",
-  //   projectDescription:
-  //     "A luxurious penthouse interior design featuring panoramic views and premium finishes. The design maximizes the unique advantages of penthouse living with open floor plans and elegant furnishings. Custom solutions for every room ensure a cohesive luxury experience.",
-  //   keyDetails: "3,500 sq ft penthouse with rooftop terrace and home theater.",
-  //   projectPhotos: [
-  //     { id: "int-uttara2-1", src: "/assets/development/uttara2-project.jpeg", alt: "Uttara Penthouse View 1", type: "photos" },
-  //     { id: "int-uttara2-2", src: "/assets/development/uttara-project.jpeg", alt: "Uttara Penthouse View 2", type: "photos" },
-  //   ],
-  //   projectVideos: [],
-  // },
-  // {
-  //   image: INTERIOR_IMAGES.mirpur1,
-  //   coverImage: INTERIOR_COVER_IMAGES.mirpur1,
-  //   location: "Mirpur 1",
-  //   title: "Apartment Renovation",
-  //   projectDescription:
-  //     "A complete apartment renovation interior design transforming living spaces into modern, functional homes. The design updates every room with contemporary style while respecting the existing structure. Cost-effective solutions that deliver impressive results.",
-  //   keyDetails: "Complete 1,200 sq ft apartment renovation with modern fixtures.",
-  //   projectPhotos: [
-  //     { id: "int-mirpur1-1", src: "/assets/development/mirpur1-project.jpeg", alt: "Mirpur Apartment View 1", type: "photos" },
-  //     { id: "int-mirpur1-2", src: "/assets/development/mirpur-dohs-project.jpeg", alt: "Mirpur Apartment View 2", type: "photos" },
-  //   ],
-  //   projectVideos: [],
-  // },
+  {
+    image: INTERIOR_IMAGES.dhaka,
+    coverImage: INTERIOR_COVER_IMAGES.dhaka,
+    location: "Dhaka",
+    title: "Sample Interior",
+    projectDescription:
+      "A sample interior project demonstrating the slug page and static export. Replace with real interior projects as needed.",
+    keyDetails: "Area: 500 sq ft, custom fixtures, LED lighting.",
+    projectPhotos: [
+      { id: "int-dhaka-1", src: "/assets/development/dhaka-project.jpeg", alt: "Interior View 1", type: "photos" },
+      { id: "int-dhaka-2", src: "/assets/development/mirpur-dohs-project.jpeg", alt: "Interior View 2", type: "photos" },
+    ],
+    projectVideos: [],
+  },
 ];
 
 const SERVICE_IMAGES = {

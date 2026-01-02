@@ -28,6 +28,14 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return DEFAULT_PROJECTS.map((project) => ({
+    slug: `${createSlug(project.location)}-${createSlug(project.title)}`,
+  }));
+}
+
 const DevelopmentSlugPage = async ({ params }: PageProps) => {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
@@ -51,9 +59,9 @@ const DevelopmentSlugPage = async ({ params }: PageProps) => {
         location={project.location}
       />
 
-      
-
-      <MediaSection videos={project.projectVideos ?? []} />
+  
+  
+  <MediaSection videos={project.projectVideos ?? []} />
 
       {project.title === "Dreams Mansion" && (
         <BrochureSection pdfPath="/assets/file/DREAMS MANSION BROCHURE_AASTHA 06.03.2024.pdf" />
