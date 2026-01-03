@@ -20,24 +20,25 @@ interface ProjectCardForDevelopmentProps extends ProjectCardProps {
 }
 
 const ProjectCardForDevelopment: React.FC<ProjectCardForDevelopmentProps> = ({
-  image,
+  imageUrl,
   location,
   title,
+  slug,
   href,
   basePath = "/development",
 }) => {
-  const slug = href || `${basePath}/${createSlug(location)}-${createSlug(title)}`;
+  const slug_p = href || `${basePath}/${slug}`;
 
   return (
     <Link
-      href={slug}
+      href={slug_p}
       className="group block bg-white border border-[#cbcbcb] rounded-[10px] overflow-hidden hover:shadow-lg hover:border-gray-400 transition-all duration-300"
     >
       {/* Image Container */}
       <div className="p-1.5">
         <div className="relative w-full aspect-4/3 overflow-hidden rounded-[10px]">
           <Image
-            src={image}
+            src={imageUrl}
             alt={title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"

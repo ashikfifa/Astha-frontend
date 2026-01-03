@@ -20,8 +20,10 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
             <ProjectCardForDevelopment
               key={index}
               image={project.image}
+              imageUrl={project.imageUrl}
               location={project.location}
               title={project.title}
+              slug={project.slug}
               projectDescription={project.projectDescription}
               keyDetails={project.keyDetails}
               basePath={basePath}

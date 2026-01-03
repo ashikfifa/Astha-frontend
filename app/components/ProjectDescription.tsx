@@ -5,8 +5,8 @@ import { MediaItem } from "@/app/utils/type";
 import { useRef, useState, useCallback, useEffect } from "react";
 
 interface ProjectDescriptionProps {
-  description: string;
-  details: string;
+  description: string | string[];
+  details: string | string[];
   photos?: MediaItem[];
   title?: string;
   location?: string;
@@ -29,10 +29,17 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
   const [startX, setStartX] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Parse key details
-  const parseKeyDetails = (detailsString: string) => {
+  // Parse key details (accept string or array of strings)
+  const parseKeyDetails = (detailsInput: string | string[]) => {
     const items: { label: string; value: string }[] = [];
-    const parts = detailsString.split(",").map((s) => s.trim());
+    if (Array.isArray(detailsInput)) {
+      detailsInput.filter(Boolean).forEach((val) => {
+        items.push({ label: "", value: String(val) });
+      });
+      return items;
+    }
+
+    const parts = detailsInput.split(",").map((s) => s.trim());
     parts.forEach((part) => {
       const colonIndex = part.indexOf(":");
       if (colonIndex > -1) {
@@ -47,6 +54,11 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
 
   const keyDetailsList = parseKeyDetails(details);
 
+  // Normalize description to string when array provided
+  const normalizedDescription = Array.isArray(description)
+    ? description.filter(Boolean).map(String).join(" ")
+    : description;
+
   // Get all images from photos
   const allImages = photos.map((photo, index) => ({
     id: `photo-${index}`,
@@ -59,7 +71,7 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
   const getTextForImage = (index: number) => {
     if (index === 0) {
       return {
-        quote: description,
+        quote: normalizedDescription,
         author: title || "",
         subtitle: location || "",
       };

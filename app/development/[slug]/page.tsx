@@ -3,73 +3,78 @@ import ProjectDescription from "@/app/components/ProjectDescription";
 import HeroBanner from "@/app/sections/development-page/HeroBanner";
 import MoreServices from "@/app/sections/development-page/MoreServices";
 import MediaSection from "@/app/sections/single-page/MediaSection";
-import { DEFAULT_PROJECTS } from "@/app/utils/common";
-import { notFound } from "next/navigation";
+import {MediaItem} from "@/app/utils/type";
+import {API_BASE_URL} from "@/app/utils/config";
+import {notFound} from "next/navigation";
 
-// Helper function to convert text to slug (same as in ProjectCardForDevelopment)
-const createSlug = (text: string): string => {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-")
-    .trim();
-};
-
-// Find project by slug (using location-title format)
-const getProjectBySlug = (slug: string) => {
-  return DEFAULT_PROJECTS.find(
-    (project) =>
-      `${createSlug(project.location)}-${createSlug(project.title)}` === slug
-  );
-};
+export const dynamic = 'force-dynamic';
 
 interface PageProps {
-  params: Promise<{ slug: string }>;
+    params: Promise<{ slug: string }>;
 }
 
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return DEFAULT_PROJECTS.map((project) => ({
-    slug: `${createSlug(project.location)}-${createSlug(project.title)}`,
-  }));
+function mapVideosToMediaItems(videos: any[], title?: string): MediaItem[] {
+    if (!Array.isArray(videos)) return [];
+    return videos.map((v: any, idx: number): MediaItem => {
+        if (typeof v === 'string') {
+            return {id: `vid-${idx}`, src: v, alt: title || `Video ${idx + 1}`, type: 'video', videoUrl: v};
+        }
+        const videoUrl = v.video_url || v.videoUrl || v.url || v.src || '';
+        return {id: `vid-${idx}`, src: videoUrl, alt: v.alt || title || `Video ${idx + 1}`, type: 'video', videoUrl};
+    });
 }
 
-const DevelopmentSlugPage = async ({ params }: PageProps) => {
-  const { slug } = await params;
-  const project = getProjectBySlug(slug);
+const DevelopmentSlugPage = async ({params}: PageProps) => {
+    const {slug} = await params;
+    const base = API_BASE_URL.replace(/\/$/, "");
+    const res = await fetch(`${base}/development/${slug}`, {cache: 'no-store'});
+    if (!res.ok) {
+        notFound();
+    }
+    const data = await res.json();
 
-  if (!project) {
-    notFound();
-  }
+    const title: string = data.title || 'Untitled';
+    const location: string = data.location || '';
 
-  return (
-    <div>
-      <HeroBanner
-        backgroundImage={project.coverImage || project.image}
-        isSlugPage
-      />
+    // Build photos and description arrays from images[]
+    const imagesArr: any[] = Array.isArray(data.images) ? data.images : [];
+    const photos: MediaItem[] = imagesArr
+        .filter((img) => !!img?.image_url)
+        .map((img, idx) => ({
+            id: `img-${idx}`,
+            src: String(img.image_url),
+            alt: img.description || title || `Image ${idx + 1}`,
+            type: 'photos'
+        }));
+    const descriptionList: string[] = imagesArr
+        .map((img) => img?.description)
+        .filter(Boolean)
+        .map(String);
 
-      <ProjectDescription
-        description={project.projectDescription}
-        details={project.keyDetails}
-        photos={project.projectPhotos ?? []}
-        title={project.title}
-        location={project.location}
-      />
+    const videos: MediaItem[] = mapVideosToMediaItems(data.videos || data.projectVideos || [], title);
+    const backgroundImage: string = (photos[0]?.src);
 
-  
-  
-  <MediaSection videos={project.projectVideos ?? []} />
+    return (
+        <div>
+            <HeroBanner backgroundImage={backgroundImage} isSlugPage/>
 
-      {project.title === "Dreams Mansion" && (
-        <BrochureSection pdfPath="/assets/file/DREAMS MANSION BROCHURE_AASTHA 06.03.2024.pdf" />
-      )}
+            <ProjectDescription
+                description={descriptionList}
+                details={''}
+                photos={photos}
+                title={title}
+                location={location}
+            />
 
-      <MoreServices />
-    </div>
-  );
+            <MediaSection videos={videos}/>
+
+            {title === "Dreams Mansion" && (
+                <BrochureSection pdfPath="/assets/file/DREAMS MANSION BROCHURE_AASTHA 06.03.2024.pdf"/>
+            )}
+
+            <MoreServices/>
+        </div>
+    );
 };
 
 export default DevelopmentSlugPage;
