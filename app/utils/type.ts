@@ -3,8 +3,8 @@ export interface ProjectCardProps {
     coverImage?: string;
     location: string;
     title: string;
-    slug: string;
-    imageUrl: string;
+    slug?: string;
+    imageUrl?: string;
     href?: string;
     projectDescription: string;
     keyDetails: string;
