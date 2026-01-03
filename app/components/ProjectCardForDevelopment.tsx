@@ -21,6 +21,7 @@ interface ProjectCardForDevelopmentProps extends ProjectCardProps {
 
 const ProjectCardForDevelopment: React.FC<ProjectCardForDevelopmentProps> = ({
   image,
+  imageUrl,
   location,
   title,
   href,
@@ -38,7 +39,7 @@ const ProjectCardForDevelopment: React.FC<ProjectCardForDevelopmentProps> = ({
       <div className="p-1.5">
         <div className="relative w-full aspect-4/3 overflow-hidden rounded-[10px]">
           <Image
-            src={image}
+            src={imageUrl || image}
             alt={title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-300"

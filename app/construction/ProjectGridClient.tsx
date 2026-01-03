@@ -19,6 +19,7 @@ export default function ProjectGridClient() {
         if (!Array.isArray(data)) return;
         const mapped: ProjectCardProps[] = data.map((item: any): ProjectCardProps => ({
           image: item.image || "/assets/construction/project1/IMG-20251215-WA0160.jpg",
+          imageUrl: item.image_url,
           coverImage: item.coverImage || undefined,
           location: item.location || "",
           title: item.title || "Untitled",
