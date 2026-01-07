@@ -41,10 +41,10 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
-  const { slug } = params;
-
+  const { slug } = await params;
+    console.log(slug,'=======================================================')
   // Safe defaults
   let title = "Construction Project";
   let location = "";
