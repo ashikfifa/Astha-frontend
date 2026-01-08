@@ -1,7 +1,6 @@
 import type {NextConfig} from "next";
 
 const nextConfig: NextConfig = {
-    output: "export",
     images: {
         unoptimized: true,
         remotePatterns: [
@@ -13,6 +12,11 @@ const nextConfig: NextConfig = {
             {
                 protocol: "https",
                 hostname: "img.youtube.com",
+                pathname: "/**",
+            },
+            {
+                protocol: "https",
+                hostname: "admin.aasthabd.com",
                 pathname: "/**",
             },
         ],

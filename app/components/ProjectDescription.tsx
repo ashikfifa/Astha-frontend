@@ -6,7 +6,8 @@ import { useRef, useState, useCallback, useEffect } from "react";
 
 interface ProjectDescriptionProps {
   description: string;
-  details: string;
+  details: string | string[];
+  keyDetails?: string[];
   photos?: MediaItem[];
   title?: string;
   location?: string;
@@ -15,6 +16,7 @@ interface ProjectDescriptionProps {
 const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
   description,
   details,
+  keyDetails,
   photos = [],
   title,
   location,
@@ -45,7 +47,9 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
     return items;
   };
 
-  const keyDetailsList = parseKeyDetails(details);
+  const keyDetailsList = Array.isArray(details)
+    ? details.map((d) => ({ label: "", value: d }))
+    : parseKeyDetails(details);
 
   // Get all images from photos
   const allImages = photos.map((photo, index) => ({
@@ -57,27 +61,29 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
 
   // Text content for each image
   const getTextForImage = (index: number) => {
-    if (index === 0) {
-      return {
-        quote: description,
-        author: title || "",
-        subtitle: location || "",
-      };
-    }
-    const detailTexts = [
-      "Every detail has been carefully considered to create spaces that inspire and endure.",
-      "Our commitment to excellence is reflected in every aspect of the design.",
-      "Architecture that harmonizes with its environment while serving its purpose.",
-      "Crafted with precision to meet the highest standards of quality.",
-      "Designed to create lasting value and memorable experiences.",
-      "Innovation meets tradition in this carefully curated space.",
-      "A testament to thoughtful design and meticulous execution.",
-      "Where form follows function, and beauty emerges naturally.",
-    ];
+    // if (index === 0) {
+    //   return {
+    //     quote: description,
+    //     author: title || "",
+    //     subtitle: location || "",
+    //   };
+    // }
+    const detailTexts = (keyDetails && keyDetails.length > 0)
+      ? keyDetails
+      : [
+          "Every detail has been carefully considered to create spaces that inspire and endure.",
+          "Our commitment to excellence is reflected in every aspect of the design.",
+          "Architecture that harmonizes with its environment while serving its purpose.",
+          "Crafted with precision to meet the highest standards of quality.",
+          "Designed to create lasting value and memorable experiences.",
+          "Innovation meets tradition in this carefully curated space.",
+          "A testament to thoughtful design and meticulous execution.",
+          "Where form follows function, and beauty emerges naturally.",
+        ];
     return {
-      quote: detailTexts[(index - 1) % detailTexts.length],
-      author: keyDetailsList[(index - 1) % keyDetailsList.length]?.label || "",
-      subtitle: keyDetailsList[(index - 1) % keyDetailsList.length]?.value || "",
+      quote: detailTexts[(index) % detailTexts.length],
+      author: keyDetailsList[(index) % keyDetailsList.length]?.label || "",
+      subtitle: keyDetailsList[(index) % keyDetailsList.length]?.value || "",
     };
   };
 
@@ -250,7 +256,7 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
                       style={{ height: "70vh" }}
                     >
                       <div className="text-container shrink-0 flex flex-col justify-center h-full w-[calc(100vw-2rem)] md:w-[calc(100vw-3rem)] lg:w-[400px]">
-                        <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-600 font-light mb-4">
+                        <p className="text-lg md:text-sm lg:text-sm leading-relaxed text-gray-600 font-light mb-4">
                           &ldquo;{textContent.quote}&rdquo;
                         </p>
                         {(textContent.author || textContent.subtitle) && (

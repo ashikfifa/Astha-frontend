@@ -25,6 +25,7 @@ const ProjectGrid: React.FC<ProjectGridProps> = ({
               projectDescription={project.projectDescription}
               keyDetails={project.keyDetails}
               basePath={basePath}
+              href={project.href}
             />
           ))}
         </div>
