@@ -27,6 +27,14 @@ export interface MediaItem {
   videoUrl?: string;
 }
 
+export interface VideoItem {
+    id: string;
+    title: string;
+    location: string;
+    thumbnail: string;
+    youtubeId: string;
+}
+
 export interface MediaSectionProps {
   photos: MediaItem[];
   videos: MediaItem[];

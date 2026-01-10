@@ -3,7 +3,11 @@ import HeroBanner from "@/app/sections/development-page/HeroBanner";
 import MoreServices from "@/app/sections/development-page/MoreServices";
 import MediaSection from "@/app/sections/single-page/MediaSection";
 import { CONSTRUCTION_PROJECTS } from "@/app/utils/common";
+import API_ENDPOINT from "@/app/config/api";
+
+export const dynamic = "force-dynamic";
 import { notFound } from "next/navigation";
+import {MediaItem} from "@/app/utils/type";
 
 // Helper function to convert text to slug
 const createSlug = (text: string): string => {
@@ -15,32 +19,78 @@ const createSlug = (text: string): string => {
     .trim();
 };
 
-// Find project by slug (using location-title format)
-const getProjectBySlug = (slug: string) => {
-  return CONSTRUCTION_PROJECTS.find(
-    (project) => `${createSlug(project.location)}-${createSlug(project.title)}` === slug
-  );
+// Find project from defaults by slug (supports both composite and title-only slugs)
+const getDefaultProjectBySlug = (slug: string) => {
+    return (
+        CONSTRUCTION_PROJECTS.find(
+            (project) =>
+                `${createSlug(project.location)}-${createSlug(project.title)}` === slug
+        ) ||
+        CONSTRUCTION_PROJECTS.find((project) => createSlug(project.title) === slug) ||
+        null
+    );
 };
 
-interface PageProps {
-  params: Promise<{ slug: string }>;
+async function getConstructionFromApi(slug: string) {
+    try {
+        const res = await fetch(`${API_ENDPOINT}/construction/${slug}`, { cache: "no-store" });
+        if (!res.ok) return null;
+        const raw = await res.json();
+        const item: any = Array.isArray(raw) ? (raw[0] ?? null) : (raw?.data ?? raw ?? null);
+        if (!item) return null;
+        const images: any[] = Array.isArray(item.images) ? item.images : [];
+        const projectPhotos = images
+            .map((img, idx) => {
+                const src = img?.image_url || img?.url || img;
+                if (!src || typeof src !== "string") return null;
+                return {
+                    id: `con-${slug}-${idx}`,
+                    src,
+                    alt: item.title || `Photo ${idx + 1}`,
+                    type: "photos" as const,
+                };
+            })
+            .filter(Boolean) as { id: string; src: string; alt: string; type: "photos" }[];
+        const keyDetails = images
+            .map((img) => (typeof img?.description === "string" ? img.description.trim() : ""))
+            .filter((s) => s && s.length > 0);
+        const vids: any[] = Array.isArray(item.videos) ? item.videos : [];
+        const videos: MediaItem[] = vids.map((v: any, idx: number): MediaItem => {
+            const videoUrl = typeof v === "string" ? v: (v.video_url || "");
+            return {
+                id: `int-video-${slug}-${idx}`,
+                src: videoUrl,
+                alt: item.title,
+                type: "video",
+                videoUrl
+            };
+        });
+        const projectVideos = videos
+        return {
+            image: item.image_url || item.image || "",
+            coverImage: item.image_url || item.image || "",
+            location: item.location || "",
+            title: item.title || "",
+            projectDescription: "",
+            keyDetails,
+            projectPhotos,
+            projectVideos: projectVideos,
+        };
+    } catch {
+        return null;
+    }
 }
 
-export const dynamicParams = false;
-
-export function generateStaticParams() {
-  return CONSTRUCTION_PROJECTS.map((project) => ({
-    slug: `${createSlug(project.location)}-${createSlug(project.title)}`,
-  }));
+interface PageProps {
+    params: Promise<{ slug: string }>;
 }
 
 const ConstructionSlugPage = async ({ params }: PageProps) => {
-  const { slug } = await params;
-  const project = getProjectBySlug(slug);
-    console.log(project, "project", slug);
-  if (!project) {
-    notFound();
-  }
+    const { slug } = await params;
+    const project = (await getConstructionFromApi(slug)) || getDefaultProjectBySlug(slug);
+    if (!project) {
+        notFound();
+    }
 
   return (
     <div>
@@ -49,13 +99,14 @@ const ConstructionSlugPage = async ({ params }: PageProps) => {
         isSlugPage
       />
 
-      <ProjectDescription
-        description={project.projectDescription}
-        details={project.keyDetails}
-        photos={project.projectPhotos ?? []}
-        title={project.title}
-        location={project.location}
-      />
+        <ProjectDescription
+            description={project.projectDescription}
+            details=""
+            keyDetails={project.keyDetails as any}
+            photos={project.projectPhotos ?? []}
+            title={project.title}
+            location={project.location}
+        />
 
       <MediaSection videos={project.projectVideos ?? []} />
 

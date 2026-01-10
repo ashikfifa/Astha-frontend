@@ -7,6 +7,7 @@ import { DEFAULT_PROJECTS } from "@/app/utils/common";
 import API_ENDPOINT from "@/app/config/api";
 export const dynamic = "force-dynamic";
 import { notFound } from "next/navigation";
+import {MediaItem} from "@/app/utils/type";
 
 // Helper function to convert text to slug (same as in ProjectCardForDevelopment)
 const createSlug = (text: string): string => {
@@ -30,14 +31,14 @@ const getDefaultProjectBySlug = (slug: string) => {
   );
 };
 
-type DevelopmentItem = {
-  id: number;
-  title: string;
-  slug: string;
-  location: string;
-  image: string;
-  image_url: string;
-};
+// type DevelopmentItem = {
+//   id: number;
+//   title: string;
+//   slug: string;
+//   location: string;
+//   image: string;
+//   image_url: string;
+// };
 
 async function getDevelopmentFromApi(slug: string) {
   try {
@@ -62,6 +63,18 @@ async function getDevelopmentFromApi(slug: string) {
     const keyDetails = images
       .map((img) => (typeof img?.description === "string" ? img.description.trim() : ""))
       .filter((s) => s && s.length > 0);
+      const vids: any[] = Array.isArray(item.videos) ? item.videos : [];
+      const videos: MediaItem[] = vids.map((v: any, idx: number): MediaItem => {
+          const videoUrl = typeof v === "string" ? v: (v.video_url || "");
+          return {
+              id: `int-video-${slug}-${idx}`,
+              src: videoUrl,
+              alt: item.title,
+              type: "video",
+              videoUrl
+          };
+      });
+      const projectVideos = videos
     return {
       image: item.image_url || item.image || "",
       coverImage: item.image_url || item.image || "",
@@ -70,7 +83,7 @@ async function getDevelopmentFromApi(slug: string) {
       projectDescription: "",
       keyDetails,
       projectPhotos,
-      projectVideos: [],
+      projectVideos: projectVideos,
     };
   } catch {
     return null;

@@ -62,7 +62,7 @@ export default function Home() {
       <HeroSlider />
       <MottoSection />
       <OurServices />
-      <RecentProjects />
+      {/*<RecentProjects />*/}
       <VideoSection />
     </>
   );

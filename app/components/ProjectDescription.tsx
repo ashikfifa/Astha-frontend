@@ -59,6 +59,12 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
     type: "photos" as const,
   }));
 
+    function decodeHtml(html: string) {
+        const txt = document.createElement("textarea");
+        txt.innerHTML = html;
+        return txt.value;
+    }
+
   // Text content for each image
   const getTextForImage = (index: number) => {
     // if (index === 0) {
@@ -92,7 +98,7 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
     const marqueeTrack = marqueeTrackRef.current;
     if (!marqueeTrack) return;
 
-    const speed = 0.5; // pixels per frame
+    const speed = 2.1; // pixels per frame
 
     const animate = () => {
       if (!isPaused && !isDragging && marqueeTrack) {
@@ -256,9 +262,7 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
                       style={{ height: "70vh" }}
                     >
                       <div className="text-container shrink-0 flex flex-col justify-center h-full w-[calc(100vw-2rem)] md:w-[calc(100vw-3rem)] lg:w-[400px]">
-                        <p className="text-lg md:text-sm lg:text-sm leading-relaxed text-gray-600 font-light mb-4">
-                          &ldquo;{textContent.quote}&rdquo;
-                        </p>
+                        <span className="text-gray-600" dangerouslySetInnerHTML={{ __html: decodeHtml(textContent.quote) }}/>
                         {(textContent.author || textContent.subtitle) && (
                           <div className="text-sm text-gray-500">
                             {textContent.author && (
@@ -309,7 +313,7 @@ const ProjectDescription: React.FC<ProjectDescriptionProps> = ({
                     >
                       <div className="text-container w-[calc(100vw-2rem)] md:w-[calc(100vw-3rem)] lg:w-[400px] shrink-0 flex flex-col justify-center h-full">
                         <p className="text-lg md:text-xl lg:text-2xl leading-relaxed text-gray-600 font-light mb-6">
-                          &ldquo;{textContent.quote}&rdquo;
+                          {textContent.quote}
                         </p>
                         {(textContent.author || textContent.subtitle) && (
                           <div className="text-sm text-gray-500">

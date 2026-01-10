@@ -20,7 +20,7 @@ const Navbar = () => {
   // Handle scroll to change navbar appearance
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 0);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -41,7 +41,7 @@ const Navbar = () => {
   const isContactPage = pathname === "/contact";
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 sm:py-6 transition-all duration-300 ${isScrolled ? "bg-black/40 backdrop-blur-md" : ""}`}>
+    <header className={`fixed top-0 left-0 w-full z-50 px-4 sm:px-6 py-4 sm:py-6 transition-all duration-300 bg-black/70 backdrop-blur-md`}>
       <div className="container mx-auto flex item-start sm:item-start lg:items-center gap-8 sm:gap-10 lg:gap-30">
         {/* Logo */}
         <Link href="/" className="flex-shrink-0">
